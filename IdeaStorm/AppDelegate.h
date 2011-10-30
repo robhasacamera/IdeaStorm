@@ -3,7 +3,7 @@
 //  IdeaStorm
 //
 //  Created by Robert Cole on 9/22/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
 
 //set to 1 to run unit test, set to 0 to turn off unit test

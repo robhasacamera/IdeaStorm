@@ -3,7 +3,7 @@
 //  IdeaStorm
 //
 //  Created by Robert Cole on 9/22/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
 
 //the higher this is the more curve is applied towards points

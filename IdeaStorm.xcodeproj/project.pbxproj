@@ -31,6 +31,8 @@
 		E15662A9145CDFCC00BD2AC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */; };
 		E15662AB145CDFD200BD2AC1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */; };
 		E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */; };
+		E15662B5145D10D200BD2AC1 /* DrawingColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B4145D10D200BD2AC1 /* DrawingColor.m */; };
+		E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B7145D140A00BD2AC1 /* ToolSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,10 @@
 		E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E15662B0145CFD8C00BD2AC1 /* ToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarItem.h; sourceTree = "<group>"; };
 		E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolbarItem.m; sourceTree = "<group>"; };
+		E15662B3145D10D200BD2AC1 /* DrawingColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingColor.h; sourceTree = "<group>"; };
+		E15662B4145D10D200BD2AC1 /* DrawingColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingColor.m; sourceTree = "<group>"; };
+		E15662B6145D140A00BD2AC1 /* ToolSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolSet.h; sourceTree = "<group>"; };
+		E15662B7145D140A00BD2AC1 /* ToolSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +232,10 @@
 				E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */,
 				E1566293145CDF3700BD2AC1 /* Brush.h */,
 				E1566294145CDF3700BD2AC1 /* Brush.m */,
+				E15662B3145D10D200BD2AC1 /* DrawingColor.h */,
+				E15662B4145D10D200BD2AC1 /* DrawingColor.m */,
+				E15662B6145D140A00BD2AC1 /* ToolSet.h */,
+				E15662B7145D140A00BD2AC1 /* ToolSet.m */,
 			);
 			path = "Tool Set";
 			sourceTree = "<group>";
@@ -333,6 +343,8 @@
 				E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */,
 				E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */,
 				E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */,
+				E15662B5145D10D200BD2AC1 /* DrawingColor.m in Sources */,
+				E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

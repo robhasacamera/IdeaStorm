@@ -3,12 +3,14 @@
 //  IdeaStorm
 //
 //  Created by Robert Cole on 9/28/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
+//TODO change init to work with ToolbarItem init.
 
 #import <Foundation/Foundation.h>
+#import "ToolbarItem.h"
 
-@interface Brush : NSObject
+@interface Brush : ToolbarItem
 
 @property (nonatomic, strong) NSString *textureFilename;
 

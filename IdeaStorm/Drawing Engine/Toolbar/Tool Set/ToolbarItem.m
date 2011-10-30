@@ -3,7 +3,7 @@
 //  IdeaStorm
 //
 //  Created by Robert Cole on 10/29/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Robert Cole. All rights reserved.
 
 #import "ToolbarItem.h"
 
@@ -28,7 +28,16 @@
 - (bool)setIconWithImageName:(NSString *)imageFilename {
     bool imageLoaded = NO;
     
+    
+    
     return imageLoaded;
+}
+
+- (void)dealloc {
+    [self.icon release];
+    [self.title release];
+    
+    [super dealloc];
 }
 
 @end

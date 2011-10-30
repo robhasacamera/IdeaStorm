@@ -3,7 +3,7 @@
 //  GLProgram
 //
 //  Created by Robert Cole on 8/12/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
 
 #import "GLProgram.h"
