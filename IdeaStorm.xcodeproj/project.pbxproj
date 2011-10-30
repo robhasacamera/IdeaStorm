@@ -13,6 +13,21 @@
 		E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1566265145CDF1B00BD2AC1 /* InfoPlist.strings */; };
 		E1566269145CDF1B00BD2AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566268145CDF1B00BD2AC1 /* main.m */; };
 		E156626D145CDF1B00BD2AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E156626C145CDF1B00BD2AC1 /* AppDelegate.m */; };
+		E1566298145CDF3700BD2AC1 /* CC3Foundation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566276145CDF3700BD2AC1 /* CC3Foundation.m */; };
+		E1566299145CDF3700BD2AC1 /* CC3GLMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566278145CDF3700BD2AC1 /* CC3GLMatrix.m */; };
+		E156629A145CDF3700BD2AC1 /* CC3Kazmath.c in Sources */ = {isa = PBXBuildFile; fileRef = E1566279145CDF3700BD2AC1 /* CC3Kazmath.c */; };
+		E156629B145CDF3700BD2AC1 /* CC3Math.m in Sources */ = {isa = PBXBuildFile; fileRef = E156627D145CDF3700BD2AC1 /* CC3Math.m */; };
+		E156629C145CDF3700BD2AC1 /* DrawingEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566280145CDF3700BD2AC1 /* DrawingEngine.m */; };
+		E156629D145CDF3700BD2AC1 /* DrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566282145CDF3700BD2AC1 /* DrawingViewController.m */; };
+		E156629E145CDF3700BD2AC1 /* DrawingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1566283145CDF3700BD2AC1 /* DrawingViewController.xib */; };
+		E156629F145CDF3700BD2AC1 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566286145CDF3700BD2AC1 /* GLProgram.m */; };
+		E15662A0145CDF3700BD2AC1 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566288145CDF3700BD2AC1 /* GLView.m */; };
+		E15662A1145CDF3700BD2AC1 /* Shader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = E156628A145CDF3700BD2AC1 /* Shader.fsh */; };
+		E15662A2145CDF3700BD2AC1 /* Shader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
+		E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E156628E145CDF3700BD2AC1 /* DrawingEngineTest.m */; };
+		E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E1566292145CDF3700BD2AC1 /* Particle.png */; };
+		E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566294145CDF3700BD2AC1 /* Brush.m */; };
+		E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566297145CDF3700BD2AC1 /* DrawingTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +35,40 @@
 		E156625C145CDF1A00BD2AC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E156625E145CDF1A00BD2AC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E1566260145CDF1A00BD2AC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E1566264145CDF1B00BD2AC1 /* IdeaStorm-Info.plist */ = {isa = PBXFileReference; path = "IdeaStorm-Info.plist"; sourceTree = "<group>"; };
+		E1566264145CDF1B00BD2AC1 /* IdeaStorm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IdeaStorm-Info.plist"; sourceTree = "<group>"; };
 		E1566266145CDF1B00BD2AC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1566268145CDF1B00BD2AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E156626A145CDF1B00BD2AC1 /* IdeaStorm-Prefix.pch */ = {isa = PBXFileReference; path = "IdeaStorm-Prefix.pch"; sourceTree = "<group>"; };
-		E156626B145CDF1B00BD2AC1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E156626A145CDF1B00BD2AC1 /* IdeaStorm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IdeaStorm-Prefix.pch"; sourceTree = "<group>"; };
+		E156626B145CDF1B00BD2AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E156626C145CDF1B00BD2AC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E1566275145CDF3700BD2AC1 /* CC3Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Foundation.h; sourceTree = "<group>"; };
+		E1566276145CDF3700BD2AC1 /* CC3Foundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Foundation.m; sourceTree = "<group>"; };
+		E1566277145CDF3700BD2AC1 /* CC3GLMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3GLMatrix.h; sourceTree = "<group>"; };
+		E1566278145CDF3700BD2AC1 /* CC3GLMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3GLMatrix.m; sourceTree = "<group>"; };
+		E1566279145CDF3700BD2AC1 /* CC3Kazmath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CC3Kazmath.c; sourceTree = "<group>"; };
+		E156627A145CDF3700BD2AC1 /* CC3Kazmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Kazmath.h; sourceTree = "<group>"; };
+		E156627B145CDF3700BD2AC1 /* CC3Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Logging.h; sourceTree = "<group>"; };
+		E156627C145CDF3700BD2AC1 /* CC3Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Math.h; sourceTree = "<group>"; };
+		E156627D145CDF3700BD2AC1 /* CC3Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Math.m; sourceTree = "<group>"; };
+		E156627E145CDF3700BD2AC1 /* ccTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccTypes.h; sourceTree = "<group>"; };
+		E156627F145CDF3700BD2AC1 /* DrawingEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingEngine.h; sourceTree = "<group>"; };
+		E1566280145CDF3700BD2AC1 /* DrawingEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingEngine.m; sourceTree = "<group>"; };
+		E1566281145CDF3700BD2AC1 /* DrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingViewController.h; sourceTree = "<group>"; };
+		E1566282145CDF3700BD2AC1 /* DrawingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingViewController.m; sourceTree = "<group>"; };
+		E1566283145CDF3700BD2AC1 /* DrawingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawingViewController.xib; sourceTree = "<group>"; };
+		E1566285145CDF3700BD2AC1 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		E1566286145CDF3700BD2AC1 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		E1566287145CDF3700BD2AC1 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		E1566288145CDF3700BD2AC1 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
+		E156628A145CDF3700BD2AC1 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		E156628B145CDF3700BD2AC1 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		E156628D145CDF3700BD2AC1 /* DrawingEngineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingEngineTest.h; sourceTree = "<group>"; };
+		E156628E145CDF3700BD2AC1 /* DrawingEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingEngineTest.m; sourceTree = "<group>"; };
+		E1566292145CDF3700BD2AC1 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
+		E1566293145CDF3700BD2AC1 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
+		E1566294145CDF3700BD2AC1 /* Brush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brush.m; sourceTree = "<group>"; };
+		E1566296145CDF3700BD2AC1 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTool.h; sourceTree = "<group>"; };
+		E1566297145CDF3700BD2AC1 /* DrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +115,8 @@
 		E1566262145CDF1A00BD2AC1 /* IdeaStorm */ = {
 			isa = PBXGroup;
 			children = (
+				E15662A7145CDF9B00BD2AC1 /* Shared */,
+				E1566273145CDF3700BD2AC1 /* Drawing Engine */,
 				E156626B145CDF1B00BD2AC1 /* AppDelegate.h */,
 				E156626C145CDF1B00BD2AC1 /* AppDelegate.m */,
 				E1566263145CDF1B00BD2AC1 /* Supporting Files */,
@@ -88,6 +133,112 @@
 				E156626A145CDF1B00BD2AC1 /* IdeaStorm-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1566273145CDF3700BD2AC1 /* Drawing Engine */ = {
+			isa = PBXGroup;
+			children = (
+				E1566274145CDF3700BD2AC1 /* Cocos3DMathLib */,
+				E156627F145CDF3700BD2AC1 /* DrawingEngine.h */,
+				E1566280145CDF3700BD2AC1 /* DrawingEngine.m */,
+				E1566281145CDF3700BD2AC1 /* DrawingViewController.h */,
+				E1566282145CDF3700BD2AC1 /* DrawingViewController.m */,
+				E1566283145CDF3700BD2AC1 /* DrawingViewController.xib */,
+				E1566284145CDF3700BD2AC1 /* GLProgram */,
+				E1566287145CDF3700BD2AC1 /* GLView.h */,
+				E1566288145CDF3700BD2AC1 /* GLView.m */,
+				E1566289145CDF3700BD2AC1 /* Shaders */,
+				E156628C145CDF3700BD2AC1 /* Test */,
+				E156628F145CDF3700BD2AC1 /* Toolbar */,
+			);
+			path = "Drawing Engine";
+			sourceTree = "<group>";
+		};
+		E1566274145CDF3700BD2AC1 /* Cocos3DMathLib */ = {
+			isa = PBXGroup;
+			children = (
+				E1566275145CDF3700BD2AC1 /* CC3Foundation.h */,
+				E1566276145CDF3700BD2AC1 /* CC3Foundation.m */,
+				E1566277145CDF3700BD2AC1 /* CC3GLMatrix.h */,
+				E1566278145CDF3700BD2AC1 /* CC3GLMatrix.m */,
+				E1566279145CDF3700BD2AC1 /* CC3Kazmath.c */,
+				E156627A145CDF3700BD2AC1 /* CC3Kazmath.h */,
+				E156627B145CDF3700BD2AC1 /* CC3Logging.h */,
+				E156627C145CDF3700BD2AC1 /* CC3Math.h */,
+				E156627D145CDF3700BD2AC1 /* CC3Math.m */,
+				E156627E145CDF3700BD2AC1 /* ccTypes.h */,
+			);
+			path = Cocos3DMathLib;
+			sourceTree = "<group>";
+		};
+		E1566284145CDF3700BD2AC1 /* GLProgram */ = {
+			isa = PBXGroup;
+			children = (
+				E1566285145CDF3700BD2AC1 /* GLProgram.h */,
+				E1566286145CDF3700BD2AC1 /* GLProgram.m */,
+			);
+			path = GLProgram;
+			sourceTree = "<group>";
+		};
+		E1566289145CDF3700BD2AC1 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E156628A145CDF3700BD2AC1 /* Shader.fsh */,
+				E156628B145CDF3700BD2AC1 /* Shader.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		E156628C145CDF3700BD2AC1 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				E156628D145CDF3700BD2AC1 /* DrawingEngineTest.h */,
+				E156628E145CDF3700BD2AC1 /* DrawingEngineTest.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		E156628F145CDF3700BD2AC1 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				E1566290145CDF3700BD2AC1 /* Tool Set */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		E1566290145CDF3700BD2AC1 /* Tool Set */ = {
+			isa = PBXGroup;
+			children = (
+				E1566291145CDF3700BD2AC1 /* Brush Textures */,
+				E1566293145CDF3700BD2AC1 /* Brush.h */,
+				E1566294145CDF3700BD2AC1 /* Brush.m */,
+				E1566295145CDF3700BD2AC1 /* Drawing Tools */,
+			);
+			path = "Tool Set";
+			sourceTree = "<group>";
+		};
+		E1566291145CDF3700BD2AC1 /* Brush Textures */ = {
+			isa = PBXGroup;
+			children = (
+				E1566292145CDF3700BD2AC1 /* Particle.png */,
+			);
+			path = "Brush Textures";
+			sourceTree = "<group>";
+		};
+		E1566295145CDF3700BD2AC1 /* Drawing Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E1566296145CDF3700BD2AC1 /* DrawingTool.h */,
+				E1566297145CDF3700BD2AC1 /* DrawingTool.m */,
+			);
+			path = "Drawing Tools";
+			sourceTree = "<group>";
+		};
+		E15662A7145CDF9B00BD2AC1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +292,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */,
+				E156629E145CDF3700BD2AC1 /* DrawingViewController.xib in Resources */,
+				E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +306,19 @@
 			files = (
 				E1566269145CDF1B00BD2AC1 /* main.m in Sources */,
 				E156626D145CDF1B00BD2AC1 /* AppDelegate.m in Sources */,
+				E1566298145CDF3700BD2AC1 /* CC3Foundation.m in Sources */,
+				E1566299145CDF3700BD2AC1 /* CC3GLMatrix.m in Sources */,
+				E156629A145CDF3700BD2AC1 /* CC3Kazmath.c in Sources */,
+				E156629B145CDF3700BD2AC1 /* CC3Math.m in Sources */,
+				E156629C145CDF3700BD2AC1 /* DrawingEngine.m in Sources */,
+				E156629D145CDF3700BD2AC1 /* DrawingViewController.m in Sources */,
+				E156629F145CDF3700BD2AC1 /* GLProgram.m in Sources */,
+				E15662A0145CDF3700BD2AC1 /* GLView.m in Sources */,
+				E15662A1145CDF3700BD2AC1 /* Shader.fsh in Sources */,
+				E15662A2145CDF3700BD2AC1 /* Shader.vsh in Sources */,
+				E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */,
+				E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */,
+				E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

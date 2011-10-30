@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  IdeaStorm
 //
-//  Created by Robert Cole on 10/29/11.
+//  Created by Robert Cole on 9/22/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,8 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+
+@synthesize viewController = _viewController;
 
 - (void)dealloc
 {
@@ -21,9 +23,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+    
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.viewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle]] autorelease];
+    
+    self.window.rootViewController = self.viewController;
+    
     [self.window makeKeyAndVisible];
+    
+#if debug
+    
+    if ([DrawingEngineTest testInterpolateLinePoints:NO]) {
+        NSLog(@"testInterpolateLinePoints PASS");
+    } else {
+        NSLog(@"-testInterpolateLinePoints FAIL");
+    }
+    
+    if ([DrawingEngineTest testCalculateCurveControlPoints:NO]) {
+        NSLog(@"testCalculateCurveControlPoints PASS");
+    } else {
+        NSLog(@"-testCalculateCurveControlPoints FAIL");
+    }
+    
+    if ([DrawingEngineTest testInterpolateCurveControlPoints:NO]) {
+        NSLog(@"testInterpolateCurveControlPoints PASS");
+    } else {
+        NSLog(@"-testInterpolateCurveControlPoints FAIL");
+    }
+    
+#endif
+    
     return YES;
 }
 
