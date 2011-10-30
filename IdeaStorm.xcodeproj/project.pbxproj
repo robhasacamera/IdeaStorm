@@ -34,6 +34,7 @@
 		E15662B5145D10D200BD2AC1 /* DrawingColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B4145D10D200BD2AC1 /* DrawingColor.m */; };
 		E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B7145D140A00BD2AC1 /* ToolSet.m */; };
 		E15662BB145D192900BD2AC1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662BA145D192900BD2AC1 /* Database.m */; };
+		E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +74,7 @@
 		E1566292145CDF3700BD2AC1 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		E1566293145CDF3700BD2AC1 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
 		E1566294145CDF3700BD2AC1 /* Brush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brush.m; sourceTree = "<group>"; };
-		E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DrawingToolTemp.h; sourceTree = "<group>"; };
+		E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingToolTemp.h; sourceTree = "<group>"; };
 		E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingToolTemp.m; sourceTree = "<group>"; };
 		E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -86,6 +87,8 @@
 		E15662B9145D192900BD2AC1 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		E15662BA145D192900BD2AC1 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		E15662C0145D275C00BD2AC1 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTool.h; sourceTree = "<group>"; };
+		E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenDrawingTool.h; sourceTree = "<group>"; };
+		E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenDrawingTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				E15662C0145D275C00BD2AC1 /* DrawingTool.h */,
+				E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */,
+				E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */,
 				E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */,
 				E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */,
 			);
@@ -354,6 +359,7 @@
 				E15662B5145D10D200BD2AC1 /* DrawingColor.m in Sources */,
 				E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */,
 				E15662BB145D192900BD2AC1 /* Database.m in Sources */,
+				E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
