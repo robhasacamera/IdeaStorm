@@ -34,7 +34,7 @@
         self.renderView = [[GLView alloc]initWithFrame:frame];
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
-        self.drawingTool = [[DrawingTool alloc]init];
+        self.drawingTool = [[DrawingToolTemp alloc]init];
     }
     
     return self;

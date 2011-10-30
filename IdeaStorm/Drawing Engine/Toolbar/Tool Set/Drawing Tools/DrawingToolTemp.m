@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
 
-#import "DrawingTool.h"
+#import "DrawingToolTemp.h"
 
-@implementation DrawingTool
+@implementation DrawingToolTemp
 
 @synthesize brush = _brush;
 @synthesize drawingColor;

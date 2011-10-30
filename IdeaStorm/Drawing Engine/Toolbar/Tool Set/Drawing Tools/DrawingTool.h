@@ -2,23 +2,16 @@
 //  DrawingTool.h
 //  IdeaStorm
 //
-//  Created by Robert Cole on 9/28/11.
+//  Created by Robert Cole on 10/30/11.
 //  Copyright (c) 2011 Robert Cole. All rights reserved.
 //
-//TODO change init to work with ToolbarItem init.
 
 #import <Foundation/Foundation.h>
-#import "Brush.h"
 #import "GLView.h"
-#import "ToolbarItem.h"
 
-@interface DrawingTool : ToolbarItem
+@protocol DrawingTool <NSObject>
 
-@property (nonatomic, strong) Brush *brush;
-@property (nonatomic) Color drawingColor;
-
-#pragma mark - Initialization
-
-- (id)initWithBrush:(Brush *)aBrush andDrawingColor:(Color)aColor;
+@required
+- (Vertex *)verticesFromPoint:(CGPoint)point andDrawingColor:(Color)color andPointSize:(CGFloat)size isLastPoint:(bool)lastPoint;
 
 @end
