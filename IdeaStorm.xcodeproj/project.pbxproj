@@ -146,18 +146,18 @@
 		E1566273145CDF3700BD2AC1 /* Drawing Engine */ = {
 			isa = PBXGroup;
 			children = (
+				E156628C145CDF3700BD2AC1 /* Test */,
+				E1566284145CDF3700BD2AC1 /* GLProgram */,
 				E1566274145CDF3700BD2AC1 /* Cocos3DMathLib */,
+				E1566289145CDF3700BD2AC1 /* Shaders */,
+				E156628F145CDF3700BD2AC1 /* Toolbar */,
 				E156627F145CDF3700BD2AC1 /* DrawingEngine.h */,
 				E1566280145CDF3700BD2AC1 /* DrawingEngine.m */,
 				E1566281145CDF3700BD2AC1 /* DrawingViewController.h */,
 				E1566282145CDF3700BD2AC1 /* DrawingViewController.m */,
 				E1566283145CDF3700BD2AC1 /* DrawingViewController.xib */,
-				E1566284145CDF3700BD2AC1 /* GLProgram */,
 				E1566287145CDF3700BD2AC1 /* GLView.h */,
 				E1566288145CDF3700BD2AC1 /* GLView.m */,
-				E1566289145CDF3700BD2AC1 /* Shaders */,
-				E156628C145CDF3700BD2AC1 /* Test */,
-				E156628F145CDF3700BD2AC1 /* Toolbar */,
 			);
 			path = "Drawing Engine";
 			sourceTree = "<group>";

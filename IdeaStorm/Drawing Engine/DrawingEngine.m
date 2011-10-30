@@ -363,12 +363,12 @@
     for (int i=0; i<numPoints; i++) {
         point = [[points objectAtIndex:i] CGPointValue];
         
-        vertex.Position[0] = point.x;
-        vertex.Position[1] = -point.y;
-        vertex.Color[0] = self.drawingTool.drawingColor.r;
-        vertex.Color[1] = self.drawingTool.drawingColor.g;
-        vertex.Color[2] = self.drawingTool.drawingColor.b;
-        vertex.Color[3] = self.drawingTool.drawingColor.a;
+        vertex.position.x = point.x;
+        vertex.position.y = -point.y;
+        vertex.color.r = self.drawingTool.drawingColor.r;
+        vertex.color.g = self.drawingTool.drawingColor.g;
+        vertex.color.b = self.drawingTool.drawingColor.b;
+        vertex.color.a = self.drawingTool.drawingColor.a;
         
         vertices[i] = vertex;
     }

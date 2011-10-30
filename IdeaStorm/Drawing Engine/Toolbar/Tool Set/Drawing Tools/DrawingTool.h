@@ -8,13 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Brush.h"
-
-typedef struct {
-    float r;
-    float g;
-    float b;
-    float a;
-} Color;
+#import "GLView.h"
 
 @interface DrawingTool : NSObject
 

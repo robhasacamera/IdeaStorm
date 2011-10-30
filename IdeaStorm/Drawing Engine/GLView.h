@@ -14,8 +14,21 @@
 #import "CC3GLMatrix.h"
 
 typedef struct {
-    float Position[2];
-    float Color[4];
+    GLfloat r;
+    GLfloat g;
+    GLfloat b;
+    GLfloat a;
+} Color;
+
+typedef struct {
+    GLfloat x;
+    GLfloat y;
+} Position;
+
+typedef struct {
+    Position position;
+    Color color;
+    GLfloat pointSize;
 } Vertex;
 
 @interface GLView : UIView {
