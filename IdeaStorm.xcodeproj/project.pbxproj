@@ -30,6 +30,7 @@
 		E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566297145CDF3700BD2AC1 /* DrawingTool.m */; };
 		E15662A9145CDFCC00BD2AC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */; };
 		E15662AB145CDFD200BD2AC1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */; };
+		E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		E1566297145CDF3700BD2AC1 /* DrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingTool.m; sourceTree = "<group>"; };
 		E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E15662B0145CFD8C00BD2AC1 /* ToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarItem.h; sourceTree = "<group>"; };
+		E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolbarItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,9 +221,11 @@
 			isa = PBXGroup;
 			children = (
 				E1566291145CDF3700BD2AC1 /* Brush Textures */,
+				E1566295145CDF3700BD2AC1 /* Drawing Tools */,
+				E15662B0145CFD8C00BD2AC1 /* ToolbarItem.h */,
+				E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */,
 				E1566293145CDF3700BD2AC1 /* Brush.h */,
 				E1566294145CDF3700BD2AC1 /* Brush.m */,
-				E1566295145CDF3700BD2AC1 /* Drawing Tools */,
 			);
 			path = "Tool Set";
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */,
 				E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */,
 				E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */,
+				E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
