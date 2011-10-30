@@ -24,11 +24,14 @@
     return self;
 }
 
-//TODO: Need to finish this stub method
 - (bool)setIconWithImageName:(NSString *)imageFilename {
     bool imageLoaded = NO;
     
+    self.icon = [Database getImageForFilename:imageFilename];
     
+    if (self.icon) {
+        imageLoaded = YES;
+    }
     
     return imageLoaded;
 }
