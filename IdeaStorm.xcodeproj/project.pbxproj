@@ -28,6 +28,8 @@
 		E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E1566292145CDF3700BD2AC1 /* Particle.png */; };
 		E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566294145CDF3700BD2AC1 /* Brush.m */; };
 		E15662A6145CDF3700BD2AC1 /* DrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566297145CDF3700BD2AC1 /* DrawingTool.m */; };
+		E15662A9145CDFCC00BD2AC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */; };
+		E15662AB145CDFD200BD2AC1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		E1566294145CDF3700BD2AC1 /* Brush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brush.m; sourceTree = "<group>"; };
 		E1566296145CDF3700BD2AC1 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTool.h; sourceTree = "<group>"; };
 		E1566297145CDF3700BD2AC1 /* DrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingTool.m; sourceTree = "<group>"; };
+		E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15662AB145CDFD200BD2AC1 /* OpenGLES.framework in Frameworks */,
+				E15662A9145CDFCC00BD2AC1 /* QuartzCore.framework in Frameworks */,
 				E156625D145CDF1A00BD2AC1 /* UIKit.framework in Frameworks */,
 				E156625F145CDF1A00BD2AC1 /* Foundation.framework in Frameworks */,
 				E1566261145CDF1A00BD2AC1 /* CoreGraphics.framework in Frameworks */,
@@ -88,6 +94,8 @@
 		E156624D145CDF1A00BD2AC1 = {
 			isa = PBXGroup;
 			children = (
+				E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */,
+				E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */,
 				E1566262145CDF1A00BD2AC1 /* IdeaStorm */,
 				E156625B145CDF1A00BD2AC1 /* Frameworks */,
 				E1566259145CDF1A00BD2AC1 /* Products */,
