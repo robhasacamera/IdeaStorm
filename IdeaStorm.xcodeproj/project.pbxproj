@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E156625D145CDF1A00BD2AC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E156625C145CDF1A00BD2AC1 /* UIKit.framework */; };
+		E156625F145CDF1A00BD2AC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E156625E145CDF1A00BD2AC1 /* Foundation.framework */; };
+		E1566261145CDF1A00BD2AC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1566260145CDF1A00BD2AC1 /* CoreGraphics.framework */; };
+		E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1566265145CDF1B00BD2AC1 /* InfoPlist.strings */; };
+		E1566269145CDF1B00BD2AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566268145CDF1B00BD2AC1 /* main.m */; };
+		E156626D145CDF1B00BD2AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E156626C145CDF1B00BD2AC1 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E1566258145CDF1A00BD2AC1 /* IdeaStorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaStorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E156625C145CDF1A00BD2AC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E156625E145CDF1A00BD2AC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E1566260145CDF1A00BD2AC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E1566264145CDF1B00BD2AC1 /* IdeaStorm-Info.plist */ = {isa = PBXFileReference; path = "IdeaStorm-Info.plist"; sourceTree = "<group>"; };
+		E1566266145CDF1B00BD2AC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1566268145CDF1B00BD2AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E156626A145CDF1B00BD2AC1 /* IdeaStorm-Prefix.pch */ = {isa = PBXFileReference; path = "IdeaStorm-Prefix.pch"; sourceTree = "<group>"; };
+		E156626B145CDF1B00BD2AC1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E156626C145CDF1B00BD2AC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1566255145CDF1A00BD2AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E156625D145CDF1A00BD2AC1 /* UIKit.framework in Frameworks */,
+				E156625F145CDF1A00BD2AC1 /* Foundation.framework in Frameworks */,
+				E1566261145CDF1A00BD2AC1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E156624D145CDF1A00BD2AC1 = {
+			isa = PBXGroup;
+			children = (
+				E1566262145CDF1A00BD2AC1 /* IdeaStorm */,
+				E156625B145CDF1A00BD2AC1 /* Frameworks */,
+				E1566259145CDF1A00BD2AC1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1566259145CDF1A00BD2AC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1566258145CDF1A00BD2AC1 /* IdeaStorm.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E156625B145CDF1A00BD2AC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E156625C145CDF1A00BD2AC1 /* UIKit.framework */,
+				E156625E145CDF1A00BD2AC1 /* Foundation.framework */,
+				E1566260145CDF1A00BD2AC1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1566262145CDF1A00BD2AC1 /* IdeaStorm */ = {
+			isa = PBXGroup;
+			children = (
+				E156626B145CDF1B00BD2AC1 /* AppDelegate.h */,
+				E156626C145CDF1B00BD2AC1 /* AppDelegate.m */,
+				E1566263145CDF1B00BD2AC1 /* Supporting Files */,
+			);
+			path = IdeaStorm;
+			sourceTree = "<group>";
+		};
+		E1566263145CDF1B00BD2AC1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1566264145CDF1B00BD2AC1 /* IdeaStorm-Info.plist */,
+				E1566265145CDF1B00BD2AC1 /* InfoPlist.strings */,
+				E1566268145CDF1B00BD2AC1 /* main.m */,
+				E156626A145CDF1B00BD2AC1 /* IdeaStorm-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1566257145CDF1A00BD2AC1 /* IdeaStorm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1566270145CDF1B00BD2AC1 /* Build configuration list for PBXNativeTarget "IdeaStorm" */;
+			buildPhases = (
+				E1566254145CDF1A00BD2AC1 /* Sources */,
+				E1566255145CDF1A00BD2AC1 /* Frameworks */,
+				E1566256145CDF1A00BD2AC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdeaStorm;
+			productName = IdeaStorm;
+			productReference = E1566258145CDF1A00BD2AC1 /* IdeaStorm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E156624F145CDF1A00BD2AC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E1566252145CDF1A00BD2AC1 /* Build configuration list for PBXProject "IdeaStorm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E156624D145CDF1A00BD2AC1;
+			productRefGroup = E1566259145CDF1A00BD2AC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1566257145CDF1A00BD2AC1 /* IdeaStorm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1566256145CDF1A00BD2AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1566254145CDF1A00BD2AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1566269145CDF1B00BD2AC1 /* main.m in Sources */,
+				E156626D145CDF1B00BD2AC1 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1566265145CDF1B00BD2AC1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1566266145CDF1B00BD2AC1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E156626E145CDF1B00BD2AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E156626F145CDF1B00BD2AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1566271145CDF1B00BD2AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IdeaStorm/IdeaStorm-Prefix.pch";
+				INFOPLIST_FILE = "IdeaStorm/IdeaStorm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E1566272145CDF1B00BD2AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IdeaStorm/IdeaStorm-Prefix.pch";
+				INFOPLIST_FILE = "IdeaStorm/IdeaStorm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1566252145CDF1A00BD2AC1 /* Build configuration list for PBXProject "IdeaStorm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E156626E145CDF1B00BD2AC1 /* Debug */,
+				E156626F145CDF1B00BD2AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1566270145CDF1B00BD2AC1 /* Build configuration list for PBXNativeTarget "IdeaStorm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1566271145CDF1B00BD2AC1 /* Debug */,
+				E1566272145CDF1B00BD2AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E156624F145CDF1A00BD2AC1 /* Project object */;
+}
