@@ -13,11 +13,11 @@
 
 @interface ToolSet : NSObject
 
-@property (strong, nonatomic) DrawingTool *drawingTool;
+@property (strong, nonatomic) NSObject <DrawingTool> *drawingTool;
 @property (strong, nonatomic) Brush *brush;
 @property (strong, nonatomic) DrawingColor *drawingColor;
 @property (nonatomic) GLfloat pointSize;
 
-- (id)initWithDrawingTool:(DrawingTool *)drawingTool andBrush:(Brush *)brush andDrawingColor:(DrawingColor *)drawingColor andPointSize:(GLfloat)pointSize;
+- (id)initWithDrawingTool:(NSObject <DrawingTool> *)drawingTool andBrush:(Brush *)brush andDrawingColor:(DrawingColor *)drawingColor andPointSize:(GLfloat)pointSize;
 
 @end

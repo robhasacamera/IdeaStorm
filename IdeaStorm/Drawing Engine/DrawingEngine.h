@@ -14,13 +14,17 @@
 #import <Foundation/Foundation.h>
 #import "GLView.h"
 #import "DrawingToolTemp.h"
+#import "DrawingTool.h"
+#import "PenDrawingTool.h"
+#import <malloc/malloc.h>
 
 @interface DrawingEngine : NSObject
 
 @property (strong, nonatomic) GLView *renderView;
 @property (strong, nonatomic) NSMutableArray *pointBuffer;
 @property (nonatomic) float spaceBetweenPoints;
-@property (strong, nonatomic) DrawingToolTemp *drawingTool;
+@property (strong, nonatomic) DrawingToolTemp *drawingToolTemp;
+@property (strong, nonatomic) NSObject <DrawingTool> *drawingTool;
 
 #pragma mark - Initialization
 

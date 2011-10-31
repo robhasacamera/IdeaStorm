@@ -13,6 +13,7 @@
 @synthesize renderView = _renderView;
 @synthesize pointBuffer = _pointBuffer;
 @synthesize spaceBetweenPoints;
+@synthesize drawingToolTemp = _drawingToolTemp;
 @synthesize drawingTool = _drawingTool;
 
 #pragma mark - Initialization
@@ -34,7 +35,8 @@
         self.renderView = [[GLView alloc]initWithFrame:frame];
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
-        self.drawingTool = [[DrawingToolTemp alloc]init];
+        self.drawingToolTemp = [[DrawingToolTemp alloc]init];
+        self.drawingTool = [[[PenDrawingTool alloc]init] autorelease];
     }
     
     return self;
@@ -42,6 +44,7 @@
 
 #pragma mark - Touch Data Handling
 
+//FIXME: The way the number of vertices in calculated could cause issues later on as malloc doesn't set an exact amount aside for memory, so recalling the size of the malloc with malloc_size() will return this inaccurate size (its rounded up to the nearest 32/64 bits)
 //Creates a drawing in the renderView (GLView) using the ouch data provided.
 - (void)drawWithTouch:(NSSet *)touches {
     UITouch *touch = [touches anyObject];
@@ -52,6 +55,22 @@
         NSMutableArray *points = NULL;
         
         CGPoint point = [touch locationInView:self.renderView];
+        
+        int tapCount = touch.tapCount;
+        
+        bool lastTouch = NO;
+        
+        if (touch.phase == UITouchPhaseEnded) {
+            lastTouch = YES;
+        }
+        [self.renderView setupTexture:self.drawingToolTemp.brush.textureFilename];
+        Vertex *vertices = [self.drawingTool verticesFromPoint:point andDrawingColor:self.drawingToolTemp.drawingColor andPointSize:10 isLastPoint:lastTouch];
+        
+        //TODO:
+        [self.renderView addVertices:vertices withCount:(malloc_size(vertices) / sizeof(Vertex))];
+        
+        /*
+        
         //since the point buffer capacity is initialized to 4, the first object will be removed if the capacity is full before adding a new object
         while ([self.pointBuffer count] >= 4) {
             [self.pointBuffer removeObjectAtIndex:0];
@@ -63,7 +82,7 @@
             point = [[self.pointBuffer objectAtIndex:i] CGPointValue];
         }
         
-        int tapCount = touch.tapCount;
+        
         
         if ([self.pointBuffer count] == 3) {
             //get points for first segment
@@ -180,11 +199,10 @@
             [self drawWithPoints:points];
             [points removeAllObjects];
         }
-        
+        */
         if (tapCount == 2) {
             [self eraseScreen];
         }
-        
     }//END if (touch.phase != UITouchPhaseBegan)
 ;}
 
@@ -350,7 +368,7 @@
 
 //This method send point data to the renderView (GLView) as a Vertex array using the drawingColor and brush stored in the drawingTool.
 - (void)drawWithPoints:(NSMutableArray *)points {
-    [self.renderView setupTexture:self.drawingTool.brush.textureFilename];
+    [self.renderView setupTexture:self.drawingToolTemp.brush.textureFilename];
     
     int numPoints = [points count];
     
@@ -365,10 +383,10 @@
         
         vertex.position.x = point.x;
         vertex.position.y = -point.y;
-        vertex.color.r = self.drawingTool.drawingColor.r;
-        vertex.color.g = self.drawingTool.drawingColor.g;
-        vertex.color.b = self.drawingTool.drawingColor.b;
-        vertex.color.a = self.drawingTool.drawingColor.a;
+        vertex.color.r = self.drawingToolTemp.drawingColor.r;
+        vertex.color.g = self.drawingToolTemp.drawingColor.g;
+        vertex.color.b = self.drawingToolTemp.drawingColor.b;
+        vertex.color.a = self.drawingToolTemp.drawingColor.a;
         
         vertices[i] = vertex;
     }
@@ -388,7 +406,7 @@
 - (void)dealloc {
     [self.renderView release];
     [self.pointBuffer release];
-    [self.drawingTool release];
+    [self.drawingToolTemp release];
     
     [super dealloc];
 }

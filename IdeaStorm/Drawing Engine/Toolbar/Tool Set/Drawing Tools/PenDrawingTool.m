@@ -14,7 +14,10 @@
 
 //TODO: Finish stub
 //TODO: Break up method into smaller methods that might be implemented in the DrawingEngine (such as, create curve from points, create line from points, etc), at least the part going from curve points to interpolated segments
+//TODO: Need to find a way to pass the number of Vertex structs that are in the pointer, remember that malloc_size(vertices) does not provide an accurate size
+//FIXME: The curve this produces looks a bit flat, this is likely caused by the fact it is only using 3 points to calculate the curve, I will need to switch this back to 4 points to fix it. Also I already tried to use a higher curve coefficeient but this does not work.
 - (Vertex *)verticesFromPoint:(CGPoint)point andDrawingColor:(Color)color andPointSize:(CGFloat)size isLastPoint:(_Bool)lastPoint {
+    
     Vertex * vertices;
     
     NSMutableArray *points = NULL;
@@ -43,11 +46,12 @@
     //check for straight line
     if ([self.pointBuffer count] == 2 && lastPoint) {
         //get interpolated line points using half the point size as the spacing
-        points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 2)];
+        points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 20)];
     }
     
     //check for 3 points in buffer
     if ([self.pointBuffer count] >= 3) {
+        
         //get control points for points 0, 1, 2, 2 (will keep up with the finger while drawing
         NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithArray:self.pointBuffer copyItems:YES];
         
@@ -63,7 +67,7 @@
                                                [self.pointBuffer objectAtIndex:2],
                                                nil];
         
-        points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 2)];
+        points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 20)];
         
         [pointsToCalculateControlPoints release];
         [pointsToInterpolate release];
@@ -83,10 +87,11 @@
     Vertex vertex;
     
     for (int i=0; i<[points count]; i++) {
+        
         CGPoint pointForVertex = [[points objectAtIndex:i] CGPointValue];
         
         vertex.position.x = pointForVertex.x;
-        vertex.position.y = pointForVertex.y;
+        vertex.position.y = -pointForVertex.y;
         
         vertex.color.r = color.r;
         vertex.color.g = color.g;
