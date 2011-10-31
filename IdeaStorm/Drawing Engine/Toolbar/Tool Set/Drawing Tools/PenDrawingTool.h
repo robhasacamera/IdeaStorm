@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "DrawingTool.h"
 #import "ToolbarItem.h"
+#import "DrawingEngine.h"
 
 @interface PenDrawingTool : ToolbarItem <DrawingTool>
+
+@property (strong, nonatomic) NSMutableArray *pointBuffer;
 
 @end
