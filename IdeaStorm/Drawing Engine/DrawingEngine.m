@@ -52,8 +52,6 @@
     //touch began is ignored as it creates extra points for a drawing made of dots
     if (touch.phase != UITouchPhaseBegan) {
         
-        NSMutableArray *points = NULL;
-        
         CGPoint point = [touch locationInView:self.renderView];
         
         int tapCount = touch.tapCount;
@@ -63,143 +61,14 @@
         if (touch.phase == UITouchPhaseEnded) {
             lastTouch = YES;
         }
+        
         [self.renderView setupTexture:self.drawingToolTemp.brush.textureFilename];
         Vertex *vertices = [self.drawingTool verticesFromPoint:point andDrawingColor:self.drawingToolTemp.drawingColor andPointSize:10 isLastPoint:lastTouch];
         
         //TODO:
-        [self.renderView addVertices:vertices withCount:(malloc_size(vertices) / sizeof(Vertex))];
-        
-        /*
-        
-        //since the point buffer capacity is initialized to 4, the first object will be removed if the capacity is full before adding a new object
-        while ([self.pointBuffer count] >= 4) {
-            [self.pointBuffer removeObjectAtIndex:0];
-        }
-        
-        [self.pointBuffer addObject:[NSValue valueWithCGPoint:point]];
-        
-        for (int i=0; i<[self.pointBuffer count]; i++) {
-            point = [[self.pointBuffer objectAtIndex:i] CGPointValue];
-        }
+        [self.renderView addVertices:vertices withCount:self.drawingTool.numVerticesCreated];
         
         
-        
-        if ([self.pointBuffer count] == 3) {
-            //get points for first segment
-            //calculateControlPoints with points 0, 0, 1 & 2
-            NSMutableArray *pointsToCalcControlPoints = [[[NSMutableArray alloc]initWithObjects:
-                                                       [self.pointBuffer objectAtIndex:0], 
-                                                       [self.pointBuffer objectAtIndex:0], 
-                                                       [self.pointBuffer objectAtIndex:1], 
-                                                       [self.pointBuffer objectAtIndex:2],
-                                                       nil] autorelease];
-            NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalcControlPoints];
-            
-            //first control point is discarded and replaced with point 0
-            NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                                   [self.pointBuffer objectAtIndex:0], 
-                                                   [self.pointBuffer objectAtIndex:0], 
-                                                   [controlPoints objectAtIndex:1], 
-                                                   [self.pointBuffer objectAtIndex:1], 
-                                                   nil];
-            
-            //then pass points 0, 0(CP1), CP2 & 1 to interPolateCurvePoints
-            points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints];
-            
-            [pointsToInterpolate release];
-        } else if ([self.pointBuffer count] == 4) {
-            //get points for middle segment
-            NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:self.pointBuffer];
-            
-            NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                                   [self.pointBuffer objectAtIndex:1], 
-                                                   [controlPoints objectAtIndex:0], 
-                                                   [controlPoints objectAtIndex:1], 
-                                                   [self.pointBuffer objectAtIndex:2], 
-                                                   nil];
-            
-            //then pass points 0, 0(CP1), CP2 & 1 to interPolateCurvePoints
-            points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints];
-            
-            [pointsToInterpolate release];
-            
-            if (points) {
-                [self drawWithPoints:points];
-            }
-        }//END if (touchCount == 3)
-        
-        if (points) {
-            [self drawWithPoints:points];
-            [points removeAllObjects];
-        }
-        
-        if (touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled) {
-            //interpolate last points if needed
-            if ([self.pointBuffer count] == 1) {
-                //draw a dot
-                CGPoint point = [touch locationInView:self.renderView];
-                
-                points = [[[NSMutableArray alloc]initWithObjects:[NSValue valueWithCGPoint:point], nil] autorelease];
-            } else if ([self.pointBuffer count] == 2) {
-                //draw a line
-                points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:self.spaceBetweenPoints];
-            } else if ([self.pointBuffer count] == 3) {
-                //get points for last segment
-                //calculateControlPoints with points points 0, 1, 2 & 2
-                NSMutableArray *pointsToCalcControlPoints = [[[NSMutableArray alloc]initWithObjects:
-                                                              [self.pointBuffer objectAtIndex:0], 
-                                                              [self.pointBuffer objectAtIndex:1], 
-                                                              [self.pointBuffer objectAtIndex:2], 
-                                                              [self.pointBuffer objectAtIndex:2],
-                                                              nil] autorelease];
-                NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalcControlPoints];
-                
-                //second control point is replaced with point 2
-                NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                                       [self.pointBuffer objectAtIndex:1], 
-                                                       [controlPoints objectAtIndex:0], 
-                                                       [self.pointBuffer objectAtIndex:2], 
-                                                       [self.pointBuffer objectAtIndex:2], 
-                                                       nil];
-                
-                //then pass points 1, CP1, 2(CP2) & 2 to interPolateCurvePoints
-                points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints];
-                
-                [pointsToInterpolate release];
-            } else if ([self.pointBuffer count] == 4) {
-                //get points for last segment
-                //calculateControlPoints with points points 1, 2, 3 & 3
-                NSMutableArray *pointsToCalcControlPoints = [[[NSMutableArray alloc]initWithObjects:
-                                                              [self.pointBuffer objectAtIndex:1], 
-                                                              [self.pointBuffer objectAtIndex:2], 
-                                                              [self.pointBuffer objectAtIndex:3], 
-                                                              [self.pointBuffer objectAtIndex:3],
-                                                              nil] autorelease];
-                NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalcControlPoints];
-                
-                //second control point is replaced with point 3
-                NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                                       [self.pointBuffer objectAtIndex:2], 
-                                                       [controlPoints objectAtIndex:0], 
-                                                       [self.pointBuffer objectAtIndex:3], 
-                                                       [self.pointBuffer objectAtIndex:3], 
-                                                       nil];
-                
-                //then pass points 2, CP1, 3(CP2) & 3 to interPolateCurvePoints
-                points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints];
-                
-                [pointsToInterpolate release];
-            }
-            
-            //clear the buffer to perpare for a new line, curve or point
-            [self.pointBuffer removeAllObjects];
-        } //END if (touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled)
-        
-        if (points) {
-            [self drawWithPoints:points];
-            [points removeAllObjects];
-        }
-        */
         if (tapCount == 2) {
             [self eraseScreen];
         }
@@ -208,6 +77,7 @@
 
 #pragma mark - Point Calculations
 
+//TODO: Update this comment
 //This method provides an array of curve points based off a startPoint, two control points, an end point and a set space to have between points. The spacing placed between the points is an approximation and not 100% accurate. This method will leave off the end point so the begining point of the next curve segment doesn't overlap it.
 + (NSMutableArray *)interpolateCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints {
     NSMutableArray *interpolatedPoints = NULL;

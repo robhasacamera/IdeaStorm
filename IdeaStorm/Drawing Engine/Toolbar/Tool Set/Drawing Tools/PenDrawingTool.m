@@ -11,11 +11,9 @@
 @implementation PenDrawingTool
 
 @synthesize pointBuffer = _pointBuffer;
+@synthesize numVerticesCreated;
 
-//TODO: Finish stub
 //TODO: Break up method into smaller methods that might be implemented in the DrawingEngine (such as, create curve from points, create line from points, etc), at least the part going from curve points to interpolated segments
-//TODO: Need to find a way to pass the number of Vertex structs that are in the pointer, remember that malloc_size(vertices) does not provide an accurate size
-//FIXME: The curve this produces looks a bit flat, this is likely caused by the fact it is only using 3 points to calculate the curve, I will need to switch this back to 4 points to fix it. Also I already tried to use a higher curve coefficeient but this does not work.
 - (Vertex *)verticesFromPoint:(CGPoint)point andDrawingColor:(Color)color andPointSize:(CGFloat)size isLastPoint:(_Bool)lastPoint {
     
     Vertex * vertices;
@@ -24,11 +22,11 @@
     
     //if the pointBuffer hasn't been allocated yet, allocate it
     if (!self.pointBuffer) {
-        self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:3];
+        self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
     }
     
     //if buffer is too big remove first item in buffer
-    while ([self.pointBuffer count] >= 3) {
+    while ([self.pointBuffer count] >= 4) {
         [self.pointBuffer removeObjectAtIndex:0];
     }
     
@@ -49,25 +47,71 @@
         points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 20)];
     }
     
-    //check for 3 points in buffer
+    int pointIndex0;
+    int pointIndex1;
+    int pointIndex2;
+    int pointIndex3;
+    
+    //check for first segment of curve
     if ([self.pointBuffer count] >= 3) {
+        pointIndex0 = [self.pointBuffer count] - 4;
+        pointIndex1 = [self.pointBuffer count] - 3;
+        pointIndex2 = [self.pointBuffer count] - 2;
+        pointIndex3 = [self.pointBuffer count] - 1;
         
-        //get control points for points 0, 1, 2, 2 (will keep up with the finger while drawing
-        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithArray:self.pointBuffer copyItems:YES];
+        if (pointIndex0 < 0) {
+            pointIndex0 = 0;
+        }
         
-        [pointsToCalculateControlPoints addObject:[[self.pointBuffer objectAtIndex:2] copy]];
+        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
+                                                          [self.pointBuffer objectAtIndex:pointIndex0],
+                                                          [self.pointBuffer objectAtIndex:pointIndex1],
+                                                          [self.pointBuffer objectAtIndex:pointIndex2],
+                                                          [self.pointBuffer objectAtIndex:pointIndex3],
+                                                          nil];
         
         NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
         
         //get curve points for control points, spacing is equal to half the point size
         NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                               [self.pointBuffer objectAtIndex:1],
+                                               [self.pointBuffer objectAtIndex:pointIndex1],
                                                [controlPoints objectAtIndex:0],
                                                [controlPoints objectAtIndex:1],
-                                               [self.pointBuffer objectAtIndex:2],
+                                               [self.pointBuffer objectAtIndex:pointIndex2],
                                                nil];
         
         points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 20)];
+        
+        [pointsToCalculateControlPoints release];
+        [pointsToInterpolate release];
+
+    }
+    
+    //check for last segment of curve
+    if ([self.pointBuffer count] >= 3 && lastPoint) {
+        pointIndex0 = [self.pointBuffer count] - 3;
+        pointIndex1 = [self.pointBuffer count] - 2;
+        pointIndex2 = [self.pointBuffer count] - 1;
+        pointIndex3 = [self.pointBuffer count] - 1;
+        
+        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
+                                                          [self.pointBuffer objectAtIndex:pointIndex0],
+                                                          [self.pointBuffer objectAtIndex:pointIndex1],
+                                                          [self.pointBuffer objectAtIndex:pointIndex2],
+                                                          [self.pointBuffer objectAtIndex:pointIndex3],
+                                                          nil];
+        
+        NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
+        
+        //get curve points for control points, spacing is equal to half the point size
+        NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
+                                               [self.pointBuffer objectAtIndex:pointIndex2],
+                                               [controlPoints objectAtIndex:0],
+                                               [controlPoints objectAtIndex:1],
+                                               [self.pointBuffer objectAtIndex:pointIndex3],
+                                               nil];
+        
+        [points addObjectsFromArray:[DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 20)]];
         
         [pointsToCalculateControlPoints release];
         [pointsToInterpolate release];
@@ -102,6 +146,8 @@
         
         vertices[i] = vertex;
     }
+    
+    self.numVerticesCreated = [points count];
     
     return vertices;
 }
