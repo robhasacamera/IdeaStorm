@@ -13,18 +13,17 @@
 
 #import <Foundation/Foundation.h>
 #import "GLView.h"
-#import "DrawingToolTemp.h"
-#import "DrawingTool.h"
 #import "PenDrawingTool.h"
 #import <malloc/malloc.h>
+#import "ToolSet.h"
 
 @interface DrawingEngine : NSObject
 
 @property (strong, nonatomic) GLView *renderView;
 @property (strong, nonatomic) NSMutableArray *pointBuffer;
 @property (nonatomic) float spaceBetweenPoints;
-@property (strong, nonatomic) DrawingToolTemp *drawingToolTemp;
-@property (strong, nonatomic) NSObject <DrawingTool> *drawingTool;
+@property (strong, nonatomic) ToolSet *activeToolSet;
+@property (strong, nonatomic) ToolSet *reserveToolSet;
 
 #pragma mark - Initialization
 
@@ -51,8 +50,6 @@
 + (float)distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
 
 #pragma mark - Sending Commands to Render Points
-
-- (void)drawWithPoints:(NSMutableArray *)points;
 
 - (void)eraseScreen;
 

@@ -13,8 +13,8 @@
 @synthesize renderView = _renderView;
 @synthesize pointBuffer = _pointBuffer;
 @synthesize spaceBetweenPoints;
-@synthesize drawingToolTemp = _drawingToolTemp;
-@synthesize drawingTool = _drawingTool;
+@synthesize activeToolSet = _activeToolSet;
+@synthesize reserveToolSet = _reserveToolSet;
 
 #pragma mark - Initialization
 
@@ -27,6 +27,7 @@
     return self;
 }
 
+//TODO: Initiaize reserveToolSet.
 //Initializes the drawing engine with a custom frame.
 - (id)initWithFrame:(CGRect)frame {
     self = [super init];
@@ -35,8 +36,27 @@
         self.renderView = [[GLView alloc]initWithFrame:frame];
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
-        self.drawingToolTemp = [[DrawingToolTemp alloc]init];
-        self.drawingTool = [[[PenDrawingTool alloc]init] autorelease];
+        
+        NSObject <DrawingTool> *aDrawingTool = [[PenDrawingTool alloc]init];
+        
+        Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
+        
+        Color color;
+        
+        color.r = 0.0;
+        color.g = 0.0;
+        color.b = 0.0;
+        color.a = 1.0;
+        
+        DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:color];
+        
+        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:10];
+        
+        [aDrawingColor release];
+        
+        [aBrush release];
+        
+        [aDrawingTool release];
     }
     
     return self;
@@ -44,7 +64,6 @@
 
 #pragma mark - Touch Data Handling
 
-//FIXME: The way the number of vertices in calculated could cause issues later on as malloc doesn't set an exact amount aside for memory, so recalling the size of the malloc with malloc_size() will return this inaccurate size (its rounded up to the nearest 32/64 bits)
 //Creates a drawing in the renderView (GLView) using the ouch data provided.
 - (void)drawWithTouch:(NSSet *)touches {
     UITouch *touch = [touches anyObject];
@@ -62,18 +81,17 @@
             lastTouch = YES;
         }
         
-        [self.renderView setupTexture:self.drawingToolTemp.brush.textureFilename];
-        Vertex *vertices = [self.drawingTool verticesFromPoint:point andDrawingColor:self.drawingToolTemp.drawingColor andPointSize:10 isLastPoint:lastTouch];
+        [self.renderView setupTexture:self.activeToolSet.brush.textureFilename];
         
-        //TODO:
-        [self.renderView addVertices:vertices withCount:self.drawingTool.numVerticesCreated];
+        Vertex *vertices = [self.activeToolSet.drawingTool verticesFromPoint:point andDrawingColor:self.activeToolSet.drawingColor.color andPointSize:self.activeToolSet.pointSize isLastPoint:lastTouch];
         
+        [self.renderView addVertices:vertices withCount:self.activeToolSet.drawingTool.numVerticesCreated];
         
         if (tapCount == 2) {
             [self eraseScreen];
         }
     }//END if (touch.phase != UITouchPhaseBegan)
-;}
+}
 
 #pragma mark - Point Calculations
 
@@ -236,36 +254,6 @@
 
 #pragma mark - Sending Commands to Render Points
 
-//This method send point data to the renderView (GLView) as a Vertex array using the drawingColor and brush stored in the drawingTool.
-- (void)drawWithPoints:(NSMutableArray *)points {
-    [self.renderView setupTexture:self.drawingToolTemp.brush.textureFilename];
-    
-    int numPoints = [points count];
-    
-    Vertex *vertices = malloc(sizeof(Vertex) * numPoints);
-    
-    Vertex vertex;
-    
-    CGPoint point;
-    
-    for (int i=0; i<numPoints; i++) {
-        point = [[points objectAtIndex:i] CGPointValue];
-        
-        vertex.position.x = point.x;
-        vertex.position.y = -point.y;
-        vertex.color.r = self.drawingToolTemp.drawingColor.r;
-        vertex.color.g = self.drawingToolTemp.drawingColor.g;
-        vertex.color.b = self.drawingToolTemp.drawingColor.b;
-        vertex.color.a = self.drawingToolTemp.drawingColor.a;
-        
-        vertices[i] = vertex;
-    }
-    
-    [self.renderView addVertices:vertices withCount:numPoints];
-    
-    free(vertices);
-}
-
 //This method calls the clearScreen method of the renderView (GLView).
 - (void)eraseScreen {
     [self.renderView clearScreen];
@@ -276,7 +264,8 @@
 - (void)dealloc {
     [self.renderView release];
     [self.pointBuffer release];
-    [self.drawingToolTemp release];
+    [self.activeToolSet release];
+    [self.reserveToolSet release];
     
     [super dealloc];
 }
