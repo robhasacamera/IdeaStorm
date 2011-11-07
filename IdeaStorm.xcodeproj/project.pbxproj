@@ -22,8 +22,6 @@
 		E156629E145CDF3700BD2AC1 /* DrawingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1566283145CDF3700BD2AC1 /* DrawingViewController.xib */; };
 		E156629F145CDF3700BD2AC1 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566286145CDF3700BD2AC1 /* GLProgram.m */; };
 		E15662A0145CDF3700BD2AC1 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566288145CDF3700BD2AC1 /* GLView.m */; };
-		E15662A1145CDF3700BD2AC1 /* Shader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = E156628A145CDF3700BD2AC1 /* Shader.fsh */; };
-		E15662A2145CDF3700BD2AC1 /* Shader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
 		E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E156628E145CDF3700BD2AC1 /* DrawingEngineTest.m */; };
 		E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E1566292145CDF3700BD2AC1 /* Particle.png */; };
 		E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566294145CDF3700BD2AC1 /* Brush.m */; };
@@ -35,6 +33,8 @@
 		E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B7145D140A00BD2AC1 /* ToolSet.m */; };
 		E15662BB145D192900BD2AC1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662BA145D192900BD2AC1 /* Database.m */; };
 		E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */; };
+		E189DA7314679FDE00DCF58B /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628A145CDF3700BD2AC1 /* Shader.fsh */; };
+		E189DA7414679FE600DCF58B /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -327,6 +327,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E189DA7414679FE600DCF58B /* Shader.vsh in Resources */,
+				E189DA7314679FDE00DCF58B /* Shader.fsh in Resources */,
 				E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */,
 				E156629E145CDF3700BD2AC1 /* DrawingViewController.xib in Resources */,
 				E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */,
@@ -350,8 +352,6 @@
 				E156629D145CDF3700BD2AC1 /* DrawingViewController.m in Sources */,
 				E156629F145CDF3700BD2AC1 /* GLProgram.m in Sources */,
 				E15662A0145CDF3700BD2AC1 /* GLView.m in Sources */,
-				E15662A1145CDF3700BD2AC1 /* Shader.fsh in Sources */,
-				E15662A2145CDF3700BD2AC1 /* Shader.vsh in Sources */,
 				E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */,
 				E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */,
 				E15662A6145CDF3700BD2AC1 /* DrawingToolTemp.m in Sources */,
@@ -465,6 +465,7 @@
 				E1566272145CDF1B00BD2AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
