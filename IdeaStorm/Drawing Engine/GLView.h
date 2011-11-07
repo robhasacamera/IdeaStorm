@@ -44,6 +44,7 @@ typedef struct {
     
     GLuint attribPosition;
     GLuint attribColor;
+    GLuint attribPointSize;
     GLuint uniformProjection;
     GLuint uniformTexture;
     

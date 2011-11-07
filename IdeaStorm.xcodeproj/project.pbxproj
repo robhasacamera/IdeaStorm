@@ -35,6 +35,7 @@
 		E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */; };
 		E189DA7314679FDE00DCF58B /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628A145CDF3700BD2AC1 /* Shader.fsh */; };
 		E189DA7414679FE600DCF58B /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
+		E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,8 @@
 		E15662C0145D275C00BD2AC1 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTool.h; sourceTree = "<group>"; };
 		E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenDrawingTool.h; sourceTree = "<group>"; };
 		E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenDrawingTool.m; sourceTree = "<group>"; };
+		E189DA7514684DAA00DCF58B /* PencilDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PencilDrawingTool.h; sourceTree = "<group>"; };
+		E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PencilDrawingTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +264,8 @@
 				E15662C0145D275C00BD2AC1 /* DrawingTool.h */,
 				E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */,
 				E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */,
+				E189DA7514684DAA00DCF58B /* PencilDrawingTool.h */,
+				E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */,
 				E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */,
 				E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */,
 			);
@@ -360,6 +365,7 @@
 				E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */,
 				E15662BB145D192900BD2AC1 /* Database.m in Sources */,
 				E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */,
+				E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

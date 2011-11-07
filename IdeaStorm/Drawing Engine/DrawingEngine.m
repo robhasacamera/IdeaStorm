@@ -50,7 +50,7 @@
         
         DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:color];
         
-        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:10];
+        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:10.0];
         
         [aDrawingColor release];
         

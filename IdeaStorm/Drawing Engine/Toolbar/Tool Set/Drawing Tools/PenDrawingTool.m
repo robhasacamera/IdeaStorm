@@ -52,7 +52,7 @@
     int pointIndex2;
     int pointIndex3;
     
-    //check for first segment of curve
+    //creates all but last curve segment
     if ([self.pointBuffer count] >= 3) {
         pointIndex0 = [self.pointBuffer count] - 4;
         pointIndex1 = [self.pointBuffer count] - 3;

@@ -138,10 +138,12 @@
     
     [program addAttribute:@"Position"];
     [program addAttribute:@"Color"];
+    [program addAttribute:@"PointSize"];
     [program link];
     
     attribPosition = [program attributeIndex:@"Position"];
     attribColor = [program attributeIndex:@"Color"];
+    attribPointSize = [program attributeIndex:@"PointSize"];
     
     uniformProjection = [program uniformIndex:@"Projection"];
     uniformTexture = [program uniformIndex:@"Texture"];
@@ -182,7 +184,8 @@
     glUniform1i(uniformTexture, 0);
         
     glVertexAttribPointer(attribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-    glVertexAttribPointer(attribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *) (sizeof(float) * 2));
+    glVertexAttribPointer(attribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *) (sizeof(GLfloat) * 2));
+    glVertexAttribPointer(attribPointSize, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *) (sizeof(GLfloat) * 6));
     
     if (numPoints != 0) {
         glActiveTexture(GL_TEXTURE0);
