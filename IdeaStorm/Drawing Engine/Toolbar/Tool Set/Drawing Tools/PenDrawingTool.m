@@ -13,7 +13,6 @@
 @synthesize pointBuffer = _pointBuffer;
 @synthesize numVerticesCreated;
 
-//TODO: Break up method into smaller methods that might be implemented in the DrawingEngine (such as, create curve from points, create line from points, etc), at least the part going from curve points to interpolated segments
 - (Vertex *)verticesFromPoint:(CGPoint)point andDrawingColor:(Color)color andPointSize:(CGFloat)size isLastPoint:(_Bool)lastPoint {
     
     Vertex * vertices;
@@ -47,82 +46,13 @@
         points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 20)];
     }
     
-    int pointIndex0;
-    int pointIndex1;
-    int pointIndex2;
-    int pointIndex3;
-    
-    //creates all but last curve segment
     if ([self.pointBuffer count] >= 3) {
-        pointIndex0 = [self.pointBuffer count] - 4;
-        pointIndex1 = [self.pointBuffer count] - 3;
-        pointIndex2 = [self.pointBuffer count] - 2;
-        pointIndex3 = [self.pointBuffer count] - 1;
-        
-        if (pointIndex0 < 0) {
-            pointIndex0 = 0;
-        }
-        
-        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
-                                                          [self.pointBuffer objectAtIndex:pointIndex0],
-                                                          [self.pointBuffer objectAtIndex:pointIndex1],
-                                                          [self.pointBuffer objectAtIndex:pointIndex2],
-                                                          [self.pointBuffer objectAtIndex:pointIndex3],
-                                                          nil];
-        
-        NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
-        
-        //get curve points for control points, spacing is equal to half the point size
-        NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                               [self.pointBuffer objectAtIndex:pointIndex1],
-                                               [controlPoints objectAtIndex:0],
-                                               [controlPoints objectAtIndex:1],
-                                               [self.pointBuffer objectAtIndex:pointIndex2],
-                                               nil];
-        
-        points = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 20)];
-        
-        [pointsToCalculateControlPoints release];
-        [pointsToInterpolate release];
-
+        points = [DrawingEngine interpolateCurvePointsWithCurvePoints:self.pointBuffer withSpace:(size / 20) andLastPoint:lastPoint];
     }
-    
-    //check for last segment of curve
-    if ([self.pointBuffer count] >= 3 && lastPoint) {
-        pointIndex0 = [self.pointBuffer count] - 3;
-        pointIndex1 = [self.pointBuffer count] - 2;
-        pointIndex2 = [self.pointBuffer count] - 1;
-        pointIndex3 = [self.pointBuffer count] - 1;
-        
-        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
-                                                          [self.pointBuffer objectAtIndex:pointIndex0],
-                                                          [self.pointBuffer objectAtIndex:pointIndex1],
-                                                          [self.pointBuffer objectAtIndex:pointIndex2],
-                                                          [self.pointBuffer objectAtIndex:pointIndex3],
-                                                          nil];
-        
-        NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
-        
-        //get curve points for control points, spacing is equal to half the point size
-        NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
-                                               [self.pointBuffer objectAtIndex:pointIndex2],
-                                               [controlPoints objectAtIndex:0],
-                                               [controlPoints objectAtIndex:1],
-                                               [self.pointBuffer objectAtIndex:pointIndex3],
-                                               nil];
-        
-        [points addObjectsFromArray:[DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:(size / 20)]];
-        
-        [pointsToCalculateControlPoints release];
-        [pointsToInterpolate release];
-    }
-    
-    //need something that will check for the first segment
     
     if (lastPoint) {
         [self.pointBuffer removeAllObjects];
     }
-        
     
     //build vertices from calculated points
     

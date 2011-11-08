@@ -11,7 +11,13 @@
 #import "ToolbarItem.h"
 #import "DrawingEngine.h"
 
-@interface PencilDrawingTool : ToolbarItem <DrawingTool>
+#define kPointSizeFactor 30
+#define kPointSizeMin 3
+
+@interface PencilDrawingTool : ToolbarItem <DrawingTool> {
+    float startPointSize;
+    float endPointSize;
+}
 
 @property (strong, nonatomic) NSMutableArray *pointBuffer;
 

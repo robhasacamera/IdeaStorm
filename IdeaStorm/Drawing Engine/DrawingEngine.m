@@ -37,7 +37,7 @@
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
         
-        NSObject <DrawingTool> *aDrawingTool = [[PenDrawingTool alloc]init];
+        NSObject <DrawingTool> *aDrawingTool = [[PencilDrawingTool alloc]init];
         
         Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         
@@ -50,7 +50,7 @@
         
         DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:color];
         
-        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:10.0];
+        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:20.0];
         
         [aDrawingColor release];
         
@@ -94,6 +94,83 @@
 }
 
 #pragma mark - Point Calculations
+
++ (NSMutableArray *)interpolateCurvePointsWithCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints andLastPoint:(bool)lastPoint {
+    
+    NSMutableArray *curvePoints = NULL;
+    
+    int pointIndex0;
+    int pointIndex1;
+    int pointIndex2;
+    int pointIndex3;
+    
+    //creates all but last curve segment
+    if ([points count] >= 3) {
+        pointIndex0 = [points count] - 4;
+        pointIndex1 = [points count] - 3;
+        pointIndex2 = [points count] - 2;
+        pointIndex3 = [points count] - 1;
+        
+        if (pointIndex0 < 0) {
+            pointIndex0 = 0;
+        }
+        
+        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
+                                                          [points objectAtIndex:pointIndex0],
+                                                          [points objectAtIndex:pointIndex1],
+                                                          [points objectAtIndex:pointIndex2],
+                                                          [points objectAtIndex:pointIndex3],
+                                                          nil];
+        
+        NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
+        
+        //get curve points for control points, spacing is equal to half the point size
+        NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
+                                               [points objectAtIndex:pointIndex1],
+                                               [controlPoints objectAtIndex:0],
+                                               [controlPoints objectAtIndex:1],
+                                               [points objectAtIndex:pointIndex2],
+                                               nil];
+        
+        curvePoints = [DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints];
+        
+        [pointsToCalculateControlPoints release];
+        [pointsToInterpolate release];
+        
+    }
+    
+    //check for last segment of curve
+    if ([points count] >= 3 && lastPoint) {
+        pointIndex0 = [points count] - 3;
+        pointIndex1 = [points count] - 2;
+        pointIndex2 = [points count] - 1;
+        pointIndex3 = [points count] - 1;
+        
+        NSMutableArray *pointsToCalculateControlPoints = [[NSMutableArray alloc]initWithObjects:
+                                                          [points objectAtIndex:pointIndex0],
+                                                          [points objectAtIndex:pointIndex1],
+                                                          [points objectAtIndex:pointIndex2],
+                                                          [points objectAtIndex:pointIndex3],
+                                                          nil];
+        
+        NSMutableArray *controlPoints = [DrawingEngine calculateCurveControlPoints:pointsToCalculateControlPoints];
+        
+        //get curve points for control points, spacing is equal to half the point size
+        NSMutableArray *pointsToInterpolate = [[NSMutableArray alloc]initWithObjects:
+                                               [points objectAtIndex:pointIndex2],
+                                               [controlPoints objectAtIndex:0],
+                                               [controlPoints objectAtIndex:1],
+                                               [points objectAtIndex:pointIndex3],
+                                               nil];
+        
+        [curvePoints addObjectsFromArray:[DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints]];
+        
+        [pointsToCalculateControlPoints release];
+        [pointsToInterpolate release];
+    }
+    
+    return curvePoints;
+}
 
 //TODO: Update this comment
 //This method provides an array of curve points based off a startPoint, two control points, an end point and a set space to have between points. The spacing placed between the points is an approximation and not 100% accurate. This method will leave off the end point so the begining point of the next curve segment doesn't overlap it.

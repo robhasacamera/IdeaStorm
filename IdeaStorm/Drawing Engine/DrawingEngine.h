@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "GLView.h"
 #import "PenDrawingTool.h"
+#import "PencilDrawingTool.h"
 #import <malloc/malloc.h>
 #import "ToolSet.h"
 
@@ -34,6 +35,9 @@
 - (void)drawWithTouch:(NSSet *)touches;
 
 #pragma mark - Point Calculations
+
+//TODO: Need to rename these to more appropiate names.
++ (NSMutableArray *)interpolateCurvePointsWithCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints andLastPoint:(bool)lastPoint;
 
 + (NSMutableArray *)interpolateCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints;
 
