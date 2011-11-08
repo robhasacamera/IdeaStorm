@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "DrawingEngine.h"
+#import "Toolbar.h"
 
 @interface DrawingViewController : UIViewController
 
 @property (strong, nonatomic) DrawingEngine *drawingEngine;
+@property (strong, nonatomic) Toolbar *toolbar;
 
 @end

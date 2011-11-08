@@ -37,6 +37,7 @@
 		E189DA7414679FE600DCF58B /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
 		E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */; };
 		E189DA7A1468ED9600DCF58B /* EraserDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA791468ED9600DCF58B /* EraserDrawingTool.m */; };
+		E189DA7D1468F4D100DCF58B /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7C1468F4D100DCF58B /* Toolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,8 @@
 		E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PencilDrawingTool.m; sourceTree = "<group>"; };
 		E189DA781468ED9600DCF58B /* EraserDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EraserDrawingTool.h; sourceTree = "<group>"; };
 		E189DA791468ED9600DCF58B /* EraserDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EraserDrawingTool.m; sourceTree = "<group>"; };
+		E189DA7B1468F4D100DCF58B /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
+		E189DA7C1468F4D100DCF58B /* Toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				E1566290145CDF3700BD2AC1 /* Tool Set */,
+				E189DA7B1468F4D100DCF58B /* Toolbar.h */,
+				E189DA7C1468F4D100DCF58B /* Toolbar.m */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */,
 				E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */,
 				E189DA7A1468ED9600DCF58B /* EraserDrawingTool.m in Sources */,
+				E189DA7D1468F4D100DCF58B /* Toolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

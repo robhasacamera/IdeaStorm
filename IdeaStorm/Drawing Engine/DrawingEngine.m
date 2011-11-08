@@ -53,13 +53,13 @@
         
         GLfloat pointSize = 20.0;
         
-        NSObject <DrawingTool> *aDrawingTool = [[PenDrawingTool alloc]init];
+        NSObject <DrawingTool> *aDrawingTool = [[PencilDrawingTool alloc]init];
         
         Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         
         DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:aColor];
         
-        NSObject <DrawingTool> *rDrawingTool = [[PencilDrawingTool alloc]init];
+        NSObject <DrawingTool> *rDrawingTool = [[EraserDrawingTool alloc]init];
         
         Brush *rBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         
@@ -105,7 +105,7 @@
         [self.renderView addVertices:vertices withCount:self.activeToolSet.drawingTool.numVerticesCreated];
         
         if (tapCount == 2) {
-            [self switchActiveAndReserveToolSets];
+            [self eraseScreen];
         }
     }//END if (touch.phase != UITouchPhaseBegan)
 }

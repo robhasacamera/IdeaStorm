@@ -11,6 +11,7 @@
 @implementation DrawingViewController
 
 @synthesize drawingEngine = _drawingEngine;
+@synthesize toolbar = _toolbar;
 
 #pragma mark - Initialization
 
@@ -19,6 +20,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.drawingEngine = [[DrawingEngine alloc]init];
+        
+        self.toolbar = [[Toolbar alloc]init];
+        
+        self.toolbar.drawingEngine = self.drawingEngine;
+        
+        [self.drawingEngine.renderView addSubview:self.toolbar];
         
         [self.view addSubview:self.drawingEngine.renderView];
     }
@@ -77,6 +84,7 @@
 
 - (void)dealloc {
     [self.drawingEngine release];
+    [self.toolbar release];
     
     [super dealloc];
 }
