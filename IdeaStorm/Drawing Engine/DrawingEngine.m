@@ -37,12 +37,19 @@
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
         
-        Color color;
+        Color aColor;
         
-        color.r = 0.0;
-        color.g = 0.0;
-        color.b = 0.0;
-        color.a = 1.0;
+        aColor.r = 0.0;
+        aColor.g = 0.0;
+        aColor.b = 0.0;
+        aColor.a = 1.0;
+        
+        Color rColor;
+        
+        rColor.r = 0.0;
+        rColor.g = 1.0;
+        rColor.b = 0.0;
+        rColor.a = 1.0;
         
         GLfloat pointSize = 20.0;
         
@@ -50,13 +57,13 @@
         
         Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         
-        DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:color];
+        DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:aColor];
         
-        NSObject <DrawingTool> *rDrawingTool = [[PenDrawingTool alloc]init];
+        NSObject <DrawingTool> *rDrawingTool = [[PencilDrawingTool alloc]init];
         
         Brush *rBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         
-        DrawingColor *rDrawingColor = [[DrawingColor alloc]initWithColor:color];
+        DrawingColor *rDrawingColor = [[DrawingColor alloc]initWithColor:rColor];
         
         self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:pointSize];
         
@@ -98,7 +105,7 @@
         [self.renderView addVertices:vertices withCount:self.activeToolSet.drawingTool.numVerticesCreated];
         
         if (tapCount == 2) {
-            [self eraseScreen];
+            [self switchActiveAndReserveToolSets];
         }
     }//END if (touch.phase != UITouchPhaseBegan)
 }
@@ -344,6 +351,16 @@
 //This method calls the clearScreen method of the renderView (GLView).
 - (void)eraseScreen {
     [self.renderView clearScreen];
+}
+
+#pragma mark - Tool Commands
+
+- (void)switchActiveAndReserveToolSets {
+    ToolSet *newActiveToolSet = self.reserveToolSet;
+    ToolSet *newReserveToolSet = self.activeToolSet;
+    
+    self.activeToolSet = newActiveToolSet;
+    self.reserveToolSet = newReserveToolSet;
 }
 
 #pragma mark - Memory Management

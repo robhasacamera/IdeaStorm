@@ -58,4 +58,8 @@
 
 - (void)eraseScreen;
 
+#pragma mark - Tool Commands
+
+- (void)switchActiveAndReserveToolSets;
+
 @end
