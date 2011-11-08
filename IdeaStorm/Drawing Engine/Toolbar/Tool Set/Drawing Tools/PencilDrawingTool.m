@@ -35,6 +35,8 @@
     //check for dot
     if ([self.pointBuffer count] == 1 && lastPoint) {
         //add single point to points array
+        points = [[[NSMutableArray alloc]initWithCapacity:1] autorelease];
+        
         [points addObject:[NSValue valueWithCGPoint:point]];
     }
     
@@ -48,51 +50,7 @@
         points = [DrawingEngine interpolateCurvePointsWithCurvePoints:self.pointBuffer withSpace:(size / 30) andLastPoint:lastPoint];
     }
     
-    float distanceBetweenPoints;
-    float minPointSize = size / 5;
-    float maxPointSize = size;
-    
-    if (minPointSize < kPointSizeMin) {
-        minPointSize = kPointSizeMin;
-    }
-    
-    if (minPointSize > maxPointSize) {
-        minPointSize = maxPointSize;
-    }
-    
-    if ([self.pointBuffer count] > 1) {
-        if ([self.pointBuffer count] == 2) {
-            distanceBetweenPoints = [DrawingEngine distanceBetweenPoint1:[[self.pointBuffer objectAtIndex:0] CGPointValue] andPoint2:[[self.pointBuffer objectAtIndex:1] CGPointValue]];
-            
-            startPointSize = size / distanceBetweenPoints * kPointSizeFactor;// * (size / kPointSizeFactor);
-            
-            if (startPointSize < minPointSize) {
-                startPointSize = minPointSize;
-            }
-            
-            if (startPointSize > maxPointSize) {
-                startPointSize = maxPointSize;
-            }
-        } else {
-            distanceBetweenPoints = [DrawingEngine distanceBetweenPoint1:[[self.pointBuffer objectAtIndex:1] CGPointValue] andPoint2:[[self.pointBuffer objectAtIndex:2] CGPointValue]];
-        }
-        
-        endPointSize = size / distanceBetweenPoints * kPointSizeFactor;// * (size / kPointSizeFactor);
-        
-        //NSLog(@"distanceBetweenPoints = %f", distanceBetweenPoints);
-        
-        if (endPointSize < minPointSize) {
-            endPointSize = minPointSize;
-        }
-        
-        if (endPointSize > maxPointSize) {
-            endPointSize = maxPointSize;
-        }
-        
-        //NSLog(@"start = %f, end = %f", startPointSize, endPointSize);
-        
-        
-    }
+    [self calculateStartAndEndPointSizesUsingSize:size];
     
     //build vertices from calculated points
     
@@ -102,18 +60,11 @@
     
     float pointSizeDifference = endPointSize - startPointSize;
     
-    float pointsCount = (float)[points count];
-    
-    float pointSizeStep = pointSizeDifference / pointsCount;
-    
-    //NSLog(@"pointSizeDifference = %f, pointSizeStep = %f, pointsCount = %f", pointSizeDifference, pointSizeStep, pointsCount);
+    float pointSizeStep = pointSizeDifference / (float)[points count];
     
     float pointSize = startPointSize;
     
-    startPointSize = endPointSize;
-    
     for (int i=0; i<[points count]; i++) {
-        //NSLog(@"pointSize = %f", pointSize);
         CGPoint pointForVertex = [[points objectAtIndex:i] CGPointValue];
         
         vertex.position.x = pointForVertex.x;
@@ -145,7 +96,56 @@
         [self.pointBuffer removeAllObjects];
     }
     
+    startPointSize = endPointSize;
+    
     return vertices;
+}
+
+- (void)calculateStartAndEndPointSizesUsingSize:(GLfloat)size {
+    float distanceBetweenPoints;
+    float minPointSize = size / 5;
+    float maxPointSize = size;
+    
+    if (minPointSize < kPointSizeMin) {
+        minPointSize = kPointSizeMin;
+    }
+    
+    if (minPointSize > maxPointSize) {
+        minPointSize = maxPointSize;
+    }
+    
+    if ([self.pointBuffer count] > 1) {
+        if ([self.pointBuffer count] == 2) {
+            distanceBetweenPoints = [DrawingEngine distanceBetweenPoint1:[[self.pointBuffer objectAtIndex:0] CGPointValue] andPoint2:[[self.pointBuffer objectAtIndex:1] CGPointValue]];
+            
+            startPointSize = size / distanceBetweenPoints * kPointSizeFactor;// * (size / kPointSizeFactor);
+            
+            if (startPointSize < minPointSize) {
+                startPointSize = minPointSize;
+            }
+            
+            if (startPointSize > maxPointSize) {
+                startPointSize = maxPointSize;
+            }
+        } else {
+            distanceBetweenPoints = [DrawingEngine distanceBetweenPoint1:[[self.pointBuffer objectAtIndex:1] CGPointValue] andPoint2:[[self.pointBuffer objectAtIndex:2] CGPointValue]];
+        }
+        
+        endPointSize = size / distanceBetweenPoints * kPointSizeFactor;
+        
+        if (endPointSize < minPointSize) {
+            endPointSize = minPointSize;
+        }
+        
+        if (endPointSize > maxPointSize) {
+            endPointSize = maxPointSize;
+        }
+        
+        
+    } else {
+        startPointSize = size;
+        endPointSize = size;
+    }
 }
 
 - (void)dealloc {

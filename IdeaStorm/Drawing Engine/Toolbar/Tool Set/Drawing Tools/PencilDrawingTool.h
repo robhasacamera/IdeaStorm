@@ -21,4 +21,6 @@
 
 @property (strong, nonatomic) NSMutableArray *pointBuffer;
 
+- (void)calculateStartAndEndPointSizesUsingSize:(GLfloat)size;
+
 @end

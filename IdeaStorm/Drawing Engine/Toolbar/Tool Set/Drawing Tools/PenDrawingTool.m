@@ -37,6 +37,8 @@
     //check for dot
     if ([self.pointBuffer count] == 1 && lastPoint) {
         //add single point to points array
+        points = [[[NSMutableArray alloc]initWithCapacity:1] autorelease];
+        
         [points addObject:[NSValue valueWithCGPoint:point]];
     }
     
