@@ -37,10 +37,6 @@
         self.pointBuffer = [[NSMutableArray alloc]initWithCapacity:4];
         self.spaceBetweenPoints = 1.0;
         
-        NSObject <DrawingTool> *aDrawingTool = [[PencilDrawingTool alloc]init];
-        
-        Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
-        
         Color color;
         
         color.r = 0.0;
@@ -48,9 +44,23 @@
         color.b = 0.0;
         color.a = 1.0;
         
+        GLfloat pointSize = 20.0;
+        
+        NSObject <DrawingTool> *aDrawingTool = [[PenDrawingTool alloc]init];
+        
+        Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
+        
         DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:color];
         
-        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:20.0];
+        NSObject <DrawingTool> *rDrawingTool = [[PenDrawingTool alloc]init];
+        
+        Brush *rBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
+        
+        DrawingColor *rDrawingColor = [[DrawingColor alloc]initWithColor:color];
+        
+        self.activeToolSet = [[ToolSet alloc]initWithDrawingTool:aDrawingTool andBrush:aBrush andDrawingColor:aDrawingColor andPointSize:pointSize];
+        
+        self.reserveToolSet = [[ToolSet alloc]initWithDrawingTool:rDrawingTool andBrush:rBrush andDrawingColor:rDrawingColor andPointSize:pointSize];
         
         [aDrawingColor release];
         

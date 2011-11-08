@@ -15,6 +15,7 @@
 #import "GLView.h"
 #import "PenDrawingTool.h"
 #import "PencilDrawingTool.h"
+#import "EraserDrawingTool.h"
 #import <malloc/malloc.h>
 #import "ToolSet.h"
 
