@@ -9,14 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ToolbarItem.h"
 #import "DrawingEngine.h"
+#import "DrawingTool.h"
+#import "Brush.h"
+#import "DrawingColor.h"
 
 @interface Toolbar : UIView {
-    int nextIndex;
+    NSInteger nextIndex;
     
     float portraitAngle;
     float portraitUpsideDownAngle;
     float landscapeLeftAngle;
     float landscapeRightAngle;
+    
+    NSInteger activeDrawingTool;
+    NSInteger activeBrush;
+    NSInteger activeDrawingColor;
 }
 
 @property (strong, nonatomic) DrawingEngine *drawingEngine;
@@ -30,7 +37,7 @@
 
 #pragma mark - Modifing Toolbar Items
 
-- (NSInteger *)addToolbarItem:(ToolbarItem *)toolbarItem;
+- (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem;
 
 #pragma mark - Handle Orientation Change
 
@@ -39,5 +46,9 @@
 #pragma mark - Button Action Handlers
 
 - (IBAction)quickSwitchButtonAction:(id)sender;
+
+- (IBAction)newDrawingButtonAction:(id)sender;
+
+- (IBAction)toolbarItemButtonAction:(id)sender;
 
 @end

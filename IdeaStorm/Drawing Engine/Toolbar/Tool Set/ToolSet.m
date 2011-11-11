@@ -15,7 +15,7 @@
 @synthesize drawingColor = _drawingColor;
 @synthesize pointSize = _pointSize;
 
-- (id)initWithDrawingTool:(NSObject <DrawingTool> *)drawingTool andBrush:(Brush *)brush andDrawingColor:(DrawingColor *)drawingColor andPointSize:(GLfloat)pointSize {
+- (id)initWithDrawingTool:(ToolbarItem <DrawingTool> *)drawingTool andBrush:(Brush *)brush andDrawingColor:(DrawingColor *)drawingColor andPointSize:(GLfloat)pointSize {
     self = [super init];
     
     if (self) {

@@ -28,6 +28,19 @@
         [self.drawingEngine.renderView addSubview:self.toolbar];
         
         [self.view addSubview:self.drawingEngine.renderView];
+        
+        Color color1;
+        
+        color1.r = 1.0;
+        color1.g = 0.0;
+        color1.b = 0.0;
+        color1.a = 1.0;
+        
+        [self.toolbar addToolbarItem:[[DrawingColor alloc]initWithColor:color1]];
+        
+        color1.g = 1.0;
+        
+        [self.toolbar addToolbarItem:[[DrawingColor alloc]initWithColor:color1]];
     }
     return self;
 }
@@ -57,6 +70,8 @@
     
     UIInterfaceOrientation interfaceOrientation;
     
+    bool orientationFound = YES;
+    
     if (deviceOrientation == UIDeviceOrientationPortrait) {
         interfaceOrientation = UIInterfaceOrientationPortrait;
     } else if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
@@ -66,11 +81,13 @@
     } else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
         interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
     } else {
-        //default
-        interfaceOrientation = UIInterfaceOrientationPortrait;
+        orientationFound = NO;
     }
     
-    [self.toolbar changeToOrientation:interfaceOrientation withDuration:.25];
+    if (orientationFound) {
+        [self.toolbar changeToOrientation:interfaceOrientation withDuration:.25];
+    }
+    
     
     //need to add the change to gestures here
     

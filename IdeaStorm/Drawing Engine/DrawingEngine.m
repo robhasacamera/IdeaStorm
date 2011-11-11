@@ -90,8 +90,6 @@
         
         CGPoint point = [touch locationInView:self.renderView];
         
-        int tapCount = touch.tapCount;
-        
         bool lastTouch = NO;
         
         if (touch.phase == UITouchPhaseEnded) {
@@ -103,10 +101,6 @@
         Vertex *vertices = [self.activeToolSet.drawingTool verticesFromPoint:point andDrawingColor:self.activeToolSet.drawingColor.color andPointSize:self.activeToolSet.pointSize isLastPoint:lastTouch];
         
         [self.renderView addVertices:vertices withCount:self.activeToolSet.drawingTool.numVerticesCreated];
-        
-        if (tapCount == 2) {
-            [self eraseScreen];
-        }
     }//END if (touch.phase != UITouchPhaseBegan)
 }
 
