@@ -52,10 +52,36 @@
 
 #pragma mark - View lifecycle
 
+- (void)didRotate:(NSNotification *)notification {
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    
+    UIInterfaceOrientation interfaceOrientation;
+    
+    if (deviceOrientation == UIDeviceOrientationPortrait) {
+        interfaceOrientation = UIInterfaceOrientationPortrait;
+    } else if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+        interfaceOrientation = UIInterfaceOrientationPortraitUpsideDown;
+    } else if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+        interfaceOrientation = UIInterfaceOrientationLandscapeRight;
+    } else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
+        interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
+    } else {
+        //default
+        interfaceOrientation = UIInterfaceOrientationPortrait;
+    }
+    
+    [self.toolbar changeToOrientation:interfaceOrientation withDuration:.25];
+    
+    //need to add the change to gestures here
+    
+    //need to add the change to the tutorial picture here
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -67,7 +93,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // The DrawingViewController will be kept in the potrait orientation so the app user can rotate their iPad to get a better angle for drawing
+    // The drawing area will be kept in the potrait orientation so the app user can rotate their iPad to get a better angle for drawing
     
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }

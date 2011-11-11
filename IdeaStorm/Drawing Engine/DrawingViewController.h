@@ -15,4 +15,6 @@
 @property (strong, nonatomic) DrawingEngine *drawingEngine;
 @property (strong, nonatomic) Toolbar *toolbar;
 
+- (void)didRotate:(NSNotification *)notification;
+
 @end
