@@ -53,7 +53,7 @@
         
         GLfloat pointSize = 20.0;
         
-        NSObject <DrawingTool> *aDrawingTool = [[PencilDrawingTool alloc]init];
+        NSObject <DrawingTool> *aDrawingTool = [[PenDrawingTool alloc]init];
         
         Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
         

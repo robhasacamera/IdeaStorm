@@ -115,8 +115,6 @@
     [self.buttons setObject:button forKey:[NSNumber numberWithInt:index]];
     [self.toolbarItems setObject:toolbarItem forKey:[NSNumber numberWithInt:index]];
     
-    NSLog(@"buttons count = %i", [self.buttons count]);
-    
     button.frame = CGRectMake(100 + 50 * index, 40, 40, 40);
     
     button.backgroundColor = [UIColor blackColor];
@@ -133,7 +131,12 @@
 
 //FIXME: The DrawingTool check does not work.
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset {
+    NSLog(@"------------");
     bool found = NO;
+    
+    bool foundDrawingTool = NO;
+    bool foundBrush = NO;
+    bool foundDrawingColor = NO;
     
     ToolbarItem *toolbarItem;
     
@@ -147,7 +150,7 @@
     
     [self resetButtonPositions];
     
-    //This does not work
+    //This only works for the eraser tool???
     for (int i=0; i<[self.toolbarItems count]; i++) {
         toolbarItem = [allToolBarItems objectAtIndex:i];
         
@@ -159,6 +162,10 @@
                 index = [[keys objectAtIndex:0] intValue];
                 
                 activeDrawingTool = index;
+                
+                foundDrawingTool = YES;
+                
+                NSLog(@"DrawingTool Match, index=%i", index);
             }
             
         }
@@ -171,6 +178,10 @@
                 index = [[keys objectAtIndex:0] intValue];
                 
                 activeBrush = index;
+                
+                foundBrush = YES;
+                
+                NSLog(@"Brush Match, index=%i", index);
             }
         }
         
@@ -185,33 +196,51 @@
                 index = [[keys objectAtIndex:0] intValue];
                 
                 activeDrawingColor = index;
+                
+                foundDrawingColor = YES;
+                
+                NSLog(@"DrawingColor Match, index=%i", index);
             }
         }
         
         if (index != -1) {
-            newActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:index]];
-            
             CGRect frame;
             
-            frame = newActiveButton.frame;
+            newActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:index]];
             
-            frame.size.height = 60;
-            frame.origin.y -= 20;
+            if (newActiveButton) {
+                NSLog(@"button found, tag = %i", newActiveButton.tag);
+                
+                frame = newActiveButton.frame;
+                
+                NSLog(@"old frame h=%f, y=%f", newActiveButton.frame.size.height, newActiveButton.frame.origin.y);
+                
+                frame.size.height = 60;
+                frame.origin.y = 20;
+                
+                newActiveButton.frame = frame;
+                
+                NSLog(@"new frame h=%f, y=%f", newActiveButton.frame.size.height, newActiveButton.frame.origin.y);
+            }
             
-            newActiveButton.frame = frame;
+            if (oldActiveButton) {
+                frame = oldActiveButton.frame;
+                
+                frame.size.height = 40;
+                frame.origin.y = 40;
+                
+                oldActiveButton.frame = frame;
+            }
             
-            frame = oldActiveButton.frame;
-            
-            frame.size.height = 40;
-            frame.origin.y += 20;
-            
-            oldActiveButton.frame = frame;
-            
-            //set the old active item button down
-            //set the button the new active item up
+            newActiveButton = NULL;
+            oldActiveButton = NULL;
             
             index = -1;
         }
+    }
+    
+    if (foundDrawingTool && foundBrush && foundDrawingColor) {
+        found = YES;
     }
     
     return found;
@@ -290,10 +319,8 @@
     UIButton *oldActivebutton;
     
     if (button.tag != activeDrawingTool && button.tag != activeBrush && button.tag != activeDrawingColor) {
-        NSLog(@"processing");
         
         if ([toolbarItem conformsToProtocol:@protocol(DrawingTool)]) {
-            NSLog(@"DrawingTool");
             self.drawingEngine.activeToolSet.drawingTool = (ToolbarItem <DrawingTool> *) toolbarItem;
             
             oldActivebutton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingTool]];
@@ -319,18 +346,22 @@
         }
         
         if (toolbarItem) {
-            CGRect frame = button.frame;
+            CGRect frame;
             
-            frame.size.height = 60;
-            frame.origin.y -= 20;
-            
-            button.frame = frame;
+            if (button) {
+                frame = button.frame;
+                
+                frame.size.height = 60;
+                frame.origin.y = 20;
+                
+                button.frame = frame;
+            }
             
             if (oldActivebutton) {
                 frame = oldActivebutton.frame;
                 
                 frame.size.height = 40;
-                frame.origin.y += 20;
+                frame.origin.y = 40;
                 
                 oldActivebutton.frame = frame;
             }
