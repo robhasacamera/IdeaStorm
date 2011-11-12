@@ -38,6 +38,12 @@
 		E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */; };
 		E189DA7A1468ED9600DCF58B /* EraserDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA791468ED9600DCF58B /* EraserDrawingTool.m */; };
 		E189DA7D1468F4D100DCF58B /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7C1468F4D100DCF58B /* Toolbar.m */; };
+		E189DA81146F0ECC00DCF58B /* Eraser_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA7F146F0ECC00DCF58B /* Eraser_Icon.png */; };
+		E189DA82146F0ECC00DCF58B /* Pencil_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA80146F0ECC00DCF58B /* Pencil_Icon.png */; };
+		E189DA87146F1F3F00DCF58B /* Color_Black_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA83146F1F3F00DCF58B /* Color_Black_Icon.png */; };
+		E189DA88146F1F3F00DCF58B /* Color_Blue_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA84146F1F3F00DCF58B /* Color_Blue_Icon.png */; };
+		E189DA89146F1F3F00DCF58B /* Color_Green_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */; };
+		E189DA8A146F1F3F00DCF58B /* Color_Red_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +104,12 @@
 		E189DA791468ED9600DCF58B /* EraserDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EraserDrawingTool.m; sourceTree = "<group>"; };
 		E189DA7B1468F4D100DCF58B /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
 		E189DA7C1468F4D100DCF58B /* Toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
+		E189DA7F146F0ECC00DCF58B /* Eraser_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eraser_Icon.png; sourceTree = "<group>"; };
+		E189DA80146F0ECC00DCF58B /* Pencil_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pencil_Icon.png; sourceTree = "<group>"; };
+		E189DA83146F1F3F00DCF58B /* Color_Black_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Black_Icon.png; sourceTree = "<group>"; };
+		E189DA84146F1F3F00DCF58B /* Color_Blue_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Blue_Icon.png; sourceTree = "<group>"; };
+		E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Green_Icon.png; sourceTree = "<group>"; };
+		E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Red_Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +256,7 @@
 		E1566290145CDF3700BD2AC1 /* Tool Set */ = {
 			isa = PBXGroup;
 			children = (
+				E189DA7E146F0ECB00DCF58B /* Icons */,
 				E1566291145CDF3700BD2AC1 /* Brush Textures */,
 				E1566295145CDF3700BD2AC1 /* Drawing Tools */,
 				E15662B0145CFD8C00BD2AC1 /* ToolbarItem.h */,
@@ -289,6 +302,19 @@
 				E15662BA145D192900BD2AC1 /* Database.m */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E189DA7E146F0ECB00DCF58B /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				E189DA83146F1F3F00DCF58B /* Color_Black_Icon.png */,
+				E189DA84146F1F3F00DCF58B /* Color_Blue_Icon.png */,
+				E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */,
+				E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */,
+				E189DA7F146F0ECC00DCF58B /* Eraser_Icon.png */,
+				E189DA80146F0ECC00DCF58B /* Pencil_Icon.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +373,12 @@
 				E1566267145CDF1B00BD2AC1 /* InfoPlist.strings in Resources */,
 				E156629E145CDF3700BD2AC1 /* DrawingViewController.xib in Resources */,
 				E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */,
+				E189DA81146F0ECC00DCF58B /* Eraser_Icon.png in Resources */,
+				E189DA82146F0ECC00DCF58B /* Pencil_Icon.png in Resources */,
+				E189DA87146F1F3F00DCF58B /* Color_Black_Icon.png in Resources */,
+				E189DA88146F1F3F00DCF58B /* Color_Blue_Icon.png in Resources */,
+				E189DA89146F1F3F00DCF58B /* Color_Green_Icon.png in Resources */,
+				E189DA8A146F1F3F00DCF58B /* Color_Red_Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@
 - (bool)setIconWithImageName:(NSString *)imageFilename {
     bool imageLoaded = NO;
     
-    self.icon = [Database getImageForFilename:imageFilename];
+    self.icon = [UIImage imageNamed:imageFilename];
     
     if (self.icon) {
         imageLoaded = YES;

@@ -40,8 +40,6 @@
         self.portraitUpsideDownOrigin = aPortraitUpsideDownOrigin;
         self.landscapeLeftOrigin = aLandscapeLeftOrigin;
         self.landscapeRightOrigin = aLandscapeRightOrigin;
-        
-        self.backgroundColor = [UIColor grayColor];
     }
     
     return self;
@@ -100,6 +98,7 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
+//FIXME: This is causing the image to be shrinked some to fit the button area
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
     
@@ -115,9 +114,13 @@
     [self.buttons setObject:button forKey:[NSNumber numberWithInt:index]];
     [self.toolbarItems setObject:toolbarItem forKey:[NSNumber numberWithInt:index]];
     
-    button.frame = CGRectMake(100 + 50 * index, 40, 40, 40);
+    button.frame = CGRectMake(100 + 50 * index, 40, 40, 60);
     
     button.backgroundColor = [UIColor blackColor];
+    
+    if (toolbarItem.icon) {
+        [button setImage:toolbarItem.icon forState:UIControlStateNormal];
+    }
     
     [button addTarget:self action:@selector(toolbarItemButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -215,7 +218,7 @@
                 
                 NSLog(@"old frame h=%f, y=%f", newActiveButton.frame.size.height, newActiveButton.frame.origin.y);
                 
-                frame.size.height = 60;
+                //frame.size.height = 60;
                 frame.origin.y = 20;
                 
                 newActiveButton.frame = frame;
@@ -226,7 +229,7 @@
             if (oldActiveButton) {
                 frame = oldActiveButton.frame;
                 
-                frame.size.height = 40;
+                //frame.size.height = 40;
                 frame.origin.y = 40;
                 
                 oldActiveButton.frame = frame;
@@ -256,7 +259,7 @@
         
         CGRect frame = button.frame;
         
-        frame.size.height = 40;
+        //frame.size.height = 40;
         frame.origin.y = 40;
         
         button.frame = frame;
@@ -351,7 +354,7 @@
             if (button) {
                 frame = button.frame;
                 
-                frame.size.height = 60;
+                //frame.size.height = 60;
                 frame.origin.y = 20;
                 
                 button.frame = frame;
@@ -360,7 +363,7 @@
             if (oldActivebutton) {
                 frame = oldActivebutton.frame;
                 
-                frame.size.height = 40;
+                //frame.size.height = 40;
                 frame.origin.y = 40;
                 
                 oldActivebutton.frame = frame;

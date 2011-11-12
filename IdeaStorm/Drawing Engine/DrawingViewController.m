@@ -30,8 +30,22 @@
         [self.view addSubview:self.drawingEngine.renderView];
         
         [self.toolbar addToolbarItem:[[[PenDrawingTool alloc]init] autorelease]];
-        [self.toolbar addToolbarItem:[[[PencilDrawingTool alloc]init] autorelease]];
-        [self.toolbar addToolbarItem:[[[EraserDrawingTool alloc]init] autorelease]];
+        
+        PencilDrawingTool *pencil = [[PencilDrawingTool alloc]init];
+        
+        [pencil setIconWithImageName:@"Pencil_Icon.png"];
+        
+        [self.toolbar addToolbarItem:pencil];
+        
+        [pencil release];
+        
+        EraserDrawingTool *eraser = [[EraserDrawingTool alloc]init];
+        
+        [eraser setIconWithImageName:@"Eraser_Icon.png"];
+        
+        [self.toolbar addToolbarItem:eraser];
+        
+        [eraser release];
         
         [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Particle.png"] autorelease]];
         
