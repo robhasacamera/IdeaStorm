@@ -131,11 +131,107 @@
     return index;
 }
 
-//TODO: This method will set the selected buttons to correspond with those in the toolset, it will return false if not all items in the toolset are found
+//FIXME: The DrawingTool check does not work.
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset {
     bool found = NO;
     
+    ToolbarItem *toolbarItem;
+    
+    NSArray *allToolBarItems = [self.toolbarItems allValues];
+    
+    UIButton *oldActiveButton;
+    
+    UIButton *newActiveButton;
+    
+    NSInteger index = -1;
+    
+    [self resetButtonPositions];
+    
+    //This does not work
+    for (int i=0; i<[self.toolbarItems count]; i++) {
+        toolbarItem = [allToolBarItems objectAtIndex:i];
+        
+        if ([toolbarItem conformsToProtocol:@protocol(DrawingTool)]) {
+            if (toolbarItem.title == toolset.drawingTool.title) {
+                oldActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingTool]];
+                NSArray *keys = [self.toolbarItems allKeysForObject:toolbarItem];
+                
+                index = [[keys objectAtIndex:0] intValue];
+                
+                activeDrawingTool = index;
+            }
+            
+        }
+        
+        if ([toolbarItem isKindOfClass:[Brush class]]) {
+            if (((Brush *)toolbarItem).textureFilename == toolset.brush.textureFilename) {
+                oldActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingTool]];
+                NSArray *keys = [self.toolbarItems allKeysForObject:toolbarItem];
+                
+                index = [[keys objectAtIndex:0] intValue];
+                
+                activeBrush = index;
+            }
+        }
+        
+        if ([toolbarItem isKindOfClass:[DrawingColor class]]) {
+            if (((DrawingColor *)toolbarItem).color.r == toolset.drawingColor.color.r && 
+                ((DrawingColor *)toolbarItem).color.g == toolset.drawingColor.color.g && 
+                ((DrawingColor *)toolbarItem).color.b == toolset.drawingColor.color.b &&
+                ((DrawingColor *)toolbarItem).color.a == toolset.drawingColor.color.a) {
+                oldActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingTool]];
+                NSArray *keys = [self.toolbarItems allKeysForObject:toolbarItem];
+                
+                index = [[keys objectAtIndex:0] intValue];
+                
+                activeDrawingColor = index;
+            }
+        }
+        
+        if (index != -1) {
+            newActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:index]];
+            
+            CGRect frame;
+            
+            frame = newActiveButton.frame;
+            
+            frame.size.height = 60;
+            frame.origin.y -= 20;
+            
+            newActiveButton.frame = frame;
+            
+            frame = oldActiveButton.frame;
+            
+            frame.size.height = 40;
+            frame.origin.y += 20;
+            
+            oldActiveButton.frame = frame;
+            
+            //set the old active item button down
+            //set the button the new active item up
+            
+            index = -1;
+        }
+    }
+    
     return found;
+}
+
+- (void)resetButtonPositions {
+    NSArray *allButtons = [self.buttons allValues];
+    
+    UIButton *button;
+    
+    for (int i=0; i<[allButtons count]; i++) {
+        button = [allButtons objectAtIndex:i];
+        
+        CGRect frame = button.frame;
+        
+        frame.size.height = 40;
+        frame.origin.y = 40;
+        
+        button.frame = frame;
+    }
 }
 
 #pragma mark - Handle Orientation Change
@@ -176,6 +272,8 @@
     [self.drawingEngine switchActiveAndReserveToolSets];
     
     //need to set the active displayed icons
+    [self setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
+    
 }
 
 - (IBAction)newDrawingButtonAction:(id)sender {
@@ -188,13 +286,8 @@
     
     ToolbarItem *toolbarItem = [self.toolbarItems objectForKey:[NSNumber numberWithInt:button.tag]];
     
-    if (toolbarItem) {
-        NSLog(@"toolbarItem exist");
-    }
     
     UIButton *oldActivebutton;
-    
-    NSLog(@"toolbarItemButtonAction tag = %i count = %i", button.tag, [self.toolbarItems count]);
     
     if (button.tag != activeDrawingTool && button.tag != activeBrush && button.tag != activeDrawingColor) {
         NSLog(@"processing");

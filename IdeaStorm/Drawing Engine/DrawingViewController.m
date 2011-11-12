@@ -33,6 +33,8 @@
         [self.toolbar addToolbarItem:[[[PencilDrawingTool alloc]init] autorelease]];
         [self.toolbar addToolbarItem:[[[EraserDrawingTool alloc]init] autorelease]];
         
+        [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Particle.png"] autorelease]];
+        
         Color color;
         
         color.r = 0.0;
@@ -62,6 +64,8 @@
         color.a = 1.0;
         
         [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        
+        [self.toolbar setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
     }
     return self;
 }

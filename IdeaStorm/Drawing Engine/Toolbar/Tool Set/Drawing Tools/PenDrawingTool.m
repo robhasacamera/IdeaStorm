@@ -13,6 +13,16 @@
 @synthesize pointBuffer = _pointBuffer;
 @synthesize numVerticesCreated;
 
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.title = @"Pen";
+    }
+    
+    return self;
+}
+
 - (Vertex *)verticesFromPoint:(CGPoint)point andDrawingColor:(Color)color andPointSize:(CGFloat)size isLastPoint:(_Bool)lastPoint {
     
     Vertex * vertices;

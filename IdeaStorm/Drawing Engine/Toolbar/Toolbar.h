@@ -41,6 +41,8 @@
 
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset;
 
+- (void)resetButtonPositions;
+
 #pragma mark - Handle Orientation Change
 
 - (void)changeToOrientation:(UIInterfaceOrientation)orientation withDuration:(float)duration;
