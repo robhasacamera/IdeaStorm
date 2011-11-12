@@ -29,18 +29,39 @@
         
         [self.view addSubview:self.drawingEngine.renderView];
         
-        Color color1;
+        [self.toolbar addToolbarItem:[[[PenDrawingTool alloc]init] autorelease]];
+        [self.toolbar addToolbarItem:[[[PencilDrawingTool alloc]init] autorelease]];
+        [self.toolbar addToolbarItem:[[[EraserDrawingTool alloc]init] autorelease]];
         
-        color1.r = 1.0;
-        color1.g = 0.0;
-        color1.b = 0.0;
-        color1.a = 1.0;
+        Color color;
         
-        [self.toolbar addToolbarItem:[[DrawingColor alloc]initWithColor:color1]];
+        color.r = 0.0;
+        color.g = 0.0;
+        color.b = 0.0;
+        color.a = 1.0;
         
-        color1.g = 1.0;
+        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
         
-        [self.toolbar addToolbarItem:[[DrawingColor alloc]initWithColor:color1]];
+        color.r = 1.0;
+        color.g = 0.0;
+        color.b = 0.0;
+        color.a = 1.0;
+        
+        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        
+        color.r = 0.0;
+        color.g = 1.0;
+        color.b = 0.0;
+        color.a = 1.0;
+        
+        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        
+        color.r = 0.0;
+        color.g = 0.0;
+        color.b = 1.0;
+        color.a = 1.0;
+        
+        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
     }
     return self;
 }

@@ -69,6 +69,12 @@
         activeBrush = -1;
         activeDrawingColor = -1;
         
+        self.buttons = [[NSMutableDictionary alloc]init];
+        
+         self.toolbarItems = [[NSMutableDictionary alloc]init];
+        
+        //adding buttons (can more this to a different function)
+        
         UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
         quickSwitchButton.frame = CGRectMake(10.0, 10.0, 70.0, 70.0);
@@ -92,7 +98,7 @@
     return self;
 }
 
-#pragma mark - Modifing Toolbar Items
+#pragma mark - Modifing Toolbar Items and Buttons
 
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
@@ -107,6 +113,9 @@
     
     //add button and item to respective arrays with index as the key
     [self.buttons setObject:button forKey:[NSNumber numberWithInt:index]];
+    [self.toolbarItems setObject:toolbarItem forKey:[NSNumber numberWithInt:index]];
+    
+    NSLog(@"buttons count = %i", [self.buttons count]);
     
     button.frame = CGRectMake(100 + 50 * index, 40, 40, 40);
     
@@ -120,6 +129,13 @@
     nextIndex ++;
     
     return index;
+}
+
+//TODO: This method will set the selected buttons to correspond with those in the toolset, it will return false if not all items in the toolset are found
+- (bool)setActiveButtonsWithToolset:(ToolSet *)toolset {
+    bool found = NO;
+    
+    return found;
 }
 
 #pragma mark - Handle Orientation Change
@@ -155,6 +171,7 @@
 
 #pragma mark - Button Action Handlers
 
+//TODO: Set active icons during after switch
 - (IBAction)quickSwitchButtonAction:(id)sender {
     [self.drawingEngine switchActiveAndReserveToolSets];
     
@@ -165,21 +182,25 @@
     [self.drawingEngine eraseScreen];
 }
 
-//TODO: the isKindOf: method is not working
 - (IBAction)toolbarItemButtonAction:(id)sender {
     
     UIButton *button = (UIButton *)sender;
     
     ToolbarItem *toolbarItem = [self.toolbarItems objectForKey:[NSNumber numberWithInt:button.tag]];
     
+    if (toolbarItem) {
+        NSLog(@"toolbarItem exist");
+    }
+    
     UIButton *oldActivebutton;
     
-    NSLog(@"toolbarItemButtonAction tag = %i", button.tag);
+    NSLog(@"toolbarItemButtonAction tag = %i count = %i", button.tag, [self.toolbarItems count]);
     
     if (button.tag != activeDrawingTool && button.tag != activeBrush && button.tag != activeDrawingColor) {
         NSLog(@"processing");
         
-        if ([sender conformsToProtocol:@protocol(DrawingTool)]) {
+        if ([toolbarItem conformsToProtocol:@protocol(DrawingTool)]) {
+            NSLog(@"DrawingTool");
             self.drawingEngine.activeToolSet.drawingTool = (ToolbarItem <DrawingTool> *) toolbarItem;
             
             oldActivebutton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingTool]];
@@ -188,7 +209,7 @@
         }
         
         if ([toolbarItem isKindOfClass:[Brush class]]) {
-            //<#statements#>
+            self.drawingEngine.activeToolSet.brush = (Brush *)toolbarItem;
             
             oldActivebutton = [self.buttons objectForKey:[NSNumber numberWithInt:activeBrush]];
             
@@ -197,7 +218,6 @@
         
         //this check is not working
         if ([toolbarItem isKindOfClass:[DrawingColor class]]) {
-            NSLog(@"DrawingColor");
             self.drawingEngine.activeToolSet.drawingColor = (DrawingColor *)toolbarItem;
             
             oldActivebutton = [self.buttons objectForKey:[NSNumber numberWithInt:activeDrawingColor]];
@@ -209,7 +229,7 @@
             CGRect frame = button.frame;
             
             frame.size.height = 60;
-            frame.origin.y += 20;
+            frame.origin.y -= 20;
             
             button.frame = frame;
             
@@ -217,12 +237,19 @@
                 frame = oldActivebutton.frame;
                 
                 frame.size.height = 40;
-                frame.origin.y -= 20;
+                frame.origin.y += 20;
                 
                 oldActivebutton.frame = frame;
             }
         }
     }
+}
+
+#pragma mark - Memory Management
+
+- (void)dealloc {
+    [self.buttons release];
+    [self.toolbarItems release];
 }
 
 @end

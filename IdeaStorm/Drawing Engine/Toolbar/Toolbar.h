@@ -35,9 +35,11 @@
 @property (nonatomic) CGPoint landscapeRightOrigin;
 @property (nonatomic, readonly) bool autoRotate;
 
-#pragma mark - Modifing Toolbar Items
+#pragma mark - Modifing Toolbar Items and Buttons
 
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem;
+
+- (bool)setActiveButtonsWithToolset:(ToolSet *)toolset;
 
 #pragma mark - Handle Orientation Change
 
