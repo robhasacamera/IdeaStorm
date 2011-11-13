@@ -37,6 +37,8 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
+- (void)setupDefaultButtons;
+
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem;
 
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset;

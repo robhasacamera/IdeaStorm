@@ -29,118 +29,143 @@
         
         [self.view addSubview:self.drawingEngine.renderView];
         
-        [self.toolbar addToolbarItem:[[[PenDrawingTool alloc]init] autorelease]];
+        [self setupDrawingTools];
         
-        PencilDrawingTool *pencil = [[PencilDrawingTool alloc]init];
+        [self setupBrushes];
         
-        [pencil setIconWithImageName:@"Pencil_Icon.png"];
-        
-        [self.toolbar addToolbarItem:pencil];
-        
-        [pencil release];
-        
-        EraserDrawingTool *eraser = [[EraserDrawingTool alloc]init];
-        
-        [eraser setIconWithImageName:@"Eraser_Icon.png"];
-        
-        [self.toolbar addToolbarItem:eraser];
-        
-        [eraser release];
-        
-        Brush *smallParticle = [[Brush alloc]initWithTexture:@"Small_Particle.png"];
-        
-        [smallParticle setIconWithImageName:@"Small_Particle_Icon.png"];
-        
-        [self.toolbar addToolbarItem:smallParticle];
-         
-        [smallParticle release];
-        
-        Brush *circle = [[Brush alloc]initWithTexture:@"Circle.png"];
-        
-        [circle setIconWithImageName:@"Circle_Icon.png"];
-        
-        [self.toolbar addToolbarItem:circle];
-        
-        [circle release];
-        
-        Brush *calligraphy = [[Brush alloc]initWithTexture:@"Calligraphy.png"];
-        
-        [calligraphy setIconWithImageName:@"Calligraphy_Icon.png"];
-        
-        [self.toolbar addToolbarItem:calligraphy];
-        
-        [calligraphy release];
-        
-        Color color;
-        
-        color.r = 0.0;
-        color.g = 0.0;
-        color.b = 0.0;
-        color.a = 1.0;
-        
-        DrawingColor *black = [[DrawingColor alloc]initWithColor:color];
-        
-        [black setIconWithImageName:@"Color_Black_Icon.png"];
-        
-        [self.toolbar addToolbarItem:black];
-         
-        [black release]; 
-        
-        color.r = 1.0;
-        color.g = 0.0;
-        color.b = 0.0;
-        color.a = 1.0;
-        
-        DrawingColor *red = [[DrawingColor alloc]initWithColor:color];
-        
-        [red setIconWithImageName:@"Color_Red_Icon.png"];
-        
-        [self.toolbar addToolbarItem:red];
-        
-        [red release]; 
-        
-        color.r = 0.0;
-        color.g = 1.0;
-        color.b = 0.0;
-        color.a = 1.0;
-        
-        DrawingColor *green = [[DrawingColor alloc]initWithColor:color];
-        
-        [green setIconWithImageName:@"Color_Green_Icon.png"];
-        
-        [self.toolbar addToolbarItem:green];
-        
-        [green release]; 
-        
-        color.r = 0.0;
-        color.g = 0.0;
-        color.b = 1.0;
-        color.a = 1.0;
-        
-        DrawingColor *blue = [[DrawingColor alloc]initWithColor:color];
-        
-        [blue setIconWithImageName:@"Color_Blue_Icon.png"];
-        
-        [self.toolbar addToolbarItem:blue];
-        
-        [blue release]; 
-        
-        color.r = 1.0;
-        color.g = 1.0;
-        color.b = 0.0;
-        color.a = 1.0;
-        
-        DrawingColor *yellow = [[DrawingColor alloc]initWithColor:color];
-        
-        [yellow setIconWithImageName:@"Color_Yellow_Icon.png"];
-        
-        [self.toolbar addToolbarItem:yellow];
-        
-        [yellow release]; 
-        
+        [self setupDrawingColors];
+                
         [self.toolbar setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
     }
     return self;
+}
+
+- (void)setupDrawingTools {
+    PenDrawingTool *pen = [[PenDrawingTool alloc]init];
+    
+    [pen setIconWithImageName:@"Pen_Icon.png"];
+    
+    [self.toolbar addToolbarItem:pen];
+    
+    [pen release];
+    
+    PencilDrawingTool *pencil = [[PencilDrawingTool alloc]init];
+    
+    [pencil setIconWithImageName:@"Pencil_Icon.png"];
+    
+    [self.toolbar addToolbarItem:pencil];
+    
+    [pencil release];
+    
+    EraserDrawingTool *eraser = [[EraserDrawingTool alloc]init];
+    
+    [eraser setIconWithImageName:@"Eraser_Icon.png"];
+    
+    [self.toolbar addToolbarItem:eraser];
+    
+    [eraser release];
+
+}
+
+- (void)setupBrushes {
+    Brush *smallParticle = [[Brush alloc]initWithTexture:@"Small_Particle.png"];
+    
+    [smallParticle setIconWithImageName:@"Small_Particle_Icon.png"];
+    
+    [self.toolbar addToolbarItem:smallParticle];
+    
+    [smallParticle release];
+    
+    Brush *circle = [[Brush alloc]initWithTexture:@"Circle.png"];
+    
+    [circle setIconWithImageName:@"Circle_Icon.png"];
+    
+    [self.toolbar addToolbarItem:circle];
+    
+    [circle release];
+    
+    Brush *calligraphy = [[Brush alloc]initWithTexture:@"Calligraphy.png"];
+    
+    [calligraphy setIconWithImageName:@"Calligraphy_Icon.png"];
+    
+    [self.toolbar addToolbarItem:calligraphy];
+    
+    [calligraphy release];
+}
+
+- (void)setupDrawingColors {
+    Color color;
+    
+    //black setup
+    color.r = 0.0;
+    color.g = 0.0;
+    color.b = 0.0;
+    color.a = 1.0;
+    
+    DrawingColor *black = [[DrawingColor alloc]initWithColor:color];
+    
+    [black setIconWithImageName:@"Color_Black_Icon.png"];
+    
+    [self.toolbar addToolbarItem:black];
+    
+    [black release]; 
+    
+    //red setup
+    color.r = 1.0;
+    color.g = 0.0;
+    color.b = 0.0;
+    color.a = 1.0;
+    
+    DrawingColor *red = [[DrawingColor alloc]initWithColor:color];
+    
+    [red setIconWithImageName:@"Color_Red_Icon.png"];
+    
+    [self.toolbar addToolbarItem:red];
+    
+    [red release]; 
+    
+    //green setup
+    color.r = 0.0;
+    color.g = 1.0;
+    color.b = 0.0;
+    color.a = 1.0;
+    
+    DrawingColor *green = [[DrawingColor alloc]initWithColor:color];
+    
+    [green setIconWithImageName:@"Color_Green_Icon.png"];
+    
+    [self.toolbar addToolbarItem:green];
+    
+    [green release]; 
+    
+    //blue setup
+    color.r = 0.0;
+    color.g = 0.0;
+    color.b = 1.0;
+    color.a = 1.0;
+    
+    DrawingColor *blue = [[DrawingColor alloc]initWithColor:color];
+    
+    [blue setIconWithImageName:@"Color_Blue_Icon.png"];
+    
+    [self.toolbar addToolbarItem:blue];
+    
+    [blue release]; 
+    
+    //yellow setup
+    color.r = 1.0;
+    color.g = 1.0;
+    color.b = 0.0;
+    color.a = 1.0;
+    
+    DrawingColor *yellow = [[DrawingColor alloc]initWithColor:color];
+    
+    [yellow setIconWithImageName:@"Color_Yellow_Icon.png"];
+    
+    [self.toolbar addToolbarItem:yellow];
+    
+    [yellow release]; 
+
 }
 
 #pragma mark - Touch Event Handlers

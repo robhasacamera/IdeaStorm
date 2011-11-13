@@ -17,4 +17,10 @@
 
 - (void)didRotate:(NSNotification *)notification;
 
+- (void)setupDrawingTools;
+
+- (void)setupBrushes;
+
+- (void)setupDrawingColors;
+
 @end

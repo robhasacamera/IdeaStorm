@@ -69,34 +69,40 @@
         
         self.buttons = [[NSMutableDictionary alloc]init];
         
-         self.toolbarItems = [[NSMutableDictionary alloc]init];
+        self.toolbarItems = [[NSMutableDictionary alloc]init];
         
-        //adding buttons (can more this to a different function)
-        
-        UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        quickSwitchButton.frame = CGRectMake(10.0, 10.0, 70.0, 70.0);
-        
-        quickSwitchButton.backgroundColor = [UIColor blueColor];
-        
-        [quickSwitchButton addTarget:self action:@selector(quickSwitchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:quickSwitchButton];
-        
-        UIButton *newDrawingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        newDrawingButton.frame = CGRectMake(668.0, 30.0, 50.0, 50.0);
-        
-        newDrawingButton.backgroundColor = [UIColor redColor];
-        
-        [newDrawingButton addTarget:self action:@selector(newDrawingButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:newDrawingButton];
+        [self setupDefaultButtons];
     }
     return self;
 }
 
 #pragma mark - Modifing Toolbar Items and Buttons
+
+- (void)setupDefaultButtons {
+    UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [quickSwitchButton setImage:[UIImage imageNamed:@"Quick_Switch_Icon.png"] forState:UIControlStateNormal];
+    
+    quickSwitchButton.frame = CGRectMake(10.0, 10.0, 70.0, 70.0);
+    
+    quickSwitchButton.backgroundColor = [UIColor blueColor];
+    
+    [quickSwitchButton addTarget:self action:@selector(quickSwitchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:quickSwitchButton];
+    
+    UIButton *newDrawingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [newDrawingButton setImage:[UIImage imageNamed:@"New_Drawing_Icon.png"] forState:UIControlStateNormal];
+    
+    newDrawingButton.frame = CGRectMake(668.0, 30.0, 50.0, 50.0);
+    
+    newDrawingButton.backgroundColor = [UIColor grayColor];
+    
+    [newDrawingButton addTarget:self action:@selector(newDrawingButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:newDrawingButton];
+}
 
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
