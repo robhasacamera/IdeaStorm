@@ -49,6 +49,8 @@
         
         [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Particle.png"] autorelease]];
         
+        [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Circle.png"] autorelease]];
+        
         Color color;
         
         color.r = 0.0;
@@ -56,28 +58,52 @@
         color.b = 0.0;
         color.a = 1.0;
         
-        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        DrawingColor *black = [[DrawingColor alloc]initWithColor:color];
+        
+        [black setIconWithImageName:@"Color_Black_Icon.png"];
+        
+        [self.toolbar addToolbarItem:black];
+         
+        [black release]; 
         
         color.r = 1.0;
         color.g = 0.0;
         color.b = 0.0;
         color.a = 1.0;
         
-        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        DrawingColor *red = [[DrawingColor alloc]initWithColor:color];
+        
+        [red setIconWithImageName:@"Color_Red_Icon.png"];
+        
+        [self.toolbar addToolbarItem:red];
+        
+        [red release]; 
         
         color.r = 0.0;
         color.g = 1.0;
         color.b = 0.0;
         color.a = 1.0;
         
-        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        DrawingColor *green = [[DrawingColor alloc]initWithColor:color];
+        
+        [green setIconWithImageName:@"Color_Green_Icon.png"];
+        
+        [self.toolbar addToolbarItem:green];
+        
+        [green release]; 
         
         color.r = 0.0;
         color.g = 0.0;
         color.b = 1.0;
         color.a = 1.0;
         
-        [self.toolbar addToolbarItem:[[[DrawingColor alloc]initWithColor:color]autorelease]];
+        DrawingColor *blue = [[DrawingColor alloc]initWithColor:color];
+        
+        [blue setIconWithImageName:@"Color_Blue_Icon.png"];
+        
+        [self.toolbar addToolbarItem:blue];
+        
+        [blue release]; 
         
         [self.toolbar setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
     }

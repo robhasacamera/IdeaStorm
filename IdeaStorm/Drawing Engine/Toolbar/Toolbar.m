@@ -98,7 +98,7 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
-//FIXME: This is causing the image to be shrinked some to fit the button area
+//TODO: Have a default image for each toolbar item type
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
     
@@ -134,7 +134,6 @@
 
 //FIXME: The DrawingTool check does not work.
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset {
-    NSLog(@"------------");
     bool found = NO;
     
     bool foundDrawingTool = NO;
@@ -167,10 +166,7 @@
                 activeDrawingTool = index;
                 
                 foundDrawingTool = YES;
-                
-                NSLog(@"DrawingTool Match, index=%i", index);
             }
-            
         }
         
         if ([toolbarItem isKindOfClass:[Brush class]]) {
@@ -183,8 +179,6 @@
                 activeBrush = index;
                 
                 foundBrush = YES;
-                
-                NSLog(@"Brush Match, index=%i", index);
             }
         }
         
@@ -201,8 +195,6 @@
                 activeDrawingColor = index;
                 
                 foundDrawingColor = YES;
-                
-                NSLog(@"DrawingColor Match, index=%i", index);
             }
         }
         
@@ -211,28 +203,11 @@
             
             newActiveButton = [self.buttons objectForKey:[NSNumber numberWithInt:index]];
             
-            if (newActiveButton) {
-                NSLog(@"button found, tag = %i", newActiveButton.tag);
+            if (newActiveButton) {frame = newActiveButton.frame;
                 
-                frame = newActiveButton.frame;
-                
-                NSLog(@"old frame h=%f, y=%f", newActiveButton.frame.size.height, newActiveButton.frame.origin.y);
-                
-                //frame.size.height = 60;
                 frame.origin.y = 20;
                 
                 newActiveButton.frame = frame;
-                
-                NSLog(@"new frame h=%f, y=%f", newActiveButton.frame.size.height, newActiveButton.frame.origin.y);
-            }
-            
-            if (oldActiveButton) {
-                frame = oldActiveButton.frame;
-                
-                //frame.size.height = 40;
-                frame.origin.y = 40;
-                
-                oldActiveButton.frame = frame;
             }
             
             newActiveButton = NULL;
@@ -244,6 +219,8 @@
     
     if (foundDrawingTool && foundBrush && foundDrawingColor) {
         found = YES;
+        
+        NSLog(@"drawing tool = %i", activeDrawingTool);
     }
     
     return found;
@@ -259,7 +236,6 @@
         
         CGRect frame = button.frame;
         
-        //frame.size.height = 40;
         frame.origin.y = 40;
         
         button.frame = frame;
@@ -354,7 +330,6 @@
             if (button) {
                 frame = button.frame;
                 
-                //frame.size.height = 60;
                 frame.origin.y = 20;
                 
                 button.frame = frame;
@@ -363,7 +338,6 @@
             if (oldActivebutton) {
                 frame = oldActivebutton.frame;
                 
-                //frame.size.height = 40;
                 frame.origin.y = 40;
                 
                 oldActivebutton.frame = frame;
