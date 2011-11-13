@@ -98,11 +98,8 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
-//TODO: Have a default image for each toolbar item type
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
-    
-    //detect the button type and add the appropiate action
     
     //create button for item
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -132,7 +129,6 @@
     return index;
 }
 
-//FIXME: The DrawingTool check does not work.
 - (bool)setActiveButtonsWithToolset:(ToolSet *)toolset {
     bool found = NO;
     
@@ -152,7 +148,6 @@
     
     [self resetButtonPositions];
     
-    //This only works for the eraser tool???
     for (int i=0; i<[self.toolbarItems count]; i++) {
         toolbarItem = [allToolBarItems objectAtIndex:i];
         
@@ -219,8 +214,6 @@
     
     if (foundDrawingTool && foundBrush && foundDrawingColor) {
         found = YES;
-        
-        NSLog(@"drawing tool = %i", activeDrawingTool);
     }
     
     return found;

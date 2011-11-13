@@ -47,9 +47,29 @@
         
         [eraser release];
         
-        [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Particle.png"] autorelease]];
+        Brush *smallParticle = [[Brush alloc]initWithTexture:@"Small_Particle.png"];
         
-        [self.toolbar addToolbarItem:[[[Brush alloc]initWithTexture:@"Circle.png"] autorelease]];
+        [smallParticle setIconWithImageName:@"Small_Particle_Icon.png"];
+        
+        [self.toolbar addToolbarItem:smallParticle];
+         
+        [smallParticle release];
+        
+        Brush *circle = [[Brush alloc]initWithTexture:@"Circle.png"];
+        
+        [circle setIconWithImageName:@"Circle_Icon.png"];
+        
+        [self.toolbar addToolbarItem:circle];
+        
+        [circle release];
+        
+        Brush *calligraphy = [[Brush alloc]initWithTexture:@"Calligraphy.png"];
+        
+        [calligraphy setIconWithImageName:@"Calligraphy_Icon.png"];
+        
+        [self.toolbar addToolbarItem:calligraphy];
+        
+        [calligraphy release];
         
         Color color;
         
@@ -104,6 +124,19 @@
         [self.toolbar addToolbarItem:blue];
         
         [blue release]; 
+        
+        color.r = 1.0;
+        color.g = 1.0;
+        color.b = 0.0;
+        color.a = 1.0;
+        
+        DrawingColor *yellow = [[DrawingColor alloc]initWithColor:color];
+        
+        [yellow setIconWithImageName:@"Color_Yellow_Icon.png"];
+        
+        [self.toolbar addToolbarItem:yellow];
+        
+        [yellow release]; 
         
         [self.toolbar setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
     }

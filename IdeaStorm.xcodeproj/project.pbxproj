@@ -45,6 +45,12 @@
 		E189DA89146F1F3F00DCF58B /* Color_Green_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */; };
 		E189DA8A146F1F3F00DCF58B /* Color_Red_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */; };
 		E189DA8C146F67D800DCF58B /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA8B146F67D800DCF58B /* Circle.png */; };
+		E189DA8E146F789D00DCF58B /* Small_Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA8D146F789D00DCF58B /* Small_Particle.png */; };
+		E189DA90146F7A3000DCF58B /* Calligraphy.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA8F146F7A2F00DCF58B /* Calligraphy.png */; };
+		E189DA92146F7CB700DCF58B /* Color_Yellow_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA91146F7CB700DCF58B /* Color_Yellow_Icon.png */; };
+		E189DA96146F898F00DCF58B /* Calligraphy_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA93146F898F00DCF58B /* Calligraphy_Icon.png */; };
+		E189DA97146F898F00DCF58B /* Circle_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA94146F898F00DCF58B /* Circle_Icon.png */; };
+		E189DA98146F898F00DCF58B /* Small_Particle_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DA95146F898F00DCF58B /* Small_Particle_Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +118,12 @@
 		E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Green_Icon.png; sourceTree = "<group>"; };
 		E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Red_Icon.png; sourceTree = "<group>"; };
 		E189DA8B146F67D800DCF58B /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
+		E189DA8D146F789D00DCF58B /* Small_Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Small_Particle.png; sourceTree = "<group>"; };
+		E189DA8F146F7A2F00DCF58B /* Calligraphy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calligraphy.png; sourceTree = "<group>"; };
+		E189DA91146F7CB700DCF58B /* Color_Yellow_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Color_Yellow_Icon.png; sourceTree = "<group>"; };
+		E189DA93146F898F00DCF58B /* Calligraphy_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calligraphy_Icon.png; sourceTree = "<group>"; };
+		E189DA94146F898F00DCF58B /* Circle_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_Icon.png; sourceTree = "<group>"; };
+		E189DA95146F898F00DCF58B /* Small_Particle_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Small_Particle_Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +288,8 @@
 		E1566291145CDF3700BD2AC1 /* Brush Textures */ = {
 			isa = PBXGroup;
 			children = (
+				E189DA8F146F7A2F00DCF58B /* Calligraphy.png */,
+				E189DA8D146F789D00DCF58B /* Small_Particle.png */,
 				E189DA8B146F67D800DCF58B /* Circle.png */,
 				E1566292145CDF3700BD2AC1 /* Particle.png */,
 			);
@@ -310,6 +324,10 @@
 		E189DA7E146F0ECB00DCF58B /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E189DA93146F898F00DCF58B /* Calligraphy_Icon.png */,
+				E189DA94146F898F00DCF58B /* Circle_Icon.png */,
+				E189DA95146F898F00DCF58B /* Small_Particle_Icon.png */,
+				E189DA91146F7CB700DCF58B /* Color_Yellow_Icon.png */,
 				E189DA83146F1F3F00DCF58B /* Color_Black_Icon.png */,
 				E189DA84146F1F3F00DCF58B /* Color_Blue_Icon.png */,
 				E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */,
@@ -383,6 +401,12 @@
 				E189DA89146F1F3F00DCF58B /* Color_Green_Icon.png in Resources */,
 				E189DA8A146F1F3F00DCF58B /* Color_Red_Icon.png in Resources */,
 				E189DA8C146F67D800DCF58B /* Circle.png in Resources */,
+				E189DA8E146F789D00DCF58B /* Small_Particle.png in Resources */,
+				E189DA90146F7A3000DCF58B /* Calligraphy.png in Resources */,
+				E189DA92146F7CB700DCF58B /* Color_Yellow_Icon.png in Resources */,
+				E189DA96146F898F00DCF58B /* Calligraphy_Icon.png in Resources */,
+				E189DA97146F898F00DCF58B /* Circle_Icon.png in Resources */,
+				E189DA98146F898F00DCF58B /* Small_Particle_Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

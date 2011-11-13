@@ -55,13 +55,13 @@
         
         ToolbarItem <DrawingTool> *aDrawingTool = [[PencilDrawingTool alloc]init];
         
-        Brush *aBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
+        Brush *aBrush = [[Brush alloc]initWithTexture:@"Small_Particle.png"];
         
         DrawingColor *aDrawingColor = [[DrawingColor alloc]initWithColor:aColor];
         
         ToolbarItem <DrawingTool> *rDrawingTool = [[PenDrawingTool alloc]init];
         
-        Brush *rBrush = [[Brush alloc]initWithTexture:@"Particle.png"];
+        Brush *rBrush = [[Brush alloc]initWithTexture:@"Circle.png"];
         
         DrawingColor *rDrawingColor = [[DrawingColor alloc]initWithColor:rColor];
         
