@@ -10,6 +10,18 @@
 
 @implementation Database
 
+@synthesize defaults = _defaults;
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.defaults = [[NSUserDefaults alloc]init];
+    }
+    
+    return self;
+}
+
 + (UIImage *)getImageForFilename:(NSString *)filename {
     UIImage *image = nil;
     
@@ -26,6 +38,12 @@
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	return documentsDirectory;
+}
+
+- (void)dealloc {
+    [self.defaults release];
+    
+    [super dealloc];
 }
 
 @end

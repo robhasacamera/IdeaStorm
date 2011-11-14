@@ -17,7 +17,7 @@
 @synthesize portraitUpsideDownOrigin = _portraitUpsideDownRect;
 @synthesize landscapeLeftOrigin = _landscapeLeftRect;
 @synthesize landscapeRightOrigin = _landscapeRightRect;
-@synthesize autoRotate = _autoRotate;
+@synthesize tutorialOverlay = _tutorialOverlay;
 
 #pragma mark - Intialization
 
@@ -60,8 +60,6 @@
         landscapeRightAngle = 90 * M_PI / 180;
         
         nextIndex = 0;
-        
-        _autoRotate = NO;
         
         activeDrawingTool = -1;
         activeBrush = -1;
@@ -113,6 +111,7 @@
     helpButton.backgroundColor = [UIColor purpleColor];
     
     //add button action here
+    [helpButton addTarget:self action:@selector(helpButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:helpButton];
 }
@@ -295,6 +294,12 @@
 
 - (IBAction)newDrawingButtonAction:(id)sender {
     [self.drawingEngine eraseScreen];
+}
+
+- (IBAction)helpButtonAction:(id)sender {
+    if (self.tutorialOverlay) {
+        [self.tutorialOverlay displayOverlayWithDuration:.5];
+    }
 }
 
 - (IBAction)toolbarItemButtonAction:(id)sender {

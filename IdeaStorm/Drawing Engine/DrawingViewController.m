@@ -12,6 +12,7 @@
 
 @synthesize drawingEngine = _drawingEngine;
 @synthesize toolbar = _toolbar;
+@synthesize tutorialOverlay = _tutorialOverlay;
 
 #pragma mark - Initialization
 
@@ -23,9 +24,21 @@
         
         self.toolbar = [[Toolbar alloc]init];
         
+        self.tutorialOverlay = [[TutorialOverlay alloc]initWithFrame:self.drawingEngine.renderView.frame];
+        
+        self.tutorialOverlay.portraitImage = [UIImage imageNamed:@"Tutorial_Portrait.png"];
+        
+        self.tutorialOverlay.portraitUpsideDownImage = [UIImage imageNamed:@"Tutorial_PortraitUpsideDown.png"];
+        
+        self.tutorialOverlay.landscapeLeftImage = [UIImage imageNamed:@"Tutorial_LandscapeLeft.png"];
+        
+        self.tutorialOverlay.landscapeRightImage = [UIImage imageNamed:@"Tutorial_LandscapeRight.png"];
+        
         self.toolbar.drawingEngine = self.drawingEngine;
+        self.toolbar.tutorialOverlay = self.tutorialOverlay;
         
         [self.drawingEngine.renderView addSubview:self.toolbar];
+        [self.drawingEngine.renderView addSubview:self.tutorialOverlay];
         
         [self.view addSubview:self.drawingEngine.renderView];
         
@@ -171,19 +184,29 @@
 #pragma mark - Touch Event Handlers
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.drawingEngine drawWithTouch:touches];
+    if (!self.tutorialOverlay.hidden) {
+        [self.tutorialOverlay hideOverlayWithDuration:0.25];
+    } else {
+        [self.drawingEngine drawWithTouch:touches];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.drawingEngine drawWithTouch:touches];
+    if (self.tutorialOverlay.hidden) {
+        [self.drawingEngine drawWithTouch:touches];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.drawingEngine drawWithTouch:touches];
+    if (self.tutorialOverlay.hidden) {
+        [self.drawingEngine drawWithTouch:touches];
+    }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.drawingEngine drawWithTouch:touches];
+    if (self.tutorialOverlay.hidden) {
+        [self.drawingEngine drawWithTouch:touches];
+    }
 }
 
 #pragma mark - View lifecycle
@@ -209,6 +232,8 @@
     
     if (orientationFound) {
         [self.toolbar changeToOrientation:interfaceOrientation withDuration:.25];
+        
+        [self.tutorialOverlay changeToOrientation:interfaceOrientation];
     }
     
     
@@ -251,6 +276,7 @@
 - (void)dealloc {
     [self.drawingEngine release];
     [self.toolbar release];
+    [self.tutorialOverlay release];
     
     [super dealloc];
 }

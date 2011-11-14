@@ -59,6 +59,7 @@
 		E189DAAB1470E1BC00DCF58B /* Tutorial_LandscapeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA71470E1BC00DCF58B /* Tutorial_LandscapeRight.png */; };
 		E189DAAC1470E1BC00DCF58B /* Tutorial_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA81470E1BC00DCF58B /* Tutorial_Portrait.png */; };
 		E189DAAD1470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */; };
+		E189DAB0147169C700DCF58B /* TutorialOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DAAF147169C700DCF58B /* TutorialOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,8 @@
 		E189DAA71470E1BC00DCF58B /* Tutorial_LandscapeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_LandscapeRight.png; sourceTree = "<group>"; };
 		E189DAA81470E1BC00DCF58B /* Tutorial_Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_Portrait.png; sourceTree = "<group>"; };
 		E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_PortraitUpsideDown.png; sourceTree = "<group>"; };
+		E189DAAE147169C700DCF58B /* TutorialOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialOverlay.h; sourceTree = "<group>"; };
+		E189DAAF147169C700DCF58B /* TutorialOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialOverlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +337,8 @@
 				E189DAA51470E1BC00DCF58B /* Tutorial Screens */,
 				E15662B9145D192900BD2AC1 /* Database.h */,
 				E15662BA145D192900BD2AC1 /* Database.m */,
+				E189DAAE147169C700DCF58B /* TutorialOverlay.h */,
+				E189DAAF147169C700DCF58B /* TutorialOverlay.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */,
 				E189DA7A1468ED9600DCF58B /* EraserDrawingTool.m in Sources */,
 				E189DA7D1468F4D100DCF58B /* Toolbar.m in Sources */,
+				E189DAB0147169C700DCF58B /* TutorialOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

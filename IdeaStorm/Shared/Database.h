@@ -7,9 +7,14 @@
 //
 //TODO: Need to add the rest of the needed methods, pragma marks and comments
 
+#define FIRST_RUN_KEY_VALUE 0
+#define DRAWING_ENGINE_KEY_VALUE 1
+
 #import <Foundation/Foundation.h>
 
 @interface Database : NSObject
+
+@property (strong, nonatomic) NSUserDefaults *defaults;
 
 + (UIImage *)getImageForFilename:(NSString *)filename;
 

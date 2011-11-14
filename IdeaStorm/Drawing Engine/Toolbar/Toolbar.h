@@ -12,6 +12,7 @@
 #import "DrawingTool.h"
 #import "Brush.h"
 #import "DrawingColor.h"
+#import "TutorialOverlay.h"
 
 @interface Toolbar : UIView {
     NSInteger nextIndex;
@@ -33,7 +34,7 @@
 @property (nonatomic) CGPoint portraitUpsideDownOrigin;
 @property (nonatomic) CGPoint landscapeLeftOrigin;
 @property (nonatomic) CGPoint landscapeRightOrigin;
-@property (nonatomic, readonly) bool autoRotate;
+@property (strong, nonatomic) TutorialOverlay *tutorialOverlay;
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
@@ -54,6 +55,8 @@
 - (IBAction)quickSwitchButtonAction:(id)sender;
 
 - (IBAction)newDrawingButtonAction:(id)sender;
+
+- (IBAction)helpButtonAction:(id)sender;
 
 - (IBAction)toolbarItemButtonAction:(id)sender;
 
