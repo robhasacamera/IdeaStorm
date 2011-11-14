@@ -78,6 +78,7 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
+//TODO: Add helpButton action
 - (void)setupDefaultButtons {
     UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -102,6 +103,18 @@
     [newDrawingButton addTarget:self action:@selector(newDrawingButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:newDrawingButton];
+    
+    UIButton *helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [helpButton setImage:[UIImage imageNamed:@"Help_Icon.png"] forState:UIControlStateNormal];
+    
+    helpButton.frame = CGRectMake(733.0, 55.0, 25.0, 25.0);
+    
+    helpButton.backgroundColor = [UIColor purpleColor];
+    
+    //add button action here
+    
+    [self addSubview:helpButton];
 }
 
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
@@ -274,13 +287,10 @@
 
 #pragma mark - Button Action Handlers
 
-//TODO: Set active icons during after switch
 - (IBAction)quickSwitchButtonAction:(id)sender {
     [self.drawingEngine switchActiveAndReserveToolSets];
     
-    //need to set the active displayed icons
     [self setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
-    
 }
 
 - (IBAction)newDrawingButtonAction:(id)sender {
