@@ -11,15 +11,41 @@
 @implementation Database
 
 @synthesize defaults = _defaults;
+@synthesize drawingEngineFirstRun = _drawingEngineFirstRun;
 
 - (id)init {
     self = [super init];
     
     if (self) {
         self.defaults = [[NSUserDefaults alloc]init];
+        
+        drawingEngineNotFirstRunKey = @"DrawingEngine Not First Run";
+        
+        bool drawingEngineNotFirstRun = [self.defaults boolForKey:drawingEngineNotFirstRunKey];
+        
+        if (drawingEngineNotFirstRun) {
+            _drawingEngineFirstRun = NO;
+        } else {
+            _drawingEngineFirstRun = YES;
+        }
     }
     
     return self;
+}
+
+- (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun {
+    NSLog(@"writing");
+    _drawingEngineFirstRun = drawingEngineFirstRun;
+    
+    bool drawingEngineNotFirstRun;
+    
+    if (self.drawingEngineFirstRun) {
+        drawingEngineNotFirstRun = NO;
+    } else {
+        drawingEngineNotFirstRun = YES;
+    }
+    
+    [self.defaults setBool:drawingEngineNotFirstRun forKey:drawingEngineNotFirstRunKey];
 }
 
 + (UIImage *)getImageForFilename:(NSString *)filename {

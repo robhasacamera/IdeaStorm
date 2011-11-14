@@ -13,6 +13,7 @@
 @synthesize drawingEngine = _drawingEngine;
 @synthesize toolbar = _toolbar;
 @synthesize tutorialOverlay = _tutorialOverlay;
+@synthesize database = _database;
 
 #pragma mark - Initialization
 
@@ -20,11 +21,20 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.database = [[Database alloc]init];
+        
         self.drawingEngine = [[DrawingEngine alloc]init];
         
         self.toolbar = [[Toolbar alloc]init];
         
         self.tutorialOverlay = [[TutorialOverlay alloc]initWithFrame:self.drawingEngine.renderView.frame];
+        
+        if (!self.database.drawingEngineFirstRun) {
+            self.tutorialOverlay.hidden = YES;
+            self.tutorialOverlay.alpha = 0.0;
+        }
+        
+        [self.database setDrawingEngineFirstRun:NO];
         
         self.tutorialOverlay.portraitImage = [UIImage imageNamed:@"Tutorial_Portrait.png"];
         

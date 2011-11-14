@@ -27,7 +27,6 @@
     return self;
 }
 
-//TODO: Initiaize reserveToolSet.
 //Initializes the drawing engine with a custom frame.
 - (id)initWithFrame:(CGRect)frame {
     self = [super init];
@@ -46,8 +45,8 @@
         
         Color rColor;
         
-        rColor.r = 0.0;
-        rColor.g = 1.0;
+        rColor.r = 1.0;
+        rColor.g = 0.0;
         rColor.b = 0.0;
         rColor.a = 1.0;
         
@@ -106,6 +105,7 @@
 
 #pragma mark - Point Calculations
 
+//FIXME: gap is being caused last segment block, this issue has been commented out for now.
 + (NSMutableArray *)interpolateCurvePointsWithCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints andLastPoint:(bool)lastPoint {
     
     NSMutableArray *curvePoints = NULL;
@@ -174,7 +174,8 @@
                                                [points objectAtIndex:pointIndex3],
                                                nil];
         
-        [curvePoints addObjectsFromArray:[DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints]];
+        //this is commented out as it is causing a gap between the second to last and the last curve segment
+        //[curvePoints addObjectsFromArray:[DrawingEngine interpolateCurvePoints:pointsToInterpolate withSpace:spaceBetweenPoints]];
         
         [pointsToCalculateControlPoints release];
         [pointsToInterpolate release];

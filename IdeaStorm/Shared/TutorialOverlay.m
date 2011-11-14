@@ -43,7 +43,6 @@
     }
 }
 
-//FIXME: get the timer to work on this properly, may need to use a timer instead of an anomation block.
 - (void)displayOverlayWithDuration:(float)duration {
     if (self.hidden) {
         self.hidden = NO;
@@ -55,9 +54,7 @@
 }
 
 - (void)hideOverlayWithDuration:(float)duration {
-    NSLog(@"hello");
     if (!self.hidden) {
-        NSLog(@"!self.hidden");
         [UIView animateWithDuration:duration animations:^{
             self.alpha = 0.0;
         }];
