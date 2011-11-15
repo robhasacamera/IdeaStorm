@@ -42,8 +42,6 @@
     //add point to buffer
     [self.pointBuffer addObject:[NSValue valueWithCGPoint:point]];
     
-    //last point check to determine if straight line or dot will be drawn
-    
     //check for dot
     if ([self.pointBuffer count] == 1 && lastPoint) {
         //add single point to points array
@@ -58,6 +56,7 @@
         points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 20)];
     }
     
+    //check for curve
     if ([self.pointBuffer count] >= 3) {
         points = [DrawingEngine interpolateCurvePointsWithCurvePoints:self.pointBuffer withSpace:(size / 20) andLastPoint:lastPoint];
     }
@@ -67,7 +66,6 @@
     }
     
     //build vertices from calculated points
-    
     vertices = malloc([points count] * sizeof(Vertex));
     
     Vertex vertex;

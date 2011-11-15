@@ -219,7 +219,7 @@
     }
 }
 
-#pragma mark - View lifecycle
+#pragma mark - View Lifecycle
 
 - (void)didRotate:(NSNotification *)notification {
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];

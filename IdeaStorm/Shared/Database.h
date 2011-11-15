@@ -16,10 +16,10 @@
 @property (strong, nonatomic) NSUserDefaults *defaults;
 @property (nonatomic, readonly) bool drawingEngineFirstRun;
 
+- (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun;
+
 + (UIImage *)getImageForFilename:(NSString *)filename;
 
 + (NSString *)documentsPath;
-
-- (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun;
 
 @end

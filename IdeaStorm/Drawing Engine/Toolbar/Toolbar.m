@@ -76,7 +76,6 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
-//TODO: Add helpButton action
 - (void)setupDefaultButtons {
     UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -110,7 +109,6 @@
     
     helpButton.backgroundColor = [UIColor purpleColor];
     
-    //add button action here
     [helpButton addTarget:self action:@selector(helpButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:helpButton];
@@ -119,13 +117,10 @@
 - (NSInteger)addToolbarItem:(ToolbarItem *)toolbarItem {
     NSInteger index = nextIndex;
     
-    //create button for item
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    //set button's id to index
     button.tag = index;
     
-    //add button and item to respective arrays with index as the key
     [self.buttons setObject:button forKey:[NSNumber numberWithInt:index]];
     [self.toolbarItems setObject:toolbarItem forKey:[NSNumber numberWithInt:index]];
     
@@ -141,7 +136,6 @@
     
     [self addSubview:button];
     
-    //increment only if a button was added
     nextIndex ++;
     
     return index;
@@ -329,7 +323,6 @@
             activeBrush = button.tag;
         }
         
-        //this check is not working
         if ([toolbarItem isKindOfClass:[DrawingColor class]]) {
             self.drawingEngine.activeToolSet.drawingColor = (DrawingColor *)toolbarItem;
             

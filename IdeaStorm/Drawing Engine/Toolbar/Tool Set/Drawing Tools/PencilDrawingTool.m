@@ -56,6 +56,7 @@
         points = [DrawingEngine interpolateLinePoints:self.pointBuffer withSpace:(size / 30)];
     }
     
+    //check for curve
     if ([self.pointBuffer count] >= 3) {
         points = [DrawingEngine interpolateCurvePointsWithCurvePoints:self.pointBuffer withSpace:(size / 30) andLastPoint:lastPoint];
     }
@@ -63,7 +64,6 @@
     [self calculateStartAndEndPointSizesUsingSize:size];
     
     //build vertices from calculated points
-    
     vertices = malloc([points count] * sizeof(Vertex));
     
     Vertex vertex;

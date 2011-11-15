@@ -184,7 +184,7 @@
     return curvePoints;
 }
 
-//TODO: Update this comment
+//TODO: Update the comment beneath this one.
 //This method provides an array of curve points based off a startPoint, two control points, an end point and a set space to have between points. The spacing placed between the points is an approximation and not 100% accurate. This method will leave off the end point so the begining point of the next curve segment doesn't overlap it.
 + (NSMutableArray *)interpolateCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints {
     NSMutableArray *interpolatedPoints = NULL;

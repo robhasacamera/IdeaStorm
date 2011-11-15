@@ -25,7 +25,6 @@
 		E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E156628E145CDF3700BD2AC1 /* DrawingEngineTest.m */; };
 		E15662A4145CDF3700BD2AC1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E1566292145CDF3700BD2AC1 /* Particle.png */; };
 		E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566294145CDF3700BD2AC1 /* Brush.m */; };
-		E15662A6145CDF3700BD2AC1 /* DrawingToolTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */; };
 		E15662A9145CDFCC00BD2AC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */; };
 		E15662AB145CDFD200BD2AC1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */; };
 		E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B1145CFD8C00BD2AC1 /* ToolbarItem.m */; };
@@ -99,8 +98,6 @@
 		E1566292145CDF3700BD2AC1 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		E1566293145CDF3700BD2AC1 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
 		E1566294145CDF3700BD2AC1 /* Brush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brush.m; sourceTree = "<group>"; };
-		E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingToolTemp.h; sourceTree = "<group>"; };
-		E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingToolTemp.m; sourceTree = "<group>"; };
 		E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E15662B0145CFD8C00BD2AC1 /* ToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarItem.h; sourceTree = "<group>"; };
@@ -308,9 +305,9 @@
 			isa = PBXGroup;
 			children = (
 				E189DA8F146F7A2F00DCF58B /* Calligraphy.png */,
-				E189DA8D146F789D00DCF58B /* Small_Particle.png */,
 				E189DA8B146F67D800DCF58B /* Circle.png */,
 				E1566292145CDF3700BD2AC1 /* Particle.png */,
+				E189DA8D146F789D00DCF58B /* Small_Particle.png */,
 			);
 			path = "Brush Textures";
 			sourceTree = "<group>";
@@ -325,8 +322,6 @@
 				E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */,
 				E189DA7514684DAA00DCF58B /* PencilDrawingTool.h */,
 				E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */,
-				E1566296145CDF3700BD2AC1 /* DrawingToolTemp.h */,
-				E1566297145CDF3700BD2AC1 /* DrawingToolTemp.m */,
 			);
 			path = "Drawing Tools";
 			sourceTree = "<group>";
@@ -346,20 +341,20 @@
 		E189DA7E146F0ECB00DCF58B /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				E189DA9F147083D100DCF58B /* Help_Icon.png */,
-				E189DA9D147072DC00DCF58B /* New_Drawing_Icon.png */,
-				E189DA9B14706F1C00DCF58B /* Quick_Switch_Icon.png */,
-				E189DA99147066DB00DCF58B /* Pen_Icon.png */,
 				E189DA93146F898F00DCF58B /* Calligraphy_Icon.png */,
 				E189DA94146F898F00DCF58B /* Circle_Icon.png */,
-				E189DA95146F898F00DCF58B /* Small_Particle_Icon.png */,
 				E189DA91146F7CB700DCF58B /* Color_Yellow_Icon.png */,
 				E189DA83146F1F3F00DCF58B /* Color_Black_Icon.png */,
 				E189DA84146F1F3F00DCF58B /* Color_Blue_Icon.png */,
 				E189DA85146F1F3F00DCF58B /* Color_Green_Icon.png */,
 				E189DA86146F1F3F00DCF58B /* Color_Red_Icon.png */,
 				E189DA7F146F0ECC00DCF58B /* Eraser_Icon.png */,
+				E189DA9F147083D100DCF58B /* Help_Icon.png */,
+				E189DA9D147072DC00DCF58B /* New_Drawing_Icon.png */,
+				E189DA99147066DB00DCF58B /* Pen_Icon.png */,
 				E189DA80146F0ECC00DCF58B /* Pencil_Icon.png */,
+				E189DA9B14706F1C00DCF58B /* Quick_Switch_Icon.png */,
+				E189DA95146F898F00DCF58B /* Small_Particle_Icon.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -474,7 +469,6 @@
 				E15662A0145CDF3700BD2AC1 /* GLView.m in Sources */,
 				E15662A3145CDF3700BD2AC1 /* DrawingEngineTest.m in Sources */,
 				E15662A5145CDF3700BD2AC1 /* Brush.m in Sources */,
-				E15662A6145CDF3700BD2AC1 /* DrawingToolTemp.m in Sources */,
 				E15662B2145CFD8C00BD2AC1 /* ToolbarItem.m in Sources */,
 				E15662B5145D10D200BD2AC1 /* DrawingColor.m in Sources */,
 				E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */,
