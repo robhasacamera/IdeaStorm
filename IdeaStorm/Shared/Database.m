@@ -34,7 +34,6 @@
 }
 
 - (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun {
-    NSLog(@"writing");
     _drawingEngineFirstRun = drawingEngineFirstRun;
     
     bool drawingEngineNotFirstRun;

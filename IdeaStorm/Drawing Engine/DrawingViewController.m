@@ -245,11 +245,6 @@
         
         [self.tutorialOverlay changeToOrientation:interfaceOrientation];
     }
-    
-    
-    //need to add the change to gestures here
-    
-    //need to add the change to the tutorial picture here
 }
 
 - (void)viewDidLoad
