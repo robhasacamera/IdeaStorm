@@ -94,6 +94,7 @@
 
 - (void)dealloc {
     if (self.pointBuffer) {
+        [self.pointBuffer removeAllObjects];
         [self.pointBuffer release];
     }
     

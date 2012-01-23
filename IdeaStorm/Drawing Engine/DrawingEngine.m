@@ -100,6 +100,8 @@
         Vertex *vertices = [self.activeToolSet.drawingTool verticesFromPoint:point andDrawingColor:self.activeToolSet.drawingColor.color andPointSize:self.activeToolSet.pointSize isLastPoint:lastTouch];
         
         [self.renderView addVertices:vertices withCount:self.activeToolSet.drawingTool.numVerticesCreated];
+        
+        free(vertices);
     }//END if (touch.phase != UITouchPhaseBegan)
 }
 

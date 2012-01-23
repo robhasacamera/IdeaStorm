@@ -119,6 +119,8 @@
         
         CGContextDrawImage(spriteContext, CGRectMake(0, 0, width, height), spriteImage);
         
+        CGContextRelease(spriteContext);
+        
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
         
