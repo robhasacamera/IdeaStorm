@@ -85,7 +85,7 @@
     UITouch *touch = [touches anyObject];
     
     //touch began is ignored as it creates extra points for a drawing made of dots
-    if (touch.phase != UITouchPhaseBegan) {
+    if (touch.phase != UITouchPhaseBegan && touch.view == self.renderView) {
         
         CGPoint point = [touch locationInView:self.renderView];
         
