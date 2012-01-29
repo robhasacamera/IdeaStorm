@@ -104,6 +104,9 @@
 - (void)setupTexture:(NSString *)fileName {
     //if the texture is not defined or not the same as the last texture sent then setup the texture
     if (!fileName || fileName != textureFilename) {
+        
+        glDeleteTextures(1, &texture);
+        
         CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
         
         if (!spriteImage) {
@@ -192,7 +195,7 @@
     if (numPoints != 0) {
         glActiveTexture(GL_TEXTURE0);
         
-        glBindTexture(GL_TEXTURE_2D, texture);
+        //glBindTexture(GL_TEXTURE_2D, texture);
         
         glEnable(GL_TEXTURE_2D);
         
@@ -236,6 +239,8 @@
     if (program) {
         [program release];
     }
+    
+    glDeleteTextures(1, &texture);
     
     [super dealloc];
 }
