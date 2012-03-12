@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GalleryItem.h"
 
-@interface Drawing : NSObject
+@interface Drawing : NSObject <GalleryItem>
 
 @end

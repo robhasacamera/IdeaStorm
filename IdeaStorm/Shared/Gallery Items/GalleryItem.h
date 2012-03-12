@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol GalleryItem <NSObject>
+@protocol GalleryItem <NSCoding>
 
 @end

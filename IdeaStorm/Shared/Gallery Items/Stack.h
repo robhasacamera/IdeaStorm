@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GalleryItem.h"
 
-@interface Stack : NSObject
+@interface Stack : NSObject <GalleryItem>
 
 @end
