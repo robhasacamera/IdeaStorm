@@ -60,4 +60,14 @@
     return nil;
 }
 
+- (UIImage *)thumbnailImage {
+    
+    return nil;
+}
+
+- (UIImage *)fullImage {
+    
+    return nil;
+}
+
 @end

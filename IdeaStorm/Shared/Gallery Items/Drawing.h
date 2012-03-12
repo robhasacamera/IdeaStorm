@@ -11,4 +11,8 @@
 
 @interface Drawing : NSObject <GalleryItem>
 
+@property (nonatomic, retain) NSMutableArray *stroke;
+
+- (NSString *)saveStroke;
+
 @end

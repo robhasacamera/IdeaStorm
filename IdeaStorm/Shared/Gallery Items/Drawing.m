@@ -15,6 +15,7 @@
 @synthesize pathID = _pathID;
 @synthesize thumbnailImage = _thumbnailImage;
 @synthesize fullImage = _fullImage;
+@synthesize stroke = _stroke;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
@@ -55,7 +56,27 @@
     return nil;
 }
 
+- (NSString *)saveStroke {
+    
+    return nil;
+}
+
 - (bool)exportToCameraRoll {
+    
+    return nil;
+}
+
+- (UIImage *)thumbnailImage {
+    
+    return nil;
+}
+
+- (UIImage *)fullImage {
+    
+    return nil;
+}
+
+- (NSMutableArray *)stroke {
     
     return nil;
 }
