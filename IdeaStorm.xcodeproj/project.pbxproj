@@ -59,6 +59,12 @@
 		E189DAAC1470E1BC00DCF58B /* Tutorial_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA81470E1BC00DCF58B /* Tutorial_Portrait.png */; };
 		E189DAAD1470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */; };
 		E189DAB0147169C700DCF58B /* TutorialOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DAAF147169C700DCF58B /* TutorialOverlay.m */; };
+		E1D5F6ED150D8BDB00280FBC /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6EB150D8BDB00280FBC /* GalleryViewController.m */; };
+		E1D5F6EE150D8BDB00280FBC /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5F6EC150D8BDB00280FBC /* GalleryViewController.xib */; };
+		E1D5F6F1150D8C2300280FBC /* GalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6F0150D8C2300280FBC /* GalleryView.m */; };
+		E1D5F6F4150D8DDB00280FBC /* GalleryToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6F3150D8DDB00280FBC /* GalleryToolbar.m */; };
+		E1D5F6F8150D8E3F00280FBC /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6F7150D8E3F00280FBC /* Stack.m */; };
+		E1D5F6FB150D8E5300280FBC /* Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6FA150D8E5300280FBC /* Drawing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +146,18 @@
 		E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tutorial_PortraitUpsideDown.png; sourceTree = "<group>"; };
 		E189DAAE147169C700DCF58B /* TutorialOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialOverlay.h; sourceTree = "<group>"; };
 		E189DAAF147169C700DCF58B /* TutorialOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialOverlay.m; sourceTree = "<group>"; };
+		E1D5F6EA150D8BDB00280FBC /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		E1D5F6EB150D8BDB00280FBC /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		E1D5F6EC150D8BDB00280FBC /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		E1D5F6EF150D8C2300280FBC /* GalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryView.h; sourceTree = "<group>"; };
+		E1D5F6F0150D8C2300280FBC /* GalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryView.m; sourceTree = "<group>"; };
+		E1D5F6F2150D8DDB00280FBC /* GalleryToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryToolbar.h; sourceTree = "<group>"; };
+		E1D5F6F3150D8DDB00280FBC /* GalleryToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryToolbar.m; sourceTree = "<group>"; };
+		E1D5F6F5150D8E1800280FBC /* GalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItem.h; sourceTree = "<group>"; };
+		E1D5F6F6150D8E3F00280FBC /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		E1D5F6F7150D8E3F00280FBC /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		E1D5F6F9150D8E5300280FBC /* Drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawing.h; sourceTree = "<group>"; };
+		E1D5F6FA150D8E5300280FBC /* Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drawing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +208,7 @@
 		E1566262145CDF1A00BD2AC1 /* IdeaStorm */ = {
 			isa = PBXGroup;
 			children = (
+				E1D5F6E7150D8A9C00280FBC /* Gallery */,
 				E15662A7145CDF9B00BD2AC1 /* Shared */,
 				E1566273145CDF3700BD2AC1 /* Drawing Engine */,
 				E156626B145CDF1B00BD2AC1 /* AppDelegate.h */,
@@ -329,6 +348,7 @@
 		E15662A7145CDF9B00BD2AC1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E1D5F6E9150D8AB700280FBC /* Gallery Items */,
 				E189DAA51470E1BC00DCF58B /* Tutorial Screens */,
 				E15662B9145D192900BD2AC1 /* Database.h */,
 				E15662BA145D192900BD2AC1 /* Database.m */,
@@ -368,6 +388,32 @@
 				E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */,
 			);
 			path = "Tutorial Screens";
+			sourceTree = "<group>";
+		};
+		E1D5F6E7150D8A9C00280FBC /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5F6EA150D8BDB00280FBC /* GalleryViewController.h */,
+				E1D5F6EB150D8BDB00280FBC /* GalleryViewController.m */,
+				E1D5F6EC150D8BDB00280FBC /* GalleryViewController.xib */,
+				E1D5F6EF150D8C2300280FBC /* GalleryView.h */,
+				E1D5F6F0150D8C2300280FBC /* GalleryView.m */,
+				E1D5F6F2150D8DDB00280FBC /* GalleryToolbar.h */,
+				E1D5F6F3150D8DDB00280FBC /* GalleryToolbar.m */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		E1D5F6E9150D8AB700280FBC /* Gallery Items */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5F6F5150D8E1800280FBC /* GalleryItem.h */,
+				E1D5F6F6150D8E3F00280FBC /* Stack.h */,
+				E1D5F6F7150D8E3F00280FBC /* Stack.m */,
+				E1D5F6F9150D8E5300280FBC /* Drawing.h */,
+				E1D5F6FA150D8E5300280FBC /* Drawing.m */,
+			);
+			path = "Gallery Items";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +493,7 @@
 				E189DAAB1470E1BC00DCF58B /* Tutorial_LandscapeRight.png in Resources */,
 				E189DAAC1470E1BC00DCF58B /* Tutorial_Portrait.png in Resources */,
 				E189DAAD1470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png in Resources */,
+				E1D5F6EE150D8BDB00280FBC /* GalleryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +525,11 @@
 				E189DA7A1468ED9600DCF58B /* EraserDrawingTool.m in Sources */,
 				E189DA7D1468F4D100DCF58B /* Toolbar.m in Sources */,
 				E189DAB0147169C700DCF58B /* TutorialOverlay.m in Sources */,
+				E1D5F6ED150D8BDB00280FBC /* GalleryViewController.m in Sources */,
+				E1D5F6F1150D8C2300280FBC /* GalleryView.m in Sources */,
+				E1D5F6F4150D8DDB00280FBC /* GalleryToolbar.m in Sources */,
+				E1D5F6F8150D8E3F00280FBC /* Stack.m in Sources */,
+				E1D5F6FB150D8E5300280FBC /* Drawing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
