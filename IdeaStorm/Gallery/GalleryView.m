@@ -10,22 +10,50 @@
 
 @implementation GalleryView
 
+@synthesize rootStack = _rootStack;
+@synthesize scrollView = _scrollView;
+@synthesize toolbar = _toolbar;
+
+//Initializes with a default frame equal to the bounds of the main screen.
+- (id)init {
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    self = [self initWithFrame:screenBounds];
+    
+    return self;
+}
+
+
+//Initializes the gallery view with a custom frame.
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        
+        //set up scrollView
+        //set up toolbar
+        
+        //add scrollView
+        //add toolbar
+    }
+    return self;
+}
+
+//Initializes the gallery view with a custom frame and the root stack provided.
+- (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack {
+    self = [self initWithFrame:frame];
     if (self) {
         // Initialization code
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+//overrides the setter to display the contents of the root stack after setting the property
+- (void)setRootStack:(Stack *)rootStack {
+    _rootStack = rootStack;
+    
+    //display contents of root stack.
 }
-*/
 
 @end

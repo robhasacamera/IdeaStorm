@@ -14,13 +14,6 @@
 @synthesize galleryView = _galleryView;
 @synthesize database = _database;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database {
-    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +23,15 @@
     }
     return self;
 }
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database {
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -58,6 +60,13 @@
 {
     // Return YES for supported orientations
 	return YES;
+}
+
+//overrides the setter to load the rootStack into the galleryView after setting the database.
+- (void)setDatabase:(Database *)database {
+    _database = database;
+    
+    //load the rootStack into the galleryView
 }
 
 @end

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Stack.h"
+#import "GalleryToolbar.h"
 
 @interface GalleryView : UIView
+
+@property (nonatomic, retain) Stack *rootStack;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) GalleryToolbar *toolbar;
+
+- (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
 @end
