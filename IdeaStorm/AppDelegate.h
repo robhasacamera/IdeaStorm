@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DrawingViewController.h"
+#import "GalleryViewController.h"
 
 #if debug
 #import "DrawingEngineTest.h"
@@ -20,6 +21,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) DrawingViewController *viewController;
+@property (strong, nonatomic) DrawingViewController *drawingViewController;
+
+@property (strong, nonatomic) GalleryViewController *galleryViewController;
 
 @end

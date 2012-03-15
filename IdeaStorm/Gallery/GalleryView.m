@@ -14,6 +14,8 @@
 @synthesize scrollView = _scrollView;
 @synthesize toolbar = _toolbar;
 
+#pragma mark - Initialization
+
 //Initializes with a default frame equal to the bounds of the main screen.
 - (id)init {
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -29,6 +31,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        NSLog(@"GalleryView initWithFrame:");
         // Initialization code
         
         //set up scrollView
@@ -48,6 +51,13 @@
     }
     return self;
 }
+
+#pragma mark - View Management
+
+//TODO: Need some methods in here to setup and reposition the scrollview and toolbar
+
+
+#pragma mark - Data Management
 
 //overrides the setter to display the contents of the root stack after setting the property
 - (void)setRootStack:(Stack *)rootStack {

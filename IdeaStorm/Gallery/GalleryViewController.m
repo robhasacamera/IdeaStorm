@@ -17,17 +17,22 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil andDatabase:nil];
+    
     return self;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database {
-    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        if (database) {
+            //init GalleryView using rootStack from database provide
+        } else {
+            //init without database
+            self.galleryView = [[GalleryView alloc]initWithFrame:self.view.frame];
+        }
+        
+        [self.view addSubview:self.galleryView];
     }
     return self;
 }

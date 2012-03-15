@@ -12,7 +12,9 @@
 
 @synthesize window = _window;
 
-@synthesize viewController = _viewController;
+@synthesize drawingViewController = _drawingViewController;
+
+@synthesize galleryViewController = _galleryViewController;
 
 - (void)dealloc
 {
@@ -20,15 +22,20 @@
     [super dealloc];
 }
 
+//TODO: need to setup the database in here and add it to each view controller so they can share this resource.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.viewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle]] autorelease];
     
-    self.window.rootViewController = self.viewController;
+    
+    self.galleryViewController = [[[GalleryViewController alloc]initWithNibName:@"GalleryViewController" bundle:[NSBundle mainBundle]] autorelease];
+    
+    self.drawingViewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle]] autorelease];
+    
+    self.window.rootViewController = self.galleryViewController;
     
     [self.window makeKeyAndVisible];
     
