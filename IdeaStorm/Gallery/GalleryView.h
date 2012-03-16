@@ -15,6 +15,7 @@
 @property (nonatomic, retain) Stack *rootStack;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) GalleryToolbar *toolbar;
+@property (nonatomic, readonly) GalleryView *selectedGalleryItem;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
