@@ -18,4 +18,7 @@
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
+
+- (void)fitToSize:(CGSize)size;
+
 @end

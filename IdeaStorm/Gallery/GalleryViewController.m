@@ -33,6 +33,9 @@
         }
         
         [self.view addSubview:self.galleryView];
+        
+        self.view.backgroundColor = [UIColor redColor];
+        self.galleryView.backgroundColor = [UIColor grayColor];
     }
     return self;
 }
@@ -61,9 +64,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+
+//TODO: Need to check for and change GalleryView here.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+    [self.galleryView fitToSize:self.view.bounds.size];
+    
 	return YES;
 }
 
@@ -72,6 +79,10 @@
     _database = database;
     
     //load the rootStack into the galleryView
+}
+
+- (void)dealloc {
+    [self.galleryView release];
 }
 
 @end
