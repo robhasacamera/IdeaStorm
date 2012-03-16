@@ -99,7 +99,11 @@
         self.scrollView.frame = scrollViewFrame;
     }
     
-    //need to reposition all the GalleryItem Icons here.
+    if (self.rootStack) {
+        //if nothing is loaded, load the root stack
+        
+        //else reposition current elements
+    }
 }
 
 

@@ -8,6 +8,7 @@
 //TODO: Need to add the rest of the needed methods, pragma marks and comments
 
 #import <Foundation/Foundation.h>
+#import "GalleryItem.h"
 
 @interface Database : NSObject {
     NSString *drawingEngineNotFirstRunKey;
@@ -16,10 +17,30 @@
 @property (strong, nonatomic) NSUserDefaults *defaults;
 @property (nonatomic, readonly) bool drawingEngineFirstRun;
 
+#pragma mark - User Defaults
+
 - (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun;
+
+#pragma mark - Getting Presaved Files
 
 + (UIImage *)getImageForFilename:(NSString *)filename;
 
+#pragma mark - Help Methods
+
 + (NSString *)documentsPath;
+
++ (NSString *)generateUniqueID;
+
+#pragma mark - GalleryItem Management
+
+- (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem;
+
+- (NSObject <GalleryItem> *)getRootGalleryItem;
+
+- (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent;
+
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten;
+
+
 
 @end

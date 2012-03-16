@@ -13,6 +13,8 @@
 @synthesize defaults = _defaults;
 @synthesize drawingEngineFirstRun = _drawingEngineFirstRun;
 
+#pragma mark - Initialization
+
 - (id)init {
     self = [super init];
     
@@ -33,6 +35,8 @@
     return self;
 }
 
+#pragma mark - User Defaults
+
 - (void)setDrawingEngineFirstRun:(_Bool)drawingEngineFirstRun {
     _drawingEngineFirstRun = drawingEngineFirstRun;
     
@@ -47,6 +51,8 @@
     [self.defaults setBool:drawingEngineNotFirstRun forKey:drawingEngineNotFirstRunKey];
 }
 
+#pragma mark - Getting Presaved Files
+
 + (UIImage *)getImageForFilename:(NSString *)filename {
     UIImage *image = nil;
     
@@ -57,12 +63,36 @@
     return image;
 }
 
+#pragma mark - Help Methods
+
 + (NSString *)documentsPath {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	return documentsDirectory;
+}
+
++ (NSString *)generateUniqueID {
+    return nil;
+}
+
+#pragma mark - GalleryItem Management
+
+- (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    return nil;
+}
+
+- (NSObject <GalleryItem> *)getRootGalleryItem {
+    return nil;
+}
+
+- (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent {
+    return nil;
+}
+
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten {
+    return nil;
 }
 
 - (void)dealloc {
