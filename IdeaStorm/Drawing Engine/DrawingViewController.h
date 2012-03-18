@@ -17,7 +17,9 @@
 @property (strong, nonatomic) DrawingEngine *drawingEngine;
 @property (strong, nonatomic) Toolbar *toolbar;
 @property (strong, nonatomic) TutorialOverlay *tutorialOverlay;
-@property (strong, nonatomic) Database *database;
+@property (retain, nonatomic) Database *database;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database;
 
 - (void)didRotate:(NSNotification *)notification;
 

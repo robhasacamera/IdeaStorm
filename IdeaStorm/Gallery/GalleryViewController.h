@@ -14,7 +14,7 @@
 @interface GalleryViewController : UIViewController
 
 @property (nonatomic, retain) DrawingEngine *drawingEngine;
-@property (nonatomic, retain) GalleryView *galleryView;
+@property (nonatomic, strong) GalleryView *galleryView;
 @property (nonatomic, retain) Database *database;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database;

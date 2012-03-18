@@ -125,6 +125,8 @@
     if (self.scrollView) {
         [self.scrollView release];
     }
+    
+    [super dealloc];
 }
 
 @end

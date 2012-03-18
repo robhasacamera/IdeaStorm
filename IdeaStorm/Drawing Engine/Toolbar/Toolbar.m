@@ -358,6 +358,7 @@
 - (void)dealloc {
     [self.buttons release];
     [self.toolbarItems release];
+    [super dealloc];
 }
 
 @end

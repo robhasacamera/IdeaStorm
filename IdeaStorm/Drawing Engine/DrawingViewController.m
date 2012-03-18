@@ -17,11 +17,18 @@
 
 #pragma mark - Initialization
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    return [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil andDatabase:nil];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.database = [[Database alloc]init];
+        if (database) {
+            self.database = database;
+        } else {
+            self.database = [[Database alloc]init];
+        }
         
         self.drawingEngine = [[DrawingEngine alloc]init];
         
@@ -57,7 +64,7 @@
         [self setupBrushes];
         
         [self setupDrawingColors];
-                
+        
         [self.toolbar setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
     }
     return self;
@@ -282,6 +289,7 @@
     [self.drawingEngine release];
     [self.toolbar release];
     [self.tutorialOverlay release];
+    [self.database release];
     
     [super dealloc];
 }

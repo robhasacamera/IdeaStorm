@@ -83,6 +83,7 @@
 
 - (void)dealloc {
     [self.galleryView release];
+    [super dealloc];
 }
 
 @end

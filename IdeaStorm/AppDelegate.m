@@ -16,6 +16,8 @@
 
 @synthesize galleryViewController = _galleryViewController;
 
+@synthesize database = _database;
+
 - (void)dealloc
 {
     [_window release];
@@ -29,11 +31,11 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
+    self.database = [[[Database alloc]init] autorelease];
     
+    self.galleryViewController = [[[GalleryViewController alloc]initWithNibName:@"GalleryViewController" bundle:[NSBundle mainBundle] andDatabase:self.database] autorelease];
     
-    self.galleryViewController = [[[GalleryViewController alloc]initWithNibName:@"GalleryViewController" bundle:[NSBundle mainBundle]] autorelease];
-    
-    self.drawingViewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle]] autorelease];
+    self.drawingViewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle] andDatabase:self.database] autorelease];
     
     self.window.rootViewController = self.galleryViewController;
     

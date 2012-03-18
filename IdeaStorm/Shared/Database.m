@@ -120,8 +120,10 @@
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
         //load root file
+        NSLog(@"root stack exist, loading it");
     } else {
         //create root file
+        NSLog(@"no root stack, creating one");
     }
     
     //check to see if directory exist

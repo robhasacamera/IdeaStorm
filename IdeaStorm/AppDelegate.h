@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "DrawingViewController.h"
 #import "GalleryViewController.h"
+#import "Database.h"
 
 #if debug
 #import "DrawingEngineTest.h"
@@ -24,5 +25,7 @@
 @property (strong, nonatomic) DrawingViewController *drawingViewController;
 
 @property (strong, nonatomic) GalleryViewController *galleryViewController;
+
+@property (strong, nonatomic) Database *database;
 
 @end
