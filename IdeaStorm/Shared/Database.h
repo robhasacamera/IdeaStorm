@@ -14,6 +14,7 @@
 
 #define kGalleryItemRoot @"root"
 #define kGalleryItemDataFileName @"data.plist"
+#define kGalleryItemDataKey @"galleryItem"
 
 @interface Database : NSObject {
     NSString *drawingEngineNotFirstRunKey;
@@ -43,6 +44,8 @@
 - (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem;
 
 - (NSObject <GalleryItem> *)getRootGalleryItem;
+
+- (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path;
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent;
 

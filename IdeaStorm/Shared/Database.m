@@ -105,28 +105,23 @@
     NSError *error;
     bool success;
     
-    success = [[NSFileManager defaultManager] createDirectoryAtPath:[galleryItem getFullPath] withIntermediateDirectories:YES attributes:nil error:&error];
+    NSString *dataPath = [galleryItem getFullPath];
+    NSLog(@"%@", dataPath);
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
     
-    if (success) {
-        NSString *dataPath = [[galleryItem getFullPath] stringByAppendingPathComponent:kGalleryItemDataFileName];
-        NSLog(@"%@", dataPath);
-        NSMutableData *data = [[NSMutableData alloc]init];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
-        
-        [archiver encodeObject:galleryItem forKey:galleryItem.pathID];
-        [archiver finishEncoding];
-        
-        success = [data writeToFile:dataPath options:NSDataWritingAtomic error:&error];
-        
-        [archiver release];
-        [data release];
-    }
+    [archiver encodeObject:galleryItem forKey:kGalleryItemDataKey];
+    [archiver finishEncoding];
+    
+    success = [data writeToFile:dataPath options:NSDataWritingAtomic error:&error];
+    
+    [archiver release];
+    [data release];
     
     if (!success) {
-        NSLog(@"Error: %@", error);
-        NSLog(@"Error userInfo: %@", [error userInfo]);
+        NSLog(@"saveGalleryItem Error: %@", error);
+        NSLog(@"saveGalleryItem Error userInfo: %@", [error userInfo]);
     }
-    
     
     return success;
 }
@@ -149,6 +144,8 @@
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
         //load root file
         NSLog(@"root stack exists, loading it");
+        
+        rootStack = (Stack *)[self getGalleryItemForPath:pathToRootFile];
     } else {
         //create and save root stack
         NSLog(@"no root stack, creating one");
@@ -164,7 +161,31 @@
         }
     }
     
+    if (rootStack.pathID) {
+        NSLog(@"rootStack.pathID = %@", rootStack.pathID);
+    } else {
+        NSLog(@"rootStack did not load correctly");
+    }
+    
+    
+    
     return rootStack;
+}
+
+- (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path {
+    NSObject <GalleryItem> *galleryItem;
+    
+    NSData *data = [[NSData alloc]initWithContentsOfFile:path];
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+    
+    galleryItem = [[[unarchiver decodeObjectForKey:kGalleryItemDataKey] retain] autorelease];
+    
+    [unarchiver finishDecoding];
+    [unarchiver release];
+    [data release];
+    
+    return galleryItem;
 }
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent {

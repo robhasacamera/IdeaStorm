@@ -28,13 +28,17 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    NSString *pathID = [aDecoder decodeObjectForKey:kPathIDKey];
+    NSString *pathID = [[aDecoder decodeObjectForKey:kPathIDKey] retain];
+    NSLog(@"Stack initWithCoder: pathID=%@", pathID);
     
     self = [self initWithPathID:pathID];
     
     if (self) {
         //initialize with data from coder
         
+        //get paths to all children from aDecoder
+        
+        //init children and add them as a child
     }
     
     return self;
@@ -60,7 +64,18 @@
         fullPath = [[Database libraryPath] stringByAppendingPathComponent:fullPath];
     }
     
-    return fullPath;
+    NSError *error;
+    
+    bool success = [[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    if (success) {
+        return [fullPath stringByAppendingPathComponent:kGalleryItemDataFileName];
+    }
+    
+    NSLog(@"getFullPath Error: %@", error);
+    NSLog(@"getFullPath Error userInfo: %@", [error userInfo]);
+    
+    return nil;
 }
 
 - (bool)addChild:(NSObject <GalleryItem> *)galleryItem {
@@ -100,6 +115,15 @@
 
 + (NSString *)extention {
     return @"stack";
+}
+
+//TODO: Make sure to set release statements here for all objects
+- (void)dealloc {
+    [_pathID release];
+    
+    
+    
+    [super dealloc];
 }
 
 @end
