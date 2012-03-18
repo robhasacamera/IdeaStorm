@@ -25,12 +25,11 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.galleryView = [[GalleryView alloc]initWithFrame:self.view.frame];
+        
         if (database) {
-            //init GalleryView using rootStack from database provide
-        } else {
-            //init without database
-            self.galleryView = [[GalleryView alloc]initWithFrame:self.view.frame];
-        }
+            self.database = database;
+        } 
         
         [self.view addSubview:self.galleryView];
         
@@ -79,10 +78,20 @@
     _database = database;
     
     //load the rootStack into the galleryView
+    Stack *rootStack = (Stack *)[self.database getRootGalleryItem];
+    
+    self.galleryView.rootStack = rootStack;
 }
 
 - (void)dealloc {
     [self.galleryView release];
+    if (self.database) {
+        [self.database release];
+    }
+    if (self.drawingEngine) {
+        [self.drawingEngine release];
+    }
+
     [super dealloc];
 }
 

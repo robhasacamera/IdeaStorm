@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define kPathIDKey @"pathID"
+#define kThumbnailImagePathKey @"thumbnailImagePath"
+#define kFullImagePathKey @"fullImagePath"
+#define kChildrenKey @"children"
+
 @protocol GalleryItem <NSCoding>
 
 @required
@@ -17,6 +22,8 @@
 @property (nonatomic, strong, readonly) NSString *pathID;
 @property (nonatomic, strong) UIImage *thumbnailImage;
 @property (nonatomic, strong) UIImage *fullImage;
+
+- (id)initWithPathID:(NSString *)pathID;
 
 - (NSString *)getFullPath;
 

@@ -17,6 +17,16 @@
 @synthesize fullImage = _fullImage;
 @synthesize stroke = _stroke;
 
+- (id)initWithPathID:(NSString *)pathID {
+    self = [super init];
+    
+    if (self) {
+        _pathID = pathID;
+    }
+    
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     

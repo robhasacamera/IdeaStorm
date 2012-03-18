@@ -51,7 +51,7 @@
     [self.defaults setBool:drawingEngineNotFirstRun forKey:drawingEngineNotFirstRunKey];
 }
 
-#pragma mark - Getting Presaved Files
+#pragma mark - Getting Presaved Files 
 
 + (UIImage *)getImageForFilename:(NSString *)filename {
     UIImage *image = nil;
@@ -102,12 +102,40 @@
 #pragma mark - GalleryItem Management
 
 - (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem {
-    return nil;
+    NSError *error;
+    bool success;
+    
+    success = [[NSFileManager defaultManager] createDirectoryAtPath:[galleryItem getFullPath] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    if (success) {
+        NSString *dataPath = [[galleryItem getFullPath] stringByAppendingPathComponent:kGalleryItemDataFileName];
+        NSLog(@"%@", dataPath);
+        NSMutableData *data = [[NSMutableData alloc]init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+        
+        [archiver encodeObject:galleryItem forKey:galleryItem.pathID];
+        [archiver finishEncoding];
+        
+        success = [data writeToFile:dataPath options:NSDataWritingAtomic error:&error];
+        
+        [archiver release];
+        [data release];
+    }
+    
+    if (!success) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"Error userInfo: %@", [error userInfo]);
+    }
+    
+    
+    return success;
 }
 
-//TODO: Do this next!
+//TODO: Do this next! Need to figure out the best way to load gallery items, this may require using or changing the extentions
 - (NSObject <GalleryItem> *)getRootGalleryItem {
     //build path to root stack
+    Stack *rootStack;
+    
     NSString *pathToRootFile = [Database libraryPath];
     
     NSString *rootFolder = kGalleryItemRoot;
@@ -120,18 +148,23 @@
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
         //load root file
-        NSLog(@"root stack exist, loading it");
+        NSLog(@"root stack exists, loading it");
     } else {
-        //create root file
+        //create and save root stack
         NSLog(@"no root stack, creating one");
+        
+        rootStack = [[Stack alloc]initWithPathID:kGalleryItemRoot];
+        
+        bool succuess = [self saveGalleryItem:rootStack];
+        
+        if (succuess) {
+            NSLog(@"success");
+        } else {
+            NSLog(@"failure");
+        }
     }
     
-    //check to see if directory exist
-    //if not create it, then create a stack and then save it to the directory
-    
-    //else load the stack at root.
-    
-    return nil;
+    return rootStack;
 }
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent {
