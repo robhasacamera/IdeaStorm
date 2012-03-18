@@ -30,4 +30,6 @@
 
 - (bool)exportToCameraRoll;
 
++ (NSString *)extention;
+
 @end

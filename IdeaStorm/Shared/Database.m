@@ -73,6 +73,14 @@
 	return documentsDirectory;
 }
 
++ (NSString *)libraryPath {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+	
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	return documentsDirectory;
+}
+
 + (NSString *)generateUniqueID {
     // create a new UUID which you own
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
@@ -97,7 +105,30 @@
     return nil;
 }
 
+//TODO: Do this next!
 - (NSObject <GalleryItem> *)getRootGalleryItem {
+    //build path to root stack
+    NSString *pathToRootFile = [Database libraryPath];
+    
+    NSString *rootFolder = kGalleryItemRoot;
+    
+    rootFolder = [rootFolder stringByAppendingPathExtension:[Stack extention]];
+    
+    pathToRootFile = [pathToRootFile stringByAppendingPathComponent:rootFolder];
+    
+    pathToRootFile = [pathToRootFile stringByAppendingPathComponent:kGalleryItemDataFileName];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
+        //load root file
+    } else {
+        //create root file
+    }
+    
+    //check to see if directory exist
+    //if not create it, then create a stack and then save it to the directory
+    
+    //else load the stack at root.
+    
     return nil;
 }
 

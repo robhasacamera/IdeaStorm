@@ -70,4 +70,8 @@
     return nil;
 }
 
++ (NSString *)extention {
+    return @"stack";
+}
+
 @end

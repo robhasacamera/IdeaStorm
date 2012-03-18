@@ -9,6 +9,11 @@
 
 #import <Foundation/Foundation.h>
 #import "GalleryItem.h"
+#import "Stack.h"
+#import "Drawing.h"
+
+#define kGalleryItemRoot @"root"
+#define kGalleryItemDataFileName @"data.plist"
 
 @interface Database : NSObject {
     NSString *drawingEngineNotFirstRunKey;
@@ -28,6 +33,8 @@
 #pragma mark - Help Methods
 
 + (NSString *)documentsPath;
+
++ (NSString *)libraryPath;
 
 + (NSString *)generateUniqueID;
 

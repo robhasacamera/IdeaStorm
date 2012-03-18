@@ -76,6 +76,10 @@
     return nil;
 }
 
++ (NSString *)extention {
+    return @"drawing";
+}
+
 - (NSMutableArray *)stroke {
     
     return nil;
