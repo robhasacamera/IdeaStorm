@@ -21,6 +21,8 @@
     if (self) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(switchToNormalMode)];
         
+        UIBarButtonItem *editTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        
         UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
         UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -29,19 +31,23 @@
         
         UIBarButtonItem *makeStackButton = [[UIBarButtonItem alloc]initWithTitle:@"Make Stack" style:UIBarButtonItemStyleBordered target:nil action:nil];
         
-        self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, spacer, deleteButton, exportButton, makeStackButton, nil];
-        
         UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToEditMode)];
+        
+        UIBarButtonItem *normalTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:nil action:nil];
         
         UIBarButtonItem *newStackButton = [[UIBarButtonItem alloc]initWithTitle:@"New Stack" style:UIBarButtonItemStyleBordered target:nil action:nil];
         
         UIBarButtonItem *newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:nil action:nil];
         
-        self.normalModeButtons = [[NSArray alloc]initWithObjects:editButton, spacer, newStackButton, newDrawingButton, nil];
+        self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, editTutorialButton, spacer, deleteButton, exportButton, makeStackButton, nil];
+        
+        self.normalModeButtons = [[NSArray alloc]initWithObjects:editButton, normalTutorialButton, spacer, newStackButton, newDrawingButton, nil];
         
         [self switchToMode:NORMAL_MODE];
         
         [doneButton release];
+        
+        [editTutorialButton release];
         
         [spacer release];
         
@@ -52,6 +58,8 @@
         [makeStackButton release];
         
         [editButton release];
+        
+        [normalTutorialButton release];
         
         [newStackButton release];
         
