@@ -40,6 +40,22 @@
         self.normalModeButtons = [[NSArray alloc]initWithObjects:editButton, spacer, newStackButton, newDrawingButton, nil];
         
         [self switchToMode:NORMAL_MODE];
+        
+        [doneButton release];
+        
+        [spacer release];
+        
+        [deleteButton release];
+        
+        [exportButton release];
+        
+        [makeStackButton release];
+        
+        [editButton release];
+        
+        [newStackButton release];
+        
+        [newDrawingButton release];
     }
     return self;
 }
@@ -64,6 +80,13 @@
 
 - (bool)switchToEditMode {
     return [self switchToMode:EDIT_MODE];
+}
+
+- (void)dealloc {
+    [self.editModeButtons release];
+    [self.normalModeButtons release];
+    
+    [super dealloc];
 }
 
 @end
