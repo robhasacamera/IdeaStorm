@@ -142,32 +142,14 @@
     pathToRootFile = [pathToRootFile stringByAppendingPathComponent:kGalleryItemDataFileName];
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
-        //load root file
-        NSLog(@"root stack exists, loading it");
-        
+        //load root stack
         rootStack = (Stack *)[self getGalleryItemForPath:pathToRootFile];
     } else {
         //create and save root stack
-        NSLog(@"no root stack, creating one");
-        
         rootStack = [[Stack alloc]initWithPathID:kGalleryItemRoot];
         
-        bool succuess = [self saveGalleryItem:rootStack];
-        
-        if (succuess) {
-            NSLog(@"success");
-        } else {
-            NSLog(@"failure");
-        }
+        [self saveGalleryItem:rootStack];
     }
-    
-    if (rootStack.pathID) {
-        NSLog(@"rootStack.pathID = %@", rootStack.pathID);
-    } else {
-        NSLog(@"rootStack did not load correctly");
-    }
-    
-    
     
     return rootStack;
 }
