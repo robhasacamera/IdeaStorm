@@ -126,11 +126,10 @@
     return success;
 }
 
-//TODO: Do this next! Need to figure out the best way to load gallery items, this may require using or changing the extentions
 - (NSObject <GalleryItem> *)getRootGalleryItem {
-    //build path to root stack
     Stack *rootStack;
     
+    //build path to root stack
     NSString *pathToRootFile = [Database libraryPath];
     
     NSString *rootFolder = kGalleryItemRoot;
