@@ -98,8 +98,9 @@
     return nil;
 }
 
+//TODO: This is incomplete.
 - (void)newDrawingForStack:(Stack *)stack {
-    
+    [self presentModalViewController:self.drawingViewController animated:YES];
 }
 
 - (Stack *)createStackFromDrawing:(Drawing *)drawing {

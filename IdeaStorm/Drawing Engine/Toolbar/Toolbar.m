@@ -124,7 +124,7 @@
     [self.buttons setObject:button forKey:[NSNumber numberWithInt:index]];
     [self.toolbarItems setObject:toolbarItem forKey:[NSNumber numberWithInt:index]];
     
-    button.frame = CGRectMake(100 + 50 * index, 40, 40, 60);
+    button.frame = CGRectMake(kToolbarButtonsStartX + (kToolbarButtonWidth + kToolbarButtonSpacing) * index, kToolbarButtonDownYPosition, kToolbarButtonWidth, kToolbarButtonHieght);
     
     button.backgroundColor = [UIColor blackColor];
     
@@ -212,7 +212,7 @@
             
             if (newActiveButton) {frame = newActiveButton.frame;
                 
-                frame.origin.y = 20;
+                frame.origin.y = kToolbarButtonUpYPosition;
                 
                 newActiveButton.frame = frame;
             }
@@ -241,7 +241,7 @@
         
         CGRect frame = button.frame;
         
-        frame.origin.y = 40;
+        frame.origin.y = kToolbarButtonDownYPosition;
         
         button.frame = frame;
     }
@@ -337,7 +337,7 @@
             if (button) {
                 frame = button.frame;
                 
-                frame.origin.y = 20;
+                frame.origin.y = kToolbarButtonUpYPosition;
                 
                 button.frame = frame;
             }
@@ -345,7 +345,7 @@
             if (oldActivebutton) {
                 frame = oldActivebutton.frame;
                 
-                frame.origin.y = 40;
+                frame.origin.y = kToolbarButtonDownYPosition;
                 
                 oldActivebutton.frame = frame;
             }

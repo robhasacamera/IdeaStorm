@@ -127,8 +127,11 @@
     NSLog(@"New Stack");
 }
 
+//TODO: This is incomplete.
 - (void)createNewDrawing {
     NSLog(@"New Drawing");
+    
+    [self.delegate newDrawingForStack:nil];
 }
 
 - (void)showNormalTutorial {
