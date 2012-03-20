@@ -13,6 +13,7 @@
 @synthesize editModeButtons = _editModeButtons;
 @synthesize normalModeButtons = _normalModeButtons;
 @synthesize mode = _mode;
+@synthesize galleryToolbarDelegate = _galleryToolbarDelegate;
 
 //TODO: Need to add targets and actions for other buttons.
 - (id)initWithFrame:(CGRect)frame
@@ -21,23 +22,23 @@
     if (self) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(switchToNormalMode)];
         
-        UIBarButtonItem *editTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *editTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showEditTutorial)];
         
         UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
-        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(deleteSelected)];
         
-        UIBarButtonItem *exportButton = [[UIBarButtonItem alloc]initWithTitle:@"Export" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *exportButton = [[UIBarButtonItem alloc]initWithTitle:@"Export" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(exportSelected)];
         
-        UIBarButtonItem *makeStackButton = [[UIBarButtonItem alloc]initWithTitle:@"Make Stack" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *makeStackButton = [[UIBarButtonItem alloc]initWithTitle:@"Make Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(makeStackFromSelected)];
         
         UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToEditMode)];
         
-        UIBarButtonItem *normalTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *normalTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showNormalTutorial)];
         
-        UIBarButtonItem *newStackButton = [[UIBarButtonItem alloc]initWithTitle:@"New Stack" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *newStackButton = [[UIBarButtonItem alloc]initWithTitle:@"New Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewStack)];
         
-        UIBarButtonItem *newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        UIBarButtonItem *newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewDrawing)];
         
         self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, editTutorialButton, spacer, deleteButton, exportButton, makeStackButton, nil];
         

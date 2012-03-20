@@ -159,6 +159,7 @@
 		E1D5F6F7150D8E3F00280FBC /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 		E1D5F6F9150D8E5300280FBC /* Drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawing.h; sourceTree = "<group>"; };
 		E1D5F6FA150D8E5300280FBC /* Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drawing.m; sourceTree = "<group>"; };
+		E1E2D6701518AEC500F8CE42 /* GalleryToolbarDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryToolbarDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +403,7 @@
 				E1D5F6F2150D8DDB00280FBC /* GalleryToolbar.h */,
 				E1D5F6F3150D8DDB00280FBC /* GalleryToolbar.m */,
 				E17D0FEF15181CBE001976C9 /* GalleryViewDelegate.h */,
+				E1E2D6701518AEC500F8CE42 /* GalleryToolbarDelegate.h */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";

@@ -12,8 +12,9 @@
 #import "GalleryItem.h"
 #import "GalleryToolbar.h"
 #import "GalleryViewDelegate.h"
+#import "GalleryToolbarDelegate.h"
 
-@interface GalleryView : UIView
+@interface GalleryView : UIView <GalleryToolbarDelegate>
 
 @property (nonatomic, retain) Stack *rootStack;
 @property (nonatomic, strong) UIScrollView *scrollView;

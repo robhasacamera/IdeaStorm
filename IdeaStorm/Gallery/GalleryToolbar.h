@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GalleryToolbarDelegate.h"
 
 typedef enum {
     EDIT_MODE,
@@ -18,6 +19,7 @@ typedef enum {
 @property (strong, nonatomic) NSArray *editModeButtons;
 @property (strong, nonatomic) NSArray *normalModeButtons;
 @property (nonatomic, readonly) GalleryToolbarMode mode;
+@property (nonatomic, retain) NSObject <GalleryToolbarDelegate> *galleryToolbarDelegate;
 
 - (bool)switchToMode:(GalleryToolbarMode)mode;
 

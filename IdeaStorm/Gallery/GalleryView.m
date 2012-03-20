@@ -74,6 +74,7 @@
     
     if (!self.toolbar) {
         self.toolbar = [[GalleryToolbar alloc]initWithFrame:toolbarFrame];
+        self.toolbar.galleryToolbarDelegate = self;
         [self addSubview:self.toolbar];
     } else {
         self.toolbar.frame = toolbarFrame;
@@ -106,6 +107,36 @@
         
         //else reposition current elements
     }
+}
+
+#pragma mark - GalleryToolbarDelegate Methods
+
+- (void)exportSelected {
+    NSLog(@"export");
+}
+
+- (void)deleteSelected {
+    NSLog(@"Delete");
+}
+
+- (void)makeStackFromSelected {
+    NSLog(@"Make Stack");
+}
+
+- (void)createNewStack {
+    NSLog(@"New Stack");
+}
+
+- (void)createNewDrawing {
+    NSLog(@"New Drawing");
+}
+
+- (void)showNormalTutorial {
+    NSLog(@"Normal Tutorial");
+}
+
+- (void)showEditTutorial {
+    NSLog(@"Edit Tutorial");
 }
 
 
