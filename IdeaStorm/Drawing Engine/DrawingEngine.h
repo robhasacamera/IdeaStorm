@@ -13,11 +13,14 @@
 
 #import <Foundation/Foundation.h>
 #import "GLView.h"
+#import "Database.h"
 #import "PenDrawingTool.h"
 #import "PencilDrawingTool.h"
 #import "EraserDrawingTool.h"
 #import <malloc/malloc.h>
 #import "ToolSet.h"
+#import "Stack.h"
+#import "Drawing.h"
 
 @interface DrawingEngine : NSObject
 
@@ -26,14 +29,20 @@
 @property (nonatomic) float spaceBetweenPoints;
 @property (strong, nonatomic) ToolSet *activeToolSet;
 @property (strong, nonatomic) ToolSet *reserveToolSet;
+@property (nonatomic, retain) Database *database;
+@property (strong, nonatomic) Drawing *drawing;
 
 #pragma mark - Initialization
 
 - (id)initWithFrame:(CGRect)frame;
 
-#pragma mark - Touch Data Handling
+- (id)initWithFrame:(CGRect)frame andDatabase:(Database *)database;
+
+#pragma mark - Commands that render points.
 
 - (void)drawWithTouch:(NSSet *)touches;
+
+- (void)eraseScreen;
 
 #pragma mark - Point Calculations
 
@@ -54,12 +63,18 @@
 
 + (float)distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
 
-#pragma mark - Sending Commands to Render Points
-
-- (void)eraseScreen;
-
 #pragma mark - Tool Commands
 
 - (void)switchActiveAndReserveToolSets;
+
+#pragma mark - Working With Drawing Data
+
+- (bool)saveCurrentDrawing;
+
+- (void)loadDrawing:(Drawing *)drawing;
+
+- (void)newDrawingForStack:(Stack *)stack;
+
+- (bool)saveAndAddDrawing;
 
 @end

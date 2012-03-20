@@ -15,6 +15,7 @@
 @synthesize spaceBetweenPoints;
 @synthesize activeToolSet = _activeToolSet;
 @synthesize reserveToolSet = _reserveToolSet;
+@synthesize database = _database;
 
 #pragma mark - Initialization
 
@@ -78,7 +79,17 @@
     return self;
 }
 
-#pragma mark - Touch Data Handling
+- (id)initWithFrame:(CGRect)frame andDatabase:(Database *)database {
+    self = [self initWithFrame:frame];
+    
+    if (self) {
+        self.database = database;
+    }
+    
+    return self;
+}
+
+#pragma mark - Commands that Render Points
 
 //Creates a drawing in the renderView (GLView) using the ouch data provided.
 - (void)drawWithTouch:(NSSet *)touches {
@@ -103,6 +114,11 @@
         
         free(vertices);
     }//END if (touch.phase != UITouchPhaseBegan)
+}
+
+//This method calls the clearScreen method of the renderView (GLView).
+- (void)eraseScreen {
+    [self.renderView clearScreen];
 }
 
 #pragma mark - Point Calculations
@@ -343,13 +359,6 @@
                  (point2.y - point1.y) * (point2.y - point1.y));
 }
 
-#pragma mark - Sending Commands to Render Points
-
-//This method calls the clearScreen method of the renderView (GLView).
-- (void)eraseScreen {
-    [self.renderView clearScreen];
-}
-
 #pragma mark - Tool Commands
 
 - (void)switchActiveAndReserveToolSets {
@@ -360,6 +369,44 @@
     self.reserveToolSet = newReserveToolSet;
 }
 
+#pragma mark - Working With Drawing Data
+
+- (bool)saveCurrentDrawing {
+    return [self.database saveGalleryItem:self.drawing];
+}
+
+- (void)loadDrawing:(Drawing *)drawing {
+    [self eraseScreen];
+    
+    if (self.drawing) {
+        [self.drawing release];
+    }
+    
+    self.drawing = drawing;
+    
+    //load stroke
+}
+
+- (void)newDrawingForStack:(Stack *)stack {
+    if (self.drawing) {
+        [self.drawing release];
+    }
+    
+    self.drawing = [[Drawing alloc]initWithPathID:[Database generateUniqueID]];
+    
+    self.drawing.parent = stack;
+    
+    [self eraseScreen];
+}
+
+- (bool)saveAndAddDrawing {
+    bool success = [self saveCurrentDrawing];
+    
+    [self newDrawingForStack:(Stack *)self.drawing.parent];
+    
+    return success;
+}
+
 #pragma mark - Memory Management
 
 - (void)dealloc {
@@ -367,6 +414,14 @@
     [self.pointBuffer release];
     [self.activeToolSet release];
     [self.reserveToolSet release];
+    
+    if (self.database) {
+        [self.database release];
+    }
+    
+    if (self.drawing) {
+        [self.drawing release];
+    }
     
     [super dealloc];
 }

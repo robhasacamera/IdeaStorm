@@ -10,6 +10,7 @@
 
 @implementation GalleryViewController
 
+//TODO: May need to remove this and have the GalleryViewController added as a delegate of the gallery view instead.
 @synthesize drawingEngine = _drawingEngine;
 @synthesize galleryView = _galleryView;
 @synthesize database = _database;
