@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DrawingEngine.h"
+#import "DrawingViewController.h"
 #import "GalleryView.h"
 #import "Database.h"
+#import "GalleryViewDelegate.h"
 
-@interface GalleryViewController : UIViewController
+@interface GalleryViewController : UIViewController <GalleryViewDelegate>
 
-@property (nonatomic, retain) DrawingEngine *drawingEngine;
-@property (nonatomic, strong) GalleryView *galleryView;
+@property (nonatomic, retain) DrawingViewController *drawingViewController;
+@property (nonatomic, retain) GalleryView *galleryView;
 @property (nonatomic, retain) Database *database;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDatabase:(Database *)database;

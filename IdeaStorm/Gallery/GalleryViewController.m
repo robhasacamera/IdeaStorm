@@ -10,8 +10,7 @@
 
 @implementation GalleryViewController
 
-//TODO: May need to remove this and have the GalleryViewController added as a delegate of the gallery view instead.
-@synthesize drawingEngine = _drawingEngine;
+@synthesize drawingViewController = _drawingViewController;
 @synthesize galleryView = _galleryView;
 @synthesize database = _database;
 
@@ -27,6 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.galleryView = [[GalleryView alloc]initWithFrame:self.view.frame];
+        self.galleryView.delegate = self;
         
         if (database) {
             self.database = database;
@@ -84,13 +84,35 @@
     self.galleryView.rootStack = rootStack;
 }
 
+#pragma mark - GalleryViewDelegate Methods
+
+- (void)openDrawing:(Drawing *)drawing {
+    
+}
+
+- (bool)exportGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    return nil;
+}
+
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten {
+    return nil;
+}
+
+- (void)newDrawingForStack:(Stack *)stack {
+    
+}
+
+- (Stack *)createStackFromDrawing:(Drawing *)drawing {
+    return nil;
+}
+
 - (void)dealloc {
     [self.galleryView release];
     if (self.database) {
         [self.database release];
     }
-    if (self.drawingEngine) {
-        [self.drawingEngine release];
+    if (self.drawingViewController) {
+        [self.drawingViewController release];
     }
 
     [super dealloc];

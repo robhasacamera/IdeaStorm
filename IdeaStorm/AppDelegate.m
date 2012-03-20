@@ -37,6 +37,8 @@
     
     self.drawingViewController = [[[DrawingViewController alloc]initWithNibName:@"DrawingViewController" bundle:[NSBundle mainBundle] andDatabase:self.database] autorelease];
     
+    self.galleryViewController.drawingViewController = self.drawingViewController;
+    
     self.window.rootViewController = self.galleryViewController;
     
     [self.window makeKeyAndVisible];

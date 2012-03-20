@@ -16,6 +16,7 @@
 @synthesize activeToolSet = _activeToolSet;
 @synthesize reserveToolSet = _reserveToolSet;
 @synthesize database = _database;
+@synthesize drawing = _drawing;
 
 #pragma mark - Initialization
 

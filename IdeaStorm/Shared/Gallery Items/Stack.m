@@ -29,7 +29,6 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     NSString *pathID = [[aDecoder decodeObjectForKey:kPathIDKey] retain];
-    NSLog(@"Stack initWithCoder: pathID=%@", pathID);
     
     self = [self initWithPathID:pathID];
     
@@ -45,7 +44,6 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"Stack encodeWithCoder:");
     //encode pathID
     [aCoder encodeObject:_pathID forKey:kPathIDKey];
     //call save thumnail and get the path

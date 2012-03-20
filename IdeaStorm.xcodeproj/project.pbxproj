@@ -117,6 +117,7 @@
 		E15662C0145D275C00BD2AC1 /* DrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingTool.h; sourceTree = "<group>"; };
 		E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenDrawingTool.h; sourceTree = "<group>"; };
 		E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenDrawingTool.m; sourceTree = "<group>"; };
+		E17D0FEF15181CBE001976C9 /* GalleryViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryViewDelegate.h; sourceTree = "<group>"; };
 		E189DA7514684DAA00DCF58B /* PencilDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PencilDrawingTool.h; sourceTree = "<group>"; };
 		E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PencilDrawingTool.m; sourceTree = "<group>"; };
 		E189DA781468ED9600DCF58B /* EraserDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EraserDrawingTool.h; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 				E1D5F6F0150D8C2300280FBC /* GalleryView.m */,
 				E1D5F6F2150D8DDB00280FBC /* GalleryToolbar.h */,
 				E1D5F6F3150D8DDB00280FBC /* GalleryToolbar.m */,
+				E17D0FEF15181CBE001976C9 /* GalleryViewDelegate.h */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";

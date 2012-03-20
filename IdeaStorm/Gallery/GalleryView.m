@@ -14,6 +14,7 @@
 @synthesize scrollView = _scrollView;
 @synthesize toolbar = _toolbar;
 @synthesize selectedGalleryItem = _selectedGalleryItem;
+@synthesize delegate = _delegate;
 
 #pragma mark - Initialization
 

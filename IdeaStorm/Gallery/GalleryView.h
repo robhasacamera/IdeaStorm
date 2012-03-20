@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Stack.h"
+#import "Drawing.h"
+#import "GalleryItem.h"
 #import "GalleryToolbar.h"
+#import "GalleryViewDelegate.h"
 
 @interface GalleryView : UIView
 
 @property (nonatomic, retain) Stack *rootStack;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) GalleryToolbar *toolbar;
-@property (nonatomic, readonly) GalleryView *selectedGalleryItem;
+@property (nonatomic, readonly) NSObject <GalleryItem> *selectedGalleryItem;
+@property (nonatomic, retain) NSObject <GalleryViewDelegate> *delegate;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
-
 
 - (void)fitToSize:(CGSize)size;
 
