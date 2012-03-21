@@ -18,8 +18,8 @@
 #define kToolbarButtonDownYPosition 40.0
 #define kToolbarButtonWidth 40.0
 #define kToolbarButtonHieght 60.0
-#define kToolbarButtonSpacing 10.0
-#define kToolbarButtonsStartX 100.0
+#define kToolbarButtonSpacing 5.0
+#define kToolbarButtonsStartX 90.0
 
 @interface Toolbar : UIView {
     NSInteger nextIndex;
@@ -66,5 +66,7 @@
 - (IBAction)helpButtonAction:(id)sender;
 
 - (IBAction)toolbarItemButtonAction:(id)sender;
+
+- (IBAction)dismissViewButtonAction:(id)sender;
 
 @end

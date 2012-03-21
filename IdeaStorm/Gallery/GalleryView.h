@@ -17,6 +17,7 @@
 @interface GalleryView : UIView <GalleryToolbarDelegate>
 
 @property (nonatomic, retain) Stack *rootStack;
+@property (nonatomic, retain) Stack *displayedStack;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) GalleryToolbar *toolbar;
 @property (nonatomic, readonly) NSObject <GalleryItem> *selectedGalleryItem;

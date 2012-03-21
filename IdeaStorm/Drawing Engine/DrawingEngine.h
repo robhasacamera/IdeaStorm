@@ -31,6 +31,7 @@
 @property (strong, nonatomic) ToolSet *reserveToolSet;
 @property (nonatomic, retain) Database *database;
 @property (strong, nonatomic) Drawing *drawing;
+@property (nonatomic, retain) UIViewController *viewController;
 
 #pragma mark - Initialization
 

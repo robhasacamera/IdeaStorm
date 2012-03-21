@@ -11,6 +11,7 @@
 @implementation GalleryView
 
 @synthesize rootStack = _rootStack;
+@synthesize displayedStack = _displayedStack;
 @synthesize scrollView = _scrollView;
 @synthesize toolbar = _toolbar;
 @synthesize selectedGalleryItem = _selectedGalleryItem;
@@ -125,13 +126,16 @@
 
 - (void)createNewStack {
     NSLog(@"New Stack");
+    //creat new stack
+    //add as child of current stack
+    //call newDrawingForStack: using the new stack.
 }
 
 //TODO: This is incomplete.
 - (void)createNewDrawing {
     NSLog(@"New Drawing");
     
-    [self.delegate newDrawingForStack:nil];
+    [self.delegate newDrawingForStack:self.displayedStack];
 }
 
 - (void)showNormalTutorial {
@@ -150,6 +154,14 @@
     _rootStack = rootStack;
     
     //display contents of root stack.
+    _displayedStack = self.rootStack;
+}
+
+//TODO: need to get and display contents of stack here.
+- (void)setDisplayedStack:(Stack *)displayedStack {
+    _displayedStack = displayedStack;
+    
+    //get and display contents of stack.
 }
 
 - (void)dealloc {

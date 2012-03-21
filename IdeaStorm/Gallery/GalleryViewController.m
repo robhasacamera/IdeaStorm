@@ -100,6 +100,8 @@
 
 //TODO: This is incomplete.
 - (void)newDrawingForStack:(Stack *)stack {
+    [self.drawingViewController.drawingEngine newDrawingForStack:stack];
+    
     [self presentModalViewController:self.drawingViewController animated:YES];
 }
 

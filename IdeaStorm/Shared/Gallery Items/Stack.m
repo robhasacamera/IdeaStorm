@@ -7,7 +7,6 @@
 //
 
 #import "Stack.h"
-#import "Database.h"
 
 @implementation Stack
 
@@ -78,6 +77,14 @@
 
 - (bool)addChild:(NSObject <GalleryItem> *)galleryItem {
     
+    if (!self.children) {
+        _children = [[NSMutableArray alloc]initWithCapacity:1];
+    }
+    
+    [_children addObject:galleryItem];
+    
+    galleryItem.parent = self;
+    
     return nil;
 }
 
@@ -119,7 +126,9 @@
 - (void)dealloc {
     [_pathID release];
     
-    
+    if (self.children) {
+        [_children release];
+    }
     
     [super dealloc];
 }

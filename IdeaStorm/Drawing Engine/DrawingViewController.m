@@ -32,6 +32,10 @@
         
         self.drawingEngine = [[DrawingEngine alloc]init];
         
+        self.drawingEngine.database = self.database;
+        
+        self.drawingEngine.viewController = self;
+        
         self.toolbar = [[Toolbar alloc]init];
         
         self.tutorialOverlay = [[TutorialOverlay alloc]initWithFrame:self.drawingEngine.renderView.frame];

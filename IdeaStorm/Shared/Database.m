@@ -106,7 +106,7 @@
     bool success;
     
     NSString *dataPath = [galleryItem getFullPath];
-    NSLog(@"%@", dataPath);
+    NSLog(@"Database saveGalleryItem dataPath = %@", dataPath);
     NSMutableData *data = [[NSMutableData alloc]init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
     

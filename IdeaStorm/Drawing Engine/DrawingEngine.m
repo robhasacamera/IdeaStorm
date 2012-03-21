@@ -17,6 +17,7 @@
 @synthesize reserveToolSet = _reserveToolSet;
 @synthesize database = _database;
 @synthesize drawing = _drawing;
+@synthesize viewController = _viewController;
 
 #pragma mark - Initialization
 
@@ -395,7 +396,7 @@
     
     self.drawing = [[Drawing alloc]initWithPathID:[Database generateUniqueID]];
     
-    self.drawing.parent = stack;
+    [stack addChild:self.drawing];
     
     [self eraseScreen];
 }
@@ -422,6 +423,10 @@
     
     if (self.drawing) {
         [self.drawing release];
+    }
+    
+    if (self.viewController) {
+        [self.viewController release];
     }
     
     [super dealloc];

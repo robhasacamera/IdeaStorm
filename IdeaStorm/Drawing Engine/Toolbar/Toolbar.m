@@ -76,7 +76,9 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
+//TODO: Need to set the image for the dimissViewButton.
 - (void)setupDefaultButtons {
+    //Quick Switch Button
     UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [quickSwitchButton setImage:[UIImage imageNamed:@"Quick_Switch_Icon.png"] forState:UIControlStateNormal];
@@ -89,11 +91,12 @@
     
     [self addSubview:quickSwitchButton];
     
+    //New Drawing Button
     UIButton *newDrawingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [newDrawingButton setImage:[UIImage imageNamed:@"New_Drawing_Icon.png"] forState:UIControlStateNormal];
     
-    newDrawingButton.frame = CGRectMake(668.0, 30.0, 50.0, 50.0);
+    newDrawingButton.frame = CGRectMake(600.0, 30.0, 50.0, 50.0);
     
     newDrawingButton.backgroundColor = [UIColor grayColor];
     
@@ -101,6 +104,20 @@
     
     [self addSubview:newDrawingButton];
     
+    //Dimiss View Button
+    UIButton *dismissViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    //TODO: set image here
+    
+    dismissViewButton.frame = CGRectMake(668.0, 30.0, 50.0, 50.0);
+    
+    dismissViewButton.backgroundColor = [UIColor blackColor];
+    
+    [dismissViewButton addTarget:self action:@selector(dismissViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:dismissViewButton];
+    
+    //Help Button
     UIButton *helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [helpButton setImage:[UIImage imageNamed:@"Help_Icon.png"] forState:UIControlStateNormal];
@@ -286,8 +303,9 @@
     [self setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
 }
 
+//TODO: need to save the drawing here.
 - (IBAction)newDrawingButtonAction:(id)sender {
-    [self.drawingEngine eraseScreen];
+    [self.drawingEngine saveAndAddDrawing];
 }
 
 - (IBAction)helpButtonAction:(id)sender {
@@ -351,6 +369,14 @@
             }
         }
     }
+}
+//TODO: Need to save the drawing here as well.
+- (IBAction)dismissViewButtonAction:(id)sender {
+    [self.drawingEngine saveCurrentDrawing];
+    
+    [self.drawingEngine eraseScreen];
+    
+    [self.drawingEngine.viewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Memory Management

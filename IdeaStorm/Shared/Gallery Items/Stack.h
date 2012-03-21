@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GalleryItem.h"
+#import "Database.h"
 
 @interface Stack : NSObject <GalleryItem>
 
