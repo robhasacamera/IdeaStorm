@@ -142,7 +142,7 @@
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
         //load root stack
-        rootStack = (Stack *)[self getGalleryItemForPath:pathToRootFile];
+        rootStack = (Stack *)[[self getGalleryItemForPath:pathToRootFile] retain];
     } else {
         //create and save root stack
         rootStack = [[Stack alloc]initWithPathID:kGalleryItemRoot];
