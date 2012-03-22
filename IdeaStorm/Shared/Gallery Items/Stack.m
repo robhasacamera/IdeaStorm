@@ -31,6 +31,18 @@
     
     self = [self initWithPathID:pathID];
     
+    NSMutableArray *childrenDataFilePaths = [[aDecoder decodeObjectForKey:kChildrenKey] retain];
+    
+    for (int i=0; i < [childrenDataFilePaths count]; i++) {
+        [self addChild:[Database getGalleryItemForPath:(NSString *)[childrenDataFilePaths objectAtIndex:i]]];
+    }
+    
+    NSLog(@"Children count = %i", [self.children count]);
+    
+    for (int i=0; i<[self.children count]; i++) {
+        NSLog(@"children[%i].pathID = %@", i, ((NSObject <GalleryItem> *)[self.children objectAtIndex:i]).pathID);
+    }
+    
     if (self) {
         //initialize with data from coder
         
@@ -48,6 +60,18 @@
     //call save thumnail and get the path
     //encode thumbnail path
     //encode children's pathID, or maybe their full path, because I might need the extention as well to determine their type
+    
+    //instead of saving the array of children, saving an array of their paths, this way only the path is save each time the stack is saved instead of the whole child
+    
+    NSMutableArray *childrenDataFilePaths = [[NSMutableArray alloc]initWithCapacity:[self.children count]];
+    
+    for (int i=0; i<[self.children count]; i++) {
+        [childrenDataFilePaths addObject:[((NSObject <GalleryItem> *)[self.children objectAtIndex:i]) getFullPathWithDataFilename:YES]];
+    }
+    
+    [aCoder encodeObject:childrenDataFilePaths forKey:kChildrenKey];
+    
+    [childrenDataFilePaths release];
 }
 
 - (NSString *)getFullPathWithDataFilename:(bool)yesOrNo {

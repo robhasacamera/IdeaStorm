@@ -45,7 +45,7 @@
 
 - (NSObject <GalleryItem> *)getRootGalleryItem;
 
-- (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path;
++ (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path;
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent;
 

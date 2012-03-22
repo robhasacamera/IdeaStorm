@@ -144,7 +144,7 @@
     
     if ([[NSFileManager defaultManager]fileExistsAtPath:pathToRootFile]) {
         //load root stack
-        rootStack = (Stack *)[[self getGalleryItemForPath:pathToRootFile] retain];
+        rootStack = (Stack *)[[Database getGalleryItemForPath:pathToRootFile] retain];
     } else {
         //create and save root stack
         rootStack = [[Stack alloc]initWithPathID:kGalleryItemRoot];
@@ -155,7 +155,7 @@
     return rootStack;
 }
 
-- (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path {
++ (NSObject <GalleryItem> *)getGalleryItemForPath:(NSString *)path {
     NSObject <GalleryItem> *galleryItem;
     
     NSData *data = [[NSData alloc]initWithContentsOfFile:path];

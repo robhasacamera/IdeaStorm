@@ -374,7 +374,13 @@
 #pragma mark - Working With Drawing Data
 
 - (bool)saveCurrentDrawing {
-    return [self.database saveGalleryItem:self.drawing];
+    bool success = [self.database saveGalleryItem:self.drawing];
+    
+    if (success) {
+        success = [self.database saveGalleryItem:self.drawing.parent];
+    }
+    
+    return success;
 }
 
 - (void)loadDrawing:(Drawing *)drawing {
