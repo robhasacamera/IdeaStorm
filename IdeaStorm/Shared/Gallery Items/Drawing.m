@@ -43,12 +43,12 @@
     [aCoder encodeObject:_pathID forKey:kPathIDKey];
 }
 
-- (NSString *)getFullPathWithExtension:(bool)yesOrNo {
+- (NSString *)getFullPathWithDataFilename:(bool)yesOrNo {
     NSString *fullPath = [self.pathID stringByAppendingPathExtension:[Drawing extention]];
     
     if (self.parent) {
         //build full path from parent's full path
-        fullPath = [[self.parent getFullPathWithExtension:NO] stringByAppendingPathComponent:fullPath];
+        fullPath = [[self.parent getFullPathWithDataFilename:NO] stringByAppendingPathComponent:fullPath];
     } else {
         //invalid, as a drawing must always have a parent
         [NSException raise:@"Drawing getFullPathWithExtention: A Drawing object must always have a parent." format:@"Drawing parent is nil"];
