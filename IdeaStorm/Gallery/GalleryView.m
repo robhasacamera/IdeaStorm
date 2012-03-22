@@ -154,7 +154,7 @@
     _rootStack = rootStack;
     
     //display contents of root stack.
-    _displayedStack = self.rootStack;
+    _displayedStack = rootStack;
 }
 
 //TODO: need to get and display contents of stack here.

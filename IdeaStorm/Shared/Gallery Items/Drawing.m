@@ -28,7 +28,9 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
+    NSString *pathID = [[aDecoder decodeObjectForKey:kPathIDKey] retain];
+    
+    self = [self initWithPathID:pathID];
     
     if (self) {
         //initialize with data from coder
@@ -38,18 +40,18 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    
+    [aCoder encodeObject:_pathID forKey:kPathIDKey];
 }
 
-- (NSString *)getFullPath {
-    NSLog(@"Drawing getFullPath Begin");
+- (NSString *)getFullPathWithExtention:(bool)yesOrNo {
     NSString *fullPath = [self.pathID stringByAppendingPathExtension:[Drawing extention]];
     
     if (self.parent) {
         //build full path from parent's full path
-        fullPath = [[self.parent getFullPath] stringByAppendingPathComponent:fullPath]; 
+        fullPath = [[self.parent getFullPathWithExtention:NO] stringByAppendingPathComponent:fullPath];
     } else {
         //invalid, as a drawing must always have a parent
+        [NSException raise:@"Drawing getFullPathWithExtention: A Drawing object must always have a parent." format:@"Drawing parent is nil"];
         return nil;
     }
     
@@ -58,8 +60,11 @@
     bool success = [[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error];
     
     if (success) {
-        NSLog(@"Drawing getFullPath End");
-        return [fullPath stringByAppendingPathComponent:kGalleryItemDataFileName];
+        if (yesOrNo) {
+            return [fullPath stringByAppendingPathComponent:kGalleryItemDataFileName];
+        } else {
+            return fullPath;
+        }
     }
     
     NSLog(@"getFullPath Error: %@", error);

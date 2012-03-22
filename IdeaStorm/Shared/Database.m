@@ -81,6 +81,7 @@
 	return documentsDirectory;
 }
 
+//TODO: Remove line that is commented out: [uuidString autorelease];
 + (NSString *)generateUniqueID {
     // create a new UUID which you own
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
@@ -91,7 +92,7 @@
     
     // transfer ownership of the string
     // to the autorelease pool
-    [uuidString autorelease];
+    //[uuidString autorelease];//commented this out as it was causing issue with the string being released too soon.
     
     // release the UUID
     CFRelease(uuid);
@@ -105,9 +106,10 @@
     NSError *error;
     bool success;
     
-    NSString *dataPath = [galleryItem getFullPath];
-    NSLog(@"Database saveGalleryItem dataPath = %@", dataPath);
+    NSString *dataPath = [galleryItem getFullPathWithExtention:YES];
+    
     NSMutableData *data = [[NSMutableData alloc]init];
+    
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
     
     [archiver encodeObject:galleryItem forKey:kGalleryItemDataKey];

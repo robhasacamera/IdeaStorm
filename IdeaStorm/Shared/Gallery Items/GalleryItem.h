@@ -25,7 +25,7 @@
 
 - (id)initWithPathID:(NSString *)pathID;
 
-- (NSString *)getFullPath;
+- (NSString *)getFullPathWithExtention:(bool)yesOrNo;
 
 - (bool)addChild:(NSObject <GalleryItem> *)galleryItem;
 

@@ -50,12 +50,12 @@
     //encode children's pathID, or maybe their full path, because I might need the extention as well to determine their type
 }
 
-- (NSString *)getFullPath {
+- (NSString *)getFullPathWithExtention:(bool)yesOrNo {
     NSString *fullPath = [self.pathID stringByAppendingPathExtension:[Stack extention]];
     
     if (self.parent) {
         //build full path from parent's full path
-        fullPath = [[self.parent getFullPath] stringByAppendingPathComponent:fullPath]; 
+        fullPath = [[self.parent getFullPathWithExtention:NO] stringByAppendingPathComponent:fullPath]; 
     } else {
         //root case, this is the root object
         fullPath = [[Database libraryPath] stringByAppendingPathComponent:fullPath];
@@ -66,7 +66,11 @@
     bool success = [[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error];
     
     if (success) {
-        return [fullPath stringByAppendingPathComponent:kGalleryItemDataFileName];
+        if (yesOrNo) {
+            return [fullPath stringByAppendingPathComponent:kGalleryItemDataFileName];
+        } else {
+            return fullPath;
+        }
     }
     
     NSLog(@"getFullPath Error: %@", error);
