@@ -106,7 +106,7 @@
     NSError *error;
     bool success;
     
-    NSString *dataPath = [galleryItem getFullPathWithExtention:YES];
+    NSString *dataPath = [galleryItem getFullPathWithExtension:YES];
     
     NSMutableData *data = [[NSMutableData alloc]init];
     
