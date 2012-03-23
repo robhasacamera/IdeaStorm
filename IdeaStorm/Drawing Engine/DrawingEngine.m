@@ -374,6 +374,8 @@
 #pragma mark - Working With Drawing Data
 
 - (bool)saveCurrentDrawing {
+    self.drawing.fullImage = [self.renderView getRenderedImage];
+    
     bool success = [self.database saveGalleryItem:self.drawing];
     
     if (success) {

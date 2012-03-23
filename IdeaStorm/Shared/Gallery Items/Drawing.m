@@ -27,6 +27,7 @@
     return self;
 }
 
+//TODO: get fullimage path and store it somewhere.
 - (id)initWithCoder:(NSCoder *)aDecoder {
     NSString *pathID = [[aDecoder decodeObjectForKey:kPathIDKey] retain];
     
@@ -41,6 +42,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_pathID forKey:kPathIDKey];
+    [self saveFullImage];
 }
 
 - (NSString *)getFullPathWithDataFilename:(bool)yesOrNo {
@@ -89,8 +91,17 @@
 }
 
 - (NSString *)saveFullImage {
+    NSString *fullImagePath = nil;
     
-    return nil;
+    if (self.fullImage) {
+        fullImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kFullImageFileName];
+        
+        NSData *fullImageData = UIImagePNGRepresentation(self.fullImage);
+        
+        [fullImageData writeToFile:fullImagePath atomically:YES];
+    }
+    
+    return fullImagePath;
 }
 
 - (NSString *)saveStroke {
@@ -105,10 +116,26 @@
 
 - (UIImage *)thumbnailImage {
     
+    if (_thumbnailImage) {
+        return _thumbnailImage;
+    }
+    
     return nil;
 }
 
 - (UIImage *)fullImage {
+    
+    if (_fullImage) {
+        return _fullImage;
+    }
+    
+    NSString *fullImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kFullImageFileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fullImagePath]) {
+        _fullImage = [UIImage imageWithContentsOfFile:fullImagePath];
+        
+        return _fullImage;
+    }
     
     return nil;
 }

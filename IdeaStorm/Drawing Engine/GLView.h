@@ -93,4 +93,8 @@ typedef struct {
 
 - (void)addVertices:(Vertex *)vertices withCount:(int)count;
 
+#pragma mark - Saving Rendered Data
+
+- (UIImage *)getRenderedImage;
+
 @end

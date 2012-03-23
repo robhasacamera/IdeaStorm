@@ -12,6 +12,8 @@
 #define kThumbnailImagePathKey @"thumbnailImagePath"
 #define kFullImagePathKey @"fullImagePath"
 #define kChildrenKey @"children"
+#define kFullImageFileName @"fullImage.png"
+#define kThumbImageFileName @"thumbImage.png"
 
 @protocol GalleryItem <NSCoding>
 
