@@ -169,7 +169,7 @@
     self.displayedStack = rootStack;
 }
 
-//TODO: need to get and display contents of stack here.
+//TODO: Need to add button actions, add thumbnail to the buttons and add up stack level button
 - (void)setDisplayedStack:(Stack *)displayedStack {
     
     
@@ -182,19 +182,15 @@
     UIButton *button;
     
     //releasing stored buttons to free memory
-    for (int i=0; i<[self.galleryItemButtons count]; i++) {
-        button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
-        
-        [self.galleryItemButtons removeObjectAtIndex:i];
-        
-        [button release];
-    }
+    
+    [self.galleryItemButtons removeAllObjects];
     
     //releasing stored thumbnail images to free memory
     if (_displayedStack.children) {
         NSObject <GalleryItem> *galleryItem;
         
         for (int i=0; i<[_displayedStack.children count]; i++) {
+            
             galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
             
             if (galleryItem.thumbnailImage) {
@@ -212,6 +208,8 @@
         button.backgroundColor = [UIColor grayColor];
         
         button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
+        
+        //add button action here!
         
         [self.galleryItemButtons addObject:button];
     }
@@ -231,6 +229,7 @@
         [self.scrollView addSubview:button];
     }
     
+    //load button images here.
     
     
     //create new buttons

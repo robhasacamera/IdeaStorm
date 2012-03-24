@@ -376,6 +376,8 @@
     
     [self.drawingEngine eraseScreen];
     
+    [self.drawingEngine.viewController.presentingViewController viewDidLoad];
+    
     [self.drawingEngine.viewController dismissModalViewControllerAnimated:YES];
 }
 

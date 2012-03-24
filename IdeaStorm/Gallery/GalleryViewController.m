@@ -53,6 +53,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"viewDidLoad");
+    
+    if (self.galleryView.displayedStack) {
+        self.galleryView.displayedStack = self.galleryView.displayedStack;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
