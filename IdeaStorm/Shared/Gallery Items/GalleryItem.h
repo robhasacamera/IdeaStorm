@@ -14,6 +14,8 @@
 #define kChildrenKey @"children"
 #define kFullImageFileName @"fullImage.png"
 #define kThumbImageFileName @"thumbImage.png"
+#define kThumbWidth 75
+#define kThumbHeight 100
 
 @protocol GalleryItem <NSCoding>
 

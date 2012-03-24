@@ -16,6 +16,8 @@
 @synthesize toolbar = _toolbar;
 @synthesize selectedGalleryItem = _selectedGalleryItem;
 @synthesize delegate = _delegate;
+@synthesize positioningHelper = _positioningHelper;
+@synthesize galleryItemButtons = _galleryItemButtons;
 
 #pragma mark - Initialization
 
@@ -37,6 +39,8 @@
         [self fitToSize:frame.size];
         
         self.scrollView.backgroundColor = [UIColor blueColor];
+        
+        self.positioningHelper = [[PositioningHelper alloc]init];
     }
     return self;
 }
@@ -103,11 +107,23 @@
         self.scrollView.frame = scrollViewFrame;
     }
     
-    if (self.rootStack) {
+    if (self.displayedStack) {
         //if nothing is loaded, load the root stack
         
         //else reposition current elements
     }
+}
+
+- (void)positionGalleryItemButtons {
+    [self.positioningHelper gridPositionViews:self.galleryItemButtons usingWidth:self.scrollView.frame.size.width];
+    
+    CGSize scrollViewContentSize = self.scrollView.contentSize;
+    
+    UIButton *lastButton = ((UIButton *)[self.galleryItemButtons lastObject]);
+    
+    scrollViewContentSize.height = lastButton.center.y + self.positioningHelper.viewSpace.height;
+    
+    self.scrollView.contentSize = scrollViewContentSize;
 }
 
 #pragma mark - GalleryToolbarDelegate Methods
@@ -152,14 +168,105 @@
     _rootStack = rootStack;
     
     //display contents of root stack.
-    _displayedStack = rootStack;
+    self.displayedStack = rootStack;
 }
 
 //TODO: need to get and display contents of stack here.
 - (void)setDisplayedStack:(Stack *)displayedStack {
-    _displayedStack = displayedStack;
+    
     
     //get and display contents of stack.
+    
+    if (!self.galleryItemButtons) {
+        self.galleryItemButtons = [[NSMutableArray alloc]initWithCapacity:[self.displayedStack.children count]];
+    }
+    
+    UIButton *button;
+    
+    //releasing stored buttons to free memory
+    for (int i=0; i<[self.galleryItemButtons count]; i++) {
+        button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
+        
+        [self.galleryItemButtons removeObjectAtIndex:i];
+        
+        [button release];
+    }
+    
+    //releasing stored thumbnail images to free memory
+    if (_displayedStack.children) {
+        NSObject <GalleryItem> *galleryItem;
+        
+        for (int i=0; i<[_displayedStack.children count]; i++) {
+            galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
+            
+            if (galleryItem.thumbnailImage) {
+                [galleryItem.thumbnailImage release];
+            }
+        }
+    }
+    
+    
+    _displayedStack = displayedStack;
+    
+    //build buttons for galleryItems in stack
+    for (int i=0; i<[self.displayedStack.children count]; i++) {
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        button.backgroundColor = [UIColor grayColor];
+        
+        button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
+        
+        [self.galleryItemButtons addObject:button];
+    }
+    
+    //insert the up stack level button if this is not the root stack
+    if (displayedStack.pathID != self.rootStack.pathID) {
+        //insert upstack button at index 0
+    }
+    
+    //position the gallery buttons
+    [self positionGalleryItemButtons];
+    
+    //add the buttons to the scrollView.
+    for (int i=0; i<[self.galleryItemButtons count]; i++) {
+        button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
+        
+        [self.scrollView addSubview:button];
+    }
+    
+    
+    
+    //create new buttons
+        //if this is not the rootStack add the up level button first
+        //set background of buttons to grey
+        //set hieght and width using a constant height and width
+        //set action of buttons to open the child the are related to
+            //maybe by setting the id of the button to the index of the corresponding child.
+    
+    //set position of all the buttons
+        //need to make a method or class that can do this
+    
+    //set the contentHeight of the scrollView depending on the last buttons position
+    
+    //add buttons to the scrollView
+    
+    //load the thumbImages into the buttons.
+    
+    
+    
+    //NOTES
+    //if there are elements that are currently displayed, released them to free up memory
+    //so [button.image release] and then [button release]
+    
+    //build the new buttons with a gray background, add their functionality, position them and then add the images last
+    //this way the buttons are there immediately even if it takes the images a while to load.
+    //need to have an array of the buttons that can be tracked and repositioned when in the fitToSize method
+    
+    //then build new array of buttons, getting the thumb images from the children of the displayedStack
+    //get the current size of the scrollview
+    //set the position of the buttons according to the width of the scrollview
+    
+    //set the max content hieght of the scrollview to be a little longer then the last button's y position plus hieght
 }
 
 - (void)dealloc {
@@ -169,6 +276,10 @@
     
     if (self.scrollView) {
         [self.scrollView release];
+    }
+    
+    if (self.positioningHelper) {
+        [self.positioningHelper release];
     }
     
     [super dealloc];

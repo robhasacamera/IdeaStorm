@@ -13,6 +13,7 @@
 #import "GalleryToolbar.h"
 #import "GalleryViewDelegate.h"
 #import "GalleryToolbarDelegate.h"
+#import "PositioningHelper.h"
 
 @interface GalleryView : UIView <GalleryToolbarDelegate>
 
@@ -22,9 +23,13 @@
 @property (nonatomic, strong) GalleryToolbar *toolbar;
 @property (nonatomic, readonly) NSObject <GalleryItem> *selectedGalleryItem;
 @property (nonatomic, retain) NSObject <GalleryViewDelegate> *delegate;
+@property (nonatomic, retain) PositioningHelper *positioningHelper;
+@property (nonatomic, retain) NSMutableArray *galleryItemButtons;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
 - (void)fitToSize:(CGSize)size;
+
+- (void)positionGalleryItemButtons;
 
 @end
