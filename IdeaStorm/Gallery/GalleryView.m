@@ -38,7 +38,7 @@
     if (self) {
         [self fitToSize:frame.size];
         
-        self.scrollView.backgroundColor = [UIColor blueColor];
+        self.scrollView.backgroundColor = [UIColor blackColor];
         
         self.positioningHelper = [[PositioningHelper alloc]init];
     }
@@ -108,9 +108,7 @@
     }
     
     if (self.displayedStack) {
-        //if nothing is loaded, load the root stack
-        
-        //else reposition current elements
+        [self positionGalleryItemButtons];
     }
 }
 
@@ -204,7 +202,6 @@
             }
         }
     }
-    
     
     _displayedStack = displayedStack;
     

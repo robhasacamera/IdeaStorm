@@ -34,8 +34,7 @@
         
         [self.view addSubview:self.galleryView];
         
-        self.view.backgroundColor = [UIColor redColor];
-        self.galleryView.backgroundColor = [UIColor grayColor];
+        self.view.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
