@@ -253,22 +253,7 @@
         button = [((UIButton *)[self.galleryItemButtons objectAtIndex:buttonIndex]) retain];
         galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
         
-        NSLog(@"index = %i", i);
-        if (button) {
-            NSLog(@"button %i exist", buttonIndex);
-        }
-        
-        if (galleryItem) {
-            NSLog(@"galleryItem %i exist", i);
-        }
-        
-        if (galleryItem.fullImage) {
-            NSLog(@"galleryItem.fullImage %i exist", i);
-        }
-        
         [button setImage:galleryItem.fullImage forState:UIControlStateNormal];
-        
-        //[button release];
         
         buttonIndex++;
     }

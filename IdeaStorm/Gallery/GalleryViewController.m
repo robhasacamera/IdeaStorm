@@ -54,11 +54,16 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"viewDidLoad");
+    NSLog(@"test");
+    [self.galleryView fitToSize:self.view.bounds.size];
     
     if (self.galleryView.displayedStack) {
         self.galleryView.displayedStack = self.galleryView.displayedStack;
     }
+    
+    //if ((self.galleryView.frame.size.width != self.view.bounds.size.width) || (self.galleryView.frame.size.height != self.view.bounds.size.height)) {
+        
+    //}
     // Do any additional setup after loading the view from its nib.
 }
 

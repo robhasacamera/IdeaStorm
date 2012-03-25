@@ -37,6 +37,8 @@
         [self addChild:[Database getGalleryItemForPath:(NSString *)[childrenDataFilePaths objectAtIndex:i]]];
     }
     
+    [childrenDataFilePaths release];
+    
     NSLog(@"Children count = %i", [self.children count]);
     
     for (int i=0; i<[self.children count]; i++) {

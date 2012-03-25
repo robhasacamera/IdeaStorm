@@ -230,7 +230,7 @@
 }
 
 #pragma mark - Save Rendered Data
-
+//FIXME: freeing buffer 2 causes a crash on the iPad 1 and iPad 3, however it does not crash in the simulator. This is casuing a sizable memory leak.
 - (UIImage *)getRenderedImage {
     int width = 768;//(int)floorf(self.frame.size.width);
     int height = 1024;//(int)floorf(self.frame.size.height);
@@ -249,8 +249,13 @@
             buffer2[((height-1) - y) * width * 4 + x] = buffer[y * 4 * width + x];
         }
     }
+    
+    free(buffer);
+    
     // make data provider with data.
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    
+    //free(buffer2);
     
     // prep the ingredients
     int bitsPerComponent = 8;
