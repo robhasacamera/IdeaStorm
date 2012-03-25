@@ -171,7 +171,11 @@
 
 //TODO: Need to add button actions, add thumbnail to the buttons and add up stack level button
 - (void)setDisplayedStack:(Stack *)displayedStack {
+    bool notRootStack = YES;
     
+    if (displayedStack.pathID == self.rootStack.pathID) {
+        notRootStack = NO;
+    }
     
     //get and display contents of stack.
     
@@ -180,17 +184,23 @@
     }
     
     UIButton *button;
+    NSObject <GalleryItem> *galleryItem;
+    
+    //removing buttons from scrollview
+    for (int i=0; i<[self.galleryItemButtons count]; i++) {
+        button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
+        
+        [button removeFromSuperview];
+    }
     
     //releasing stored buttons to free memory
-    
     [self.galleryItemButtons removeAllObjects];
     
     //releasing stored thumbnail images to free memory
     if (_displayedStack.children) {
-        NSObject <GalleryItem> *galleryItem;
+        
         
         for (int i=0; i<[_displayedStack.children count]; i++) {
-            
             galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
             
             if (galleryItem.thumbnailImage) {
@@ -211,11 +221,13 @@
         
         //add button action here!
         
+        //might need to set id too
+        
         [self.galleryItemButtons addObject:button];
     }
     
     //insert the up stack level button if this is not the root stack
-    if (displayedStack.pathID != self.rootStack.pathID) {
+    if (notRootStack) {
         //insert upstack button at index 0
     }
     
@@ -229,40 +241,37 @@
         [self.scrollView addSubview:button];
     }
     
-    //load button images here.
+    int buttonIndex = 0;
     
+    //will need to start at the second button if the up stack level button is present
+    if (notRootStack) {
+        buttonIndex++;
+    }
     
-    //create new buttons
-        //if this is not the rootStack add the up level button first
-        //set background of buttons to grey
-        //set hieght and width using a constant height and width
-        //set action of buttons to open the child the are related to
-            //maybe by setting the id of the button to the index of the corresponding child.
-    
-    //set position of all the buttons
-        //need to make a method or class that can do this
-    
-    //set the contentHeight of the scrollView depending on the last buttons position
-    
-    //add buttons to the scrollView
-    
-    //load the thumbImages into the buttons.
-    
-    
-    
-    //NOTES
-    //if there are elements that are currently displayed, released them to free up memory
-    //so [button.image release] and then [button release]
-    
-    //build the new buttons with a gray background, add their functionality, position them and then add the images last
-    //this way the buttons are there immediately even if it takes the images a while to load.
-    //need to have an array of the buttons that can be tracked and repositioned when in the fitToSize method
-    
-    //then build new array of buttons, getting the thumb images from the children of the displayedStack
-    //get the current size of the scrollview
-    //set the position of the buttons according to the width of the scrollview
-    
-    //set the max content hieght of the scrollview to be a little longer then the last button's y position plus hieght
+    //load button images here!
+    for (int i=0; i<[self.displayedStack.children count]; i++) {
+        button = [((UIButton *)[self.galleryItemButtons objectAtIndex:buttonIndex]) retain];
+        galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
+        
+        NSLog(@"index = %i", i);
+        if (button) {
+            NSLog(@"button %i exist", buttonIndex);
+        }
+        
+        if (galleryItem) {
+            NSLog(@"galleryItem %i exist", i);
+        }
+        
+        if (galleryItem.fullImage) {
+            NSLog(@"galleryItem.fullImage %i exist", i);
+        }
+        
+        [button setImage:galleryItem.fullImage forState:UIControlStateNormal];
+        
+        //[button release];
+        
+        buttonIndex++;
+    }
 }
 
 - (void)dealloc {
