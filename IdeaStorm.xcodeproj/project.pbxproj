@@ -60,6 +60,9 @@
 		E189DAAD1470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = E189DAA91470E1BC00DCF58B /* Tutorial_PortraitUpsideDown.png */; };
 		E189DAB0147169C700DCF58B /* TutorialOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DAAF147169C700DCF58B /* TutorialOverlay.m */; };
 		E1D3E7FA151E3ED700228E1C /* PositioningHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D3E7F9151E3ED700228E1C /* PositioningHelper.m */; };
+		E1D3E7FE151F85D100228E1C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D3E7FD151F85D100228E1C /* UIImage+Resize.m */; };
+		E1D3E801151F865600228E1C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D3E800151F865600228E1C /* UIImage+RoundedCorner.m */; };
+		E1D3E804151F86A100228E1C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D3E803151F86A100228E1C /* UIImage+Alpha.m */; };
 		E1D5F6ED150D8BDB00280FBC /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6EB150D8BDB00280FBC /* GalleryViewController.m */; };
 		E1D5F6EE150D8BDB00280FBC /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5F6EC150D8BDB00280FBC /* GalleryViewController.xib */; };
 		E1D5F6F1150D8C2300280FBC /* GalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D5F6F0150D8C2300280FBC /* GalleryView.m */; };
@@ -150,6 +153,12 @@
 		E189DAAF147169C700DCF58B /* TutorialOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialOverlay.m; sourceTree = "<group>"; };
 		E1D3E7F8151E3ED700228E1C /* PositioningHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositioningHelper.h; sourceTree = "<group>"; };
 		E1D3E7F9151E3ED700228E1C /* PositioningHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositioningHelper.m; sourceTree = "<group>"; };
+		E1D3E7FC151F85D100228E1C /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		E1D3E7FD151F85D100228E1C /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		E1D3E7FF151F865600228E1C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		E1D3E800151F865600228E1C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		E1D3E802151F86A000228E1C /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		E1D3E803151F86A100228E1C /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		E1D5F6EA150D8BDB00280FBC /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		E1D5F6EB150D8BDB00280FBC /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		E1D5F6EC150D8BDB00280FBC /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
@@ -361,6 +370,12 @@
 				E189DAAF147169C700DCF58B /* TutorialOverlay.m */,
 				E1D3E7F8151E3ED700228E1C /* PositioningHelper.h */,
 				E1D3E7F9151E3ED700228E1C /* PositioningHelper.m */,
+				E1D3E7FC151F85D100228E1C /* UIImage+Resize.h */,
+				E1D3E7FD151F85D100228E1C /* UIImage+Resize.m */,
+				E1D3E7FF151F865600228E1C /* UIImage+RoundedCorner.h */,
+				E1D3E800151F865600228E1C /* UIImage+RoundedCorner.m */,
+				E1D3E802151F86A000228E1C /* UIImage+Alpha.h */,
+				E1D3E803151F86A100228E1C /* UIImage+Alpha.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -540,6 +555,9 @@
 				E1D5F6F8150D8E3F00280FBC /* Stack.m in Sources */,
 				E1D5F6FB150D8E5300280FBC /* Drawing.m in Sources */,
 				E1D3E7FA151E3ED700228E1C /* PositioningHelper.m in Sources */,
+				E1D3E7FE151F85D100228E1C /* UIImage+Resize.m in Sources */,
+				E1D3E801151F865600228E1C /* UIImage+RoundedCorner.m in Sources */,
+				E1D3E804151F86A100228E1C /* UIImage+Alpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

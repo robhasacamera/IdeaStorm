@@ -43,6 +43,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_pathID forKey:kPathIDKey];
     [self saveFullImage];
+    [self saveThumbnailImage];
 }
 
 - (NSString *)getFullPathWithDataFilename:(bool)yesOrNo {
@@ -86,8 +87,17 @@
 }
 
 - (NSString *)saveThumbnailImage {
+    NSString *thumbImagePath = nil;
     
-    return nil;
+    if (self.thumbnailImage) {
+        thumbImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kThumbImageFileName];
+        
+        NSData *thumbImageData = UIImagePNGRepresentation(self.thumbnailImage);
+        
+        [thumbImageData writeToFile:thumbImagePath atomically:YES];
+    }
+    
+    return thumbImagePath;
 }
 
 - (NSString *)saveFullImage {
@@ -120,6 +130,14 @@
         return _thumbnailImage;
     }
     
+    NSString *thumbnailImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kThumbImageFileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailImagePath]) {
+        _thumbnailImage = [UIImage imageWithContentsOfFile:thumbnailImagePath];
+        
+        return _thumbnailImage;
+    }
+    
     return nil;
 }
 
@@ -138,6 +156,19 @@
     }
     
     return nil;
+}
+
+- (void)setFullImage:(UIImage *)fullImage {
+    
+    _fullImage = fullImage;
+    
+    self.thumbnailImage = [fullImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(kThumbWidth, kThumbHeight) interpolationQuality:kCGInterpolationHigh];
+    
+    if (self.thumbnailImage) {
+        NSLog(@"should be working w=%f h=%f", self.thumbnailImage.size.width, self.thumbnailImage.size.height);
+    } else {
+        NSLog(@"something is wrong");
+    }
 }
 
 + (NSString *)extention {

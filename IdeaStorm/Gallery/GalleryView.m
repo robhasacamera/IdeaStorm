@@ -253,7 +253,7 @@
         button = [((UIButton *)[self.galleryItemButtons objectAtIndex:buttonIndex]) retain];
         galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
         
-        [button setImage:galleryItem.fullImage forState:UIControlStateNormal];
+        [button setImage:galleryItem.thumbnailImage forState:UIControlStateNormal];
         
         buttonIndex++;
     }

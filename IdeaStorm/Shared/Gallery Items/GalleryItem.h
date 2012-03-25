@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIImage+Resize.h" 
 
 #define kPathIDKey @"pathID"
 #define kThumbnailImagePathKey @"thumbnailImagePath"
