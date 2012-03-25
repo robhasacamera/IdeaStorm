@@ -158,17 +158,12 @@
     return nil;
 }
 
+//Overriding the setter for fullImage to create the thumbnail as well.
 - (void)setFullImage:(UIImage *)fullImage {
     
     _fullImage = fullImage;
     
-    self.thumbnailImage = [fullImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(kThumbWidth, kThumbHeight) interpolationQuality:kCGInterpolationHigh];
-    
-    if (self.thumbnailImage) {
-        NSLog(@"should be working w=%f h=%f", self.thumbnailImage.size.width, self.thumbnailImage.size.height);
-    } else {
-        NSLog(@"something is wrong");
-    }
+    self.thumbnailImage = [[fullImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(kThumbWidth, kThumbHeight) interpolationQuality:kCGInterpolationHigh] retain];
 }
 
 + (NSString *)extention {
@@ -178,6 +173,22 @@
 - (NSMutableArray *)stroke {
     
     return nil;
+}
+
+- (void)dealloc {
+    if (_thumbnailImage) {
+        [_thumbnailImage release];
+    }
+    
+    if (_fullImage) {
+        [_fullImage release];
+    }
+    
+    if (_pathID) {
+        [_pathID release];
+    }
+    
+    [super dealloc];
 }
 
 @end

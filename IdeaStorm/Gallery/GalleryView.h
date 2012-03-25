@@ -15,6 +15,9 @@
 #import "GalleryToolbarDelegate.h"
 #import "PositioningHelper.h"
 
+#define kGalleryItemWidthSpacing 150.0
+#define kGalleryItemHeightSpacing 200.0
+
 @interface GalleryView : UIView <GalleryToolbarDelegate>
 
 @property (nonatomic, retain) Stack *rootStack;
@@ -31,5 +34,11 @@
 - (void)fitToSize:(CGSize)size;
 
 - (void)positionGalleryItemButtons;
+
+- (IBAction)galleryItemButtonAction:(id)sender;
+
+- (void)unselectAll;
+
+- (void)openGalleryItem:(NSObject <GalleryItem> *)galleryItem;
 
 @end

@@ -33,7 +33,7 @@
     
     if (success) {
         //calculate the number of items for the width
-        int viewsPerRow = (int)floorf(width / kDefaultViewSpace);
+        int viewsPerRow = (int)floorf(width / self.viewSpace.width);
         
         float remainder = width - (viewsPerRow * self.viewSpace.width);
         

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDefaultViewSpace 150.0
+#define kDefaultViewSpace 200.0
 
 @interface PositioningHelper : NSObject
 @property (nonatomic) CGSize viewSpace;

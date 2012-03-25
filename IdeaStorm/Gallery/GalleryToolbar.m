@@ -84,11 +84,19 @@
 }
 
 - (bool)switchToNormalMode {
-    return [self switchToMode:NORMAL_MODE];
+    bool success = [self switchToMode:NORMAL_MODE];
+    
+    [self.galleryToolbarDelegate modeChange];
+    
+    return success;
 }
 
 - (bool)switchToEditMode {
-    return [self switchToMode:EDIT_MODE];
+    bool success = [self switchToMode:EDIT_MODE];
+    
+    [self.galleryToolbarDelegate modeChange];
+    
+    return success;
 }
 
 - (void)dealloc {

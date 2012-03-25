@@ -7,6 +7,7 @@
 //
 
 #import "GalleryView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation GalleryView
 
@@ -41,6 +42,8 @@
         self.scrollView.backgroundColor = [UIColor blackColor];
         
         self.positioningHelper = [[PositioningHelper alloc]init];
+        
+        self.positioningHelper.viewSpace = CGSizeMake(kGalleryItemWidthSpacing, kGalleryItemHeightSpacing);
     }
     return self;
 }
@@ -119,7 +122,7 @@
     
     UIButton *lastButton = ((UIButton *)[self.galleryItemButtons lastObject]);
     
-    scrollViewContentSize.height = lastButton.center.y + self.positioningHelper.viewSpace.height;
+    scrollViewContentSize.height = lastButton.center.y + (self.positioningHelper.viewSpace.height / 2);
     
     self.scrollView.contentSize = scrollViewContentSize;
 }
@@ -158,6 +161,11 @@
     NSLog(@"Edit Tutorial");
 }
 
+- (void)modeChange {
+    if (self.toolbar.mode != EDIT_MODE) {
+        [self unselectAll];
+    }
+}
 
 #pragma mark - Data Management
 
@@ -219,9 +227,10 @@
         
         button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
         
-        //add button action here!
+        //setting the button to reference the galleryItem is was created for.
+        button.tag = i;
         
-        //might need to set id too
+        [button addTarget:self action:@selector(galleryItemButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.galleryItemButtons addObject:button];
     }
@@ -255,9 +264,61 @@
         
         [button setImage:galleryItem.thumbnailImage forState:UIControlStateNormal];
         
+                
         buttonIndex++;
     }
 }
+
+- (IBAction)galleryItemButtonAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    
+    if (self.toolbar.mode == NORMAL_MODE) {
+        [self openGalleryItem:(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag]];
+    }
+    
+    bool buttonWasSelected = NO;
+    
+    if (self.toolbar.mode == EDIT_MODE) {
+        
+        if (button.layer.borderColor == [[UIColor redColor] CGColor]) {
+            buttonWasSelected = YES;
+        }
+        
+        [self unselectAll];
+        
+        if (!buttonWasSelected) {
+            button.layer.borderColor = [[UIColor redColor] CGColor];
+            button.layer.borderWidth = 3.0;
+            
+            _selectedGalleryItem = (NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag];
+        }
+    }
+}
+
+- (void)unselectAll {
+    UIButton *button;
+    
+    for (int i=0; i<[self.galleryItemButtons count]; i++) {
+        button = (UIButton *)[self.galleryItemButtons objectAtIndex:i];
+        
+        button.layer.borderColor = [[UIColor clearColor] CGColor];
+        button.layer.borderWidth = 0.0;
+    }
+    
+    _selectedGalleryItem = nil;
+}
+
+- (void)openGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    if ([galleryItem isKindOfClass:[Stack class]]) {
+        self.displayedStack = (Stack *)galleryItem;
+    }
+    
+    if ([galleryItem isKindOfClass:[Drawing class]]) {
+        NSLog(@"Open Drawing");
+    }
+}
+
+#pragma mark - Memory Management
 
 - (void)dealloc {
     if (self.toolbar) {

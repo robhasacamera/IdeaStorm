@@ -54,7 +54,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"test");
     [self.galleryView fitToSize:self.view.bounds.size];
     
     if (self.galleryView.displayedStack) {

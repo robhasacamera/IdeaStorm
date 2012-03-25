@@ -24,4 +24,6 @@
 
 - (void)showEditTutorial;
 
+- (void)modeChange;
+
 @end
