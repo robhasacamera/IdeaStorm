@@ -14,12 +14,12 @@
 #import "DrawingColor.h"
 #import "TutorialOverlay.h"
 
-#define kToolbarButtonUpYPosition 20.0
-#define kToolbarButtonDownYPosition 40.0
-#define kToolbarButtonWidth 40.0
-#define kToolbarButtonHieght 60.0
-#define kToolbarButtonSpacing 5.0
-#define kToolbarButtonsStartX 90.0
+#define kToolbarButtonUpYPosition 10.0
+#define kToolbarButtonDownYPosition 30.0
+#define kToolbarButtonWidth 50.0
+#define kToolbarButtonHieght 75.0
+#define kToolbarButtonSpacing 0.0
+#define kToolbarButtonsStartX 75.0
 
 @interface Toolbar : UIView {
     NSInteger nextIndex;

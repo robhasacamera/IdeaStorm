@@ -83,7 +83,7 @@
     
     [quickSwitchButton setImage:[UIImage imageNamed:@"Quick_Switch_Icon.png"] forState:UIControlStateNormal];
     
-    quickSwitchButton.frame = CGRectMake(10.0, 10.0, 70.0, 70.0);
+    quickSwitchButton.frame = CGRectMake(0.0, 10.0, 70.0, 70.0);
     
     quickSwitchButton.backgroundColor = [UIColor blueColor];
     
@@ -96,7 +96,7 @@
     
     [newDrawingButton setImage:[UIImage imageNamed:@"New_Drawing_Icon.png"] forState:UIControlStateNormal];
     
-    newDrawingButton.frame = CGRectMake(600.0, 30.0, 50.0, 50.0);
+    newDrawingButton.frame = CGRectMake(630.0, 30.0, 50.0, 50.0);
     
     newDrawingButton.backgroundColor = [UIColor grayColor];
     
@@ -107,9 +107,9 @@
     //Dimiss View Button
     UIButton *dismissViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    //TODO: set image here
+    [dismissViewButton setImage:[UIImage imageNamed:@"Gallery_Icon.png"] forState:UIControlStateNormal];
     
-    dismissViewButton.frame = CGRectMake(668.0, 30.0, 50.0, 50.0);
+    dismissViewButton.frame = CGRectMake(685.0, 30.0, 50.0, 50.0);
     
     dismissViewButton.backgroundColor = [UIColor blackColor];
     
@@ -122,7 +122,7 @@
     
     [helpButton setImage:[UIImage imageNamed:@"Help_Icon.png"] forState:UIControlStateNormal];
     
-    helpButton.frame = CGRectMake(733.0, 55.0, 25.0, 25.0);
+    helpButton.frame = CGRectMake(740.0, 55.0, 25.0, 25.0);
     
     helpButton.backgroundColor = [UIColor purpleColor];
     
