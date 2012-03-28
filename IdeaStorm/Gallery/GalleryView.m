@@ -19,6 +19,7 @@
 @synthesize delegate = _delegate;
 @synthesize positioningHelper = _positioningHelper;
 @synthesize galleryItemButtons = _galleryItemButtons;
+@synthesize drawingView = _drawingView;
 
 #pragma mark - Initialization
 
@@ -63,7 +64,6 @@
 
 //TODO: Need add repositioning the galleryitem icons.
 - (void)fitToSize:(CGSize)size {
-    
     //resizing the GalleryView
     CGRect galleryViewFrame;
     
@@ -113,6 +113,24 @@
     if (self.displayedStack) {
         [self positionGalleryItemButtons];
     }
+    
+    CGRect drawingViewFrame = CGRectMake(0.0, 0.0, size.width, size.height);
+    
+    if (!self.drawingView) {
+        self.drawingView = [[UIImageView alloc]initWithFrame:drawingViewFrame];
+        
+        [self addSubview:self.drawingView];
+        
+        self.drawingView.backgroundColor = [UIColor blackColor];
+        
+        self.drawingView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        self.drawingView.hidden = YES;
+        
+        self.drawingView.userInteractionEnabled = YES;
+    }
+    
+    self.drawingView.frame = drawingViewFrame;
 }
 
 - (void)positionGalleryItemButtons {
@@ -125,6 +143,31 @@
     scrollViewContentSize.height = lastButton.center.y + (self.positioningHelper.viewSpace.height / 2);
     
     self.scrollView.contentSize = scrollViewContentSize;
+}
+
+- (void)displayDrawing:(Drawing *)drawing {
+    if (self.drawingView.hidden) {
+        [self.drawingView setImage:drawing.fullImage];
+        self.drawingView.hidden = NO;
+        self.drawingView.alpha = 0.0;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.drawingView.alpha = 1.0;
+        }];
+    }
+}
+
+- (void)hideDisplayedDrawing {
+    if (!self.drawingView.hidden) {
+        self.drawingView.hidden = YES;
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!self.drawingView.hidden) {
+        
+        [self hideDisplayedDrawing];
+    }
 }
 
 #pragma mark - GalleryToolbarDelegate Methods
@@ -314,7 +357,7 @@
     }
     
     if ([galleryItem isKindOfClass:[Drawing class]]) {
-        NSLog(@"Open Drawing");
+        [self displayDrawing:(Drawing *)galleryItem];
     }
 }
 
@@ -331,6 +374,10 @@
     
     if (self.positioningHelper) {
         [self.positioningHelper release];
+    }
+    
+    if (self.drawingView) {
+        [self.drawingView release];
     }
     
     [super dealloc];

@@ -89,10 +89,10 @@
 - (NSString *)saveThumbnailImage {
     NSString *thumbImagePath = nil;
     
-    if (self.thumbnailImage) {
+    if (_thumbnailImage) {
         thumbImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kThumbImageFileName];
         
-        NSData *thumbImageData = UIImagePNGRepresentation(self.thumbnailImage);
+        NSData *thumbImageData = UIImagePNGRepresentation(_thumbnailImage);
         
         [thumbImageData writeToFile:thumbImagePath atomically:YES];
     }
@@ -103,10 +103,10 @@
 - (NSString *)saveFullImage {
     NSString *fullImagePath = nil;
     
-    if (self.fullImage) {
+    if (_fullImage) {
         fullImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kFullImageFileName];
         
-        NSData *fullImageData = UIImagePNGRepresentation(self.fullImage);
+        NSData *fullImageData = UIImagePNGRepresentation(_fullImage);
         
         [fullImageData writeToFile:fullImagePath atomically:YES];
     }
@@ -150,7 +150,7 @@
     NSString *fullImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kFullImageFileName];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:fullImagePath]) {
-        _fullImage = [UIImage imageWithContentsOfFile:fullImagePath];
+        _fullImage = [[UIImage imageWithContentsOfFile:fullImagePath] retain];
         
         return _fullImage;
     }
@@ -161,7 +161,7 @@
 //Overriding the setter for fullImage to create the thumbnail as well.
 - (void)setFullImage:(UIImage *)fullImage {
     
-    _fullImage = fullImage;
+    _fullImage = [fullImage retain];
     
     self.thumbnailImage = [[fullImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(kThumbWidth, kThumbHeight) interpolationQuality:kCGInterpolationHigh] retain];
 }

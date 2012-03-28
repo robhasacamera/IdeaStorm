@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSObject <GalleryViewDelegate> *delegate;
 @property (nonatomic, retain) PositioningHelper *positioningHelper;
 @property (nonatomic, retain) NSMutableArray *galleryItemButtons;
+@property (nonatomic, retain) UIImageView *drawingView;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
@@ -40,5 +41,9 @@
 - (void)unselectAll;
 
 - (void)openGalleryItem:(NSObject <GalleryItem> *)galleryItem;
+
+- (void)displayDrawing:(Drawing *)drawing;
+
+- (void)hideDisplayedDrawing;
 
 @end

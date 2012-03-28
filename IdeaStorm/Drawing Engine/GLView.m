@@ -232,8 +232,8 @@
 #pragma mark - Save Rendered Data
 //FIXME: freeing buffer 2 causes a crash on the iPad 1 and iPad 3, however it does not crash in the simulator. This is casuing a sizable memory leak.
 - (UIImage *)getRenderedImage {
-    int width = 768;//(int)floorf(self.frame.size.width);
-    int height = 1024;//(int)floorf(self.frame.size.height);
+    int width = (int)floorf(self.frame.size.width);
+    int height = (int)floorf(self.frame.size.height);
     
     NSInteger myDataLength = width * height * 4;
     // allocate array and read pixels into it.
