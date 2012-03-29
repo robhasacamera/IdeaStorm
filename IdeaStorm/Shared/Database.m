@@ -175,8 +175,31 @@
     return nil;
 }
 
-- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten {
-    return nil;
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    //get document path
+    NSString *galleryItemFolder = [[galleryItem getFullPathWithDataFilename:NO] retain];
+    NSLog(@"Deleting %@", galleryItemFolder);
+    
+    NSError *error;
+    
+    bool success = NO;
+    
+    //delete the folder and release the gallery item
+    if ([[NSFileManager defaultManager] fileExistsAtPath:galleryItemFolder]) {
+        success = [[NSFileManager defaultManager] removeItemAtPath:galleryItemFolder error:&error];
+        
+        [galleryItem release];
+        [galleryItemFolder release];
+        
+        
+    } 
+    
+    if (!success) {
+        NSLog(@"deleteGalleryItem Error: %@", error);
+        NSLog(@"deleteGalleryItem Error userInfo: %@", [error userInfo]);
+    }
+    
+    return success;
 }
 
 - (void)dealloc {

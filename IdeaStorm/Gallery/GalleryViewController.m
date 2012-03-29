@@ -103,8 +103,25 @@
     return nil;
 }
 
-- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten {
-    return nil;
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    NSObject <GalleryItem> * parent = galleryItem.parent;
+    
+    bool success = [parent deleteChild:galleryItem];
+    
+    if (success) {
+        //save gallery item
+        [self.database saveGalleryItem:parent];
+        
+        //need to have a method in the databse to delete a gallery item, so the child that was removed can have its resources deleted in the file system.
+        [self.database deleteGalleryItem:galleryItem];
+        
+        //release selectedGalleryItem and set it to nil
+        
+        
+    }
+    
+    
+    return success;
 }
 
 //TODO: This is incomplete.

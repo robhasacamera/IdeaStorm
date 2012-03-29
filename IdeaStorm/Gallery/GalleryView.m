@@ -177,7 +177,12 @@
 }
 
 - (void)deleteSelected {
-    NSLog(@"Delete");
+    NSLog(@"GalleryView Deleting %@", [self.selectedGalleryItem getFullPathWithDataFilename:NO]);
+    
+    [self.delegate deleteGalleryItem:self.selectedGalleryItem];
+    
+    //refresh the display
+    self.displayedStack = self.displayedStack;
 }
 
 - (void)makeStackFromSelected {
@@ -333,7 +338,7 @@
             button.layer.borderColor = [[UIColor redColor] CGColor];
             button.layer.borderWidth = 3.0;
             
-            _selectedGalleryItem = (NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag];
+            _selectedGalleryItem = [(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag] retain];
         }
     }
 }

@@ -120,7 +120,17 @@
 
 - (bool)deleteChild:(NSObject <GalleryItem> *)galleryItem {
     
-    return nil;
+    int index = [_children indexOfObject:galleryItem];
+    
+    bool success = NO;
+    
+    if (index >= 0) {
+        success = YES;
+        
+        [_children removeObjectAtIndex:index];
+    }
+    
+    return success;
 }
 
 - (NSString *)saveThumbnailImage {

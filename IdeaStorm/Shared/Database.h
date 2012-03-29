@@ -49,7 +49,7 @@
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent;
 
-- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten;
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem;
 
 
 

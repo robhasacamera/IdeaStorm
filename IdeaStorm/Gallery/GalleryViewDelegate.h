@@ -17,7 +17,7 @@
 
 - (bool)exportGalleryItem:(NSObject <GalleryItem> *)galleryItem;
 
-- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryIten;
+- (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem;
 
 - (void)newDrawingForStack:(Stack *)stack;
 

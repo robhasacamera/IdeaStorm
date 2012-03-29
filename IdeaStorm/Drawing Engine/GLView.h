@@ -97,4 +97,6 @@ typedef struct {
 
 - (UIImage *)getRenderedImage;
 
+void myProviderReleaseFunction (void *info, const void *data, size_t size);
+
 @end

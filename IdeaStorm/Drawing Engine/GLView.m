@@ -253,9 +253,7 @@
     free(buffer);
     
     // make data provider with data.
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
-    
-    //free(buffer2);
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, myProviderReleaseFunction);
     
     // prep the ingredients
     int bitsPerComponent = 8;
@@ -267,9 +265,20 @@
     // make the cgimage
     CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     // then make the uiimage from that
+    
     UIImage *myImage = [UIImage imageWithCGImage:imageRef];
     
+    CGDataProviderRelease(provider);
+    CGImageRelease(imageRef);
+    
+    //free(buffer2);
+    
     return myImage;
+}
+
+void myProviderReleaseFunction (void *info, const void *data, size_t size) {
+    NSLog(@"free");
+    free(data);
 }
 
 #pragma mark - Memory Management

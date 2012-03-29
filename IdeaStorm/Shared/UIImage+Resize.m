@@ -6,7 +6,7 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
-
+/*
 // Private helper methods
 @interface UIImage ()
 - (UIImage *)resizedImage:(CGSize)newSize
@@ -15,7 +15,7 @@
      interpolationQuality:(CGInterpolationQuality)quality;
 - (CGAffineTransform)transformForOrientation:(CGSize)newSize;
 @end
-
+*/
 @implementation UIImage (Resize)
 
 // Returns a copy of this image that is cropped to the given bounds.
@@ -104,6 +104,7 @@
 #pragma mark -
 #pragma mark Private helper methods
 
+//FIXME: When freeing the buffer 2 in GLView getRenderedImage, the app crashes on the iPad only when this command is issued: CGContextDrawImage(bitmap, transpose ? transposedRect : newRect, imageRef);
 // Returns a copy of the image that has been transformed using the given affine transform and scaled to the new size
 // The new image's orientation will be UIImageOrientationUp, regardless of the current image's orientation
 // If the new size is not integral, it will be rounded up
@@ -130,8 +131,8 @@
                                                 NULL,
                                                 newRect.size.width,
                                                 newRect.size.height,
-                                                8, /* bits per channel */
-                                                (newRect.size.width * 4), /* 4 channels per pixel * numPixels/row */
+                                                8, // bits per channel 
+                                                (newRect.size.width * 4), // 4 channels per pixel * numPixels/row
                                                 CGColorSpaceCreateDeviceRGB(),
                                                 kCGImageAlphaPremultipliedLast
                                                 );
