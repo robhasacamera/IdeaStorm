@@ -20,6 +20,7 @@
 @synthesize positioningHelper = _positioningHelper;
 @synthesize galleryItemButtons = _galleryItemButtons;
 @synthesize drawingView = _drawingView;
+@synthesize waitingIcon = _waitingIcon;
 
 #pragma mark - Initialization
 
@@ -131,6 +132,18 @@
     }
     
     self.drawingView.frame = drawingViewFrame;
+    
+    CGRect waitingIconFrame = CGRectMake(((size.width - kWaitingIconWidth) / 2), ((size.height - kWaitingIconHeight) / 2), kWaitingIconWidth, kWaitingIconHeight);
+    
+    if (!self.waitingIcon) {
+        self.waitingIcon = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        
+        self.waitingIcon.hidesWhenStopped = YES;
+        
+        [self addSubview:self.waitingIcon];
+    }
+    
+    self.waitingIcon.frame = waitingIconFrame;
 }
 
 - (void)positionGalleryItemButtons {
@@ -174,6 +187,13 @@
 
 - (void)exportSelected {
     NSLog(@"export");
+    if ([self.selectedGalleryItem isKindOfClass:[Drawing class]]) {
+        [self.waitingIcon startAnimating];
+        
+        UIImage *image = self.selectedGalleryItem.fullImage;
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
 }
 
 - (void)deleteSelected {
@@ -366,6 +386,22 @@
     }
 }
 
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error 
+  contextInfo:(void *)contextInfo {
+    UIAlertView *alert;
+    
+    if (error != nil) {
+        alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an issue saving the selected drawing, please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    } else {
+        alert = [[UIAlertView alloc]initWithTitle:@"Exported Drawing" message:@"The drawing has been saved to your camera roll." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    }
+    [self.waitingIcon stopAnimating];
+    
+    [alert show];
+    
+    [alert release];
+}
+
 #pragma mark - Memory Management
 
 - (void)dealloc {
@@ -383,6 +419,10 @@
     
     if (self.drawingView) {
         [self.drawingView release];
+    }
+    
+    if (self.waitingIcon) {
+        [self.waitingIcon release];
     }
     
     [super dealloc];

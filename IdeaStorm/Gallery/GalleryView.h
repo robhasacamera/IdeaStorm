@@ -17,6 +17,8 @@
 
 #define kGalleryItemWidthSpacing 150.0
 #define kGalleryItemHeightSpacing 200.0
+#define kWaitingIconWidth 200.0
+#define kWaitingIconHeight 200.0
 
 @interface GalleryView : UIView <GalleryToolbarDelegate>
 
@@ -29,6 +31,7 @@
 @property (nonatomic, retain) PositioningHelper *positioningHelper;
 @property (nonatomic, retain) NSMutableArray *galleryItemButtons;
 @property (nonatomic, retain) UIImageView *drawingView;
+@property (nonatomic, retain) UIActivityIndicatorView *waitingIcon;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 
@@ -45,5 +48,8 @@
 - (void)displayDrawing:(Drawing *)drawing;
 
 - (void)hideDisplayedDrawing;
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error 
+  contextInfo:(void *)contextInfo;
 
 @end
