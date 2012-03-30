@@ -41,6 +41,8 @@
 
 - (IBAction)galleryItemButtonAction:(id)sender;
 
+- (IBAction)upStackLevelButtonAction:(id)sender;
+
 - (void)unselectAll;
 
 - (void)openGalleryItem:(NSObject <GalleryItem> *)galleryItem;

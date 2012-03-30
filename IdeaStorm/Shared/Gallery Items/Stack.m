@@ -79,7 +79,6 @@
     
     for (int i=0; i<[self.children count]; i++) {
         [childrenDataFilePaths addObject:[((NSObject <GalleryItem> *)[self.children objectAtIndex:i]) getFullPathWithDataFilename:YES]];
-        NSLog(@"saving childrens filepath");
     }
     
     [aCoder encodeObject:childrenDataFilePaths forKey:kChildrenKey];
@@ -161,7 +160,7 @@
 
 - (UIImage *)thumbnailImage {
     
-    return nil;
+    return ((NSObject <GalleryItem> *)[_children objectAtIndex:0]).thumbnailImage;
 }
 
 - (UIImage *)fullImage {

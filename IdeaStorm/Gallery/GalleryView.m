@@ -186,7 +186,6 @@
 #pragma mark - GalleryToolbarDelegate Methods
 
 - (void)exportSelected {
-    NSLog(@"export");
     if ([self.selectedGalleryItem isKindOfClass:[Drawing class]]) {
         [self.waitingIcon startAnimating];
         
@@ -197,8 +196,6 @@
 }
 
 - (void)deleteSelected {
-    NSLog(@"GalleryView Deleting %@", [self.selectedGalleryItem getFullPathWithDataFilename:NO]);
-    
     [self.delegate deleteGalleryItem:self.selectedGalleryItem];
     
     //refresh the display
@@ -304,13 +301,25 @@
     
     _displayedStack = displayedStack;
     
+    UIImage *stackBackground = [UIImage imageNamed:@"StackBackground.png"];
+    
     //build buttons for galleryItems in stack
     for (int i=0; i<[self.displayedStack.children count]; i++) {
+        float buttonWidth = kThumbWidth;
+        float buttonHeight = kThumbHeight;
+        
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        button.backgroundColor = [UIColor grayColor];
+        if ([[self.displayedStack.children objectAtIndex:i] isKindOfClass:[Stack class]]) {
+            buttonWidth +=20;
+            buttonHeight +=20;
+            //set background image
+            [button setBackgroundImage:stackBackground forState:UIControlStateNormal];
+        } else {
+            button.backgroundColor = [UIColor grayColor];
+        }
         
-        button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
+        button.frame = CGRectMake(0.0, 0.0, buttonWidth, buttonHeight);
         
         //setting the button to reference the galleryItem is was created for.
         button.tag = i;
@@ -323,6 +332,15 @@
     //insert the up stack level button if this is not the root stack
     if (notRootStack) {
         //insert upstack button at index 0
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        button.backgroundColor = [UIColor redColor];
+        
+        button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
+        
+        [button addTarget:self action:@selector(upStackLevelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.galleryItemButtons insertObject:button atIndex:0];
     }
     
     //position the gallery buttons
@@ -339,7 +357,7 @@
     
     //will need to start at the second button if the up stack level button is present
     if (notRootStack) {
-        //buttonIndex++;
+        buttonIndex++;
     }
     
     //load button images here!
@@ -378,6 +396,16 @@
             _selectedGalleryItem = [(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag] retain];
         }
     }
+}
+
+- (IBAction)upStackLevelButtonAction:(id)sender {
+    if ([self.displayedStack.parent isKindOfClass:[Stack class]]) {
+        self.displayedStack = (Stack *)self.displayedStack.parent;
+    } else {
+        NSLog(@"Error: Display Stack's parent is not a stack");
+    }
+    
+    
 }
 
 - (void)unselectAll {
