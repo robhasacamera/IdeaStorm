@@ -212,8 +212,25 @@
 - (void)createNewStack {
     NSLog(@"New Stack");
     //creat new stack
+    Stack *stack = [[Stack alloc]init];
+    
     //add as child of current stack
+    [self.displayedStack addChild:stack];
+    
+    if (![self.delegate saveGalleryItem:self.displayedStack]) {
+        NSLog(@"Error: There was issue saving the displayed stack.");
+    }
+    
+    //save current stack
+    if (![self.delegate saveGalleryItem:stack]) {
+        NSLog(@"Error: There was an issue trying to save new stack.");
+    }
+    
+    //set displayed stack to new stack
+    self.displayedStack = stack;
+    
     //call newDrawingForStack: using the new stack.
+    [self.delegate newDrawingForStack:self.displayedStack];
 }
 
 //TODO: This is incomplete.
@@ -322,7 +339,7 @@
     
     //will need to start at the second button if the up stack level button is present
     if (notRootStack) {
-        buttonIndex++;
+        //buttonIndex++;
     }
     
     //load button images here!

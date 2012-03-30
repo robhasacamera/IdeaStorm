@@ -16,6 +16,16 @@
 @synthesize thumbnailImage = _thumbnailImage;
 @synthesize fullImage = _fullImage;
 
+- (id)init {
+    self = [self initWithPathID:[Database generateUniqueID]];
+    
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
 - (id)initWithPathID:(NSString *)pathID {
     self = [super init];
     
@@ -69,6 +79,7 @@
     
     for (int i=0; i<[self.children count]; i++) {
         [childrenDataFilePaths addObject:[((NSObject <GalleryItem> *)[self.children objectAtIndex:i]) getFullPathWithDataFilename:YES]];
+        NSLog(@"saving childrens filepath");
     }
     
     [aCoder encodeObject:childrenDataFilePaths forKey:kChildrenKey];

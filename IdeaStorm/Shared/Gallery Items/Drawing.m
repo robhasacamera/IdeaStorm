@@ -17,6 +17,16 @@
 @synthesize fullImage = _fullImage;
 @synthesize stroke = _stroke;
 
+- (id)init {
+    self = [self initWithPathID:[Database generateUniqueID]];
+    
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
 - (id)initWithPathID:(NSString *)pathID {
     self = [super init];
     

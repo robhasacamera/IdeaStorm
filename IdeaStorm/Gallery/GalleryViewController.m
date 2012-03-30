@@ -135,6 +135,10 @@
     return nil;
 }
 
+- (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem {
+    return [self.database saveGalleryItem:galleryItem];
+}
+
 - (void)dealloc {
     [self.galleryView release];
     if (self.database) {

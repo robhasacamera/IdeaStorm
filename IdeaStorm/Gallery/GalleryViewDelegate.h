@@ -23,4 +23,6 @@
 
 - (Stack *)createStackFromDrawing:(Drawing *)drawing;
 
+- (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem;
+
 @end
