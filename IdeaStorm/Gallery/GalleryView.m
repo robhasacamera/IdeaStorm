@@ -334,11 +334,13 @@
         //insert upstack button at index 0
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        button.backgroundColor = [UIColor redColor];
+        button.backgroundColor = [UIColor grayColor];
         
         button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
         
         [button addTarget:self action:@selector(upStackLevelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button setImage:[UIImage imageNamed:@"UpStackLevelIcon.png"] forState:UIControlStateNormal];
         
         [self.galleryItemButtons insertObject:button atIndex:0];
     }
