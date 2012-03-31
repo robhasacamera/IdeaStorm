@@ -204,6 +204,13 @@
 
 - (void)makeStackFromSelected {
     NSLog(@"Make Stack");
+    
+    if ([self.selectedGalleryItem isKindOfClass:[Drawing class]]) {
+        [self.delegate makeStackFromDrawing:(Drawing *)self.selectedGalleryItem];
+        
+        self.displayedStack = self.displayedStack;
+    }
+    
 }
 
 - (void)createNewStack {

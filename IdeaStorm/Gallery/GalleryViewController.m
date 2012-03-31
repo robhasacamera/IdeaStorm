@@ -139,6 +139,24 @@
     return [self.database saveGalleryItem:galleryItem];
 }
 
+- (bool)makeStackFromDrawing:(Drawing *)drawing {
+    bool success = false;
+    
+    NSObject <GalleryItem> *oldParent = drawing.parent;
+    
+    Stack *newStack = [[Stack alloc]init];
+    
+    [oldParent addChild:newStack];
+    
+    success = [self.database saveGalleryItem:newStack];
+    
+    if (success) {
+        success = [self.database moveGalleryItem:drawing intoGalleryItem:newStack];
+    }
+    
+    return success;
+}
+
 - (void)dealloc {
     [self.galleryView release];
     if (self.database) {

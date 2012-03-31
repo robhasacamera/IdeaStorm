@@ -173,7 +173,44 @@
 }
 
 - (bool)moveGalleryItem:(NSObject <GalleryItem> *)child intoGalleryItem:(NSObject <GalleryItem> *)parent {
-    return nil;
+    //need to move the gallery item folder and its contents from the old parent to the new old
+    NSString *oldFolderLocation = [child getFullPathWithDataFilename:NO];
+    
+    NSString *newFolderLocation;
+    
+    NSObject <GalleryItem> *oldParent = child.parent;
+    
+    NSError *error;
+    
+    bool success = NO;
+    
+    //then need to remove the gallery item from the old parent and save the old parent
+    [oldParent deleteChild:child];
+    
+    [self saveGalleryItem:oldParent];
+    
+    
+    //then need to add the gallery item to the new parent and save the new parent
+    [parent addChild:child];
+    
+    [self saveGalleryItem:parent];
+    
+    newFolderLocation = [child getFullPathWithDataFilename:NO];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:newFolderLocation]) {
+        success = [[NSFileManager defaultManager] removeItemAtPath:newFolderLocation error:&error];
+    }
+    
+    if (success) {
+        success = [[NSFileManager defaultManager] moveItemAtPath:oldFolderLocation toPath:newFolderLocation error:&error];
+    }
+    
+    if (!success) {
+        NSLog(@"moveGalleryItem:intoGalleryItem: Error: %@", error);
+        NSLog(@"moveGalleryItem:intoGalleryItem: Error userInfo: %@", [error userInfo]);
+    }
+    
+    return success;
 }
 
 - (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem {
