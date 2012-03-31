@@ -20,64 +20,54 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(switchToNormalMode)];
+        doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(switchToNormalMode)];
         
-        UIBarButtonItem *editTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showEditTutorial)];
+        editTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showEditTutorial)];
         
-        UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
-        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(deleteSelected)];
+        deleteButton = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(deleteSelected)];
         
-        UIBarButtonItem *exportButton = [[UIBarButtonItem alloc]initWithTitle:@"Export" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(exportSelected)];
+        exportButton = [[UIBarButtonItem alloc]initWithTitle:@"Export" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(exportSelected)];
         
-        UIBarButtonItem *makeStackButton = [[UIBarButtonItem alloc]initWithTitle:@"Make Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(makeStackFromSelected)];
+        makeStackButton = [[UIBarButtonItem alloc]initWithTitle:@"Make Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(makeStackFromSelected)];
         
-        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToEditMode)];
+        editButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToEditMode)];
         
-        UIBarButtonItem *normalTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showNormalTutorial)];
+        normalTutorialButton = [[UIBarButtonItem alloc]initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(showNormalTutorial)];
         
-        UIBarButtonItem *newStackButton = [[UIBarButtonItem alloc]initWithTitle:@"New Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewStack)];
+        newStackButton = [[UIBarButtonItem alloc]initWithTitle:@"New Stack" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewStack)];
         
-        UIBarButtonItem *newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewDrawing)];
+        newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewDrawing)];
         
         self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, editTutorialButton, spacer, deleteButton, exportButton, makeStackButton, nil];
         
         self.normalModeButtons = [[NSArray alloc]initWithObjects:editButton, normalTutorialButton, spacer, newStackButton, newDrawingButton, nil];
         
         [self switchToMode:NORMAL_MODE];
-        
-        [doneButton release];
-        
-        [editTutorialButton release];
-        
-        [spacer release];
-        
-        [deleteButton release];
-        
-        [exportButton release];
-        
-        [makeStackButton release];
-        
-        [editButton release];
-        
-        [normalTutorialButton release];
-        
-        [newStackButton release];
-        
-        [newDrawingButton release];
     }
     return self;
 }
 
 - (bool)switchToMode:(GalleryToolbarMode)mode {
+    bool success = NO;
+    
     if (mode == EDIT_MODE) {
         [self setItems:self.editModeButtons animated:YES];
         _mode = EDIT_MODE;
+        
+        success = YES;
     }
     
     if (mode == NORMAL_MODE) {
         [self setItems:self.normalModeButtons animated:YES];
         _mode = NORMAL_MODE;
+        
+        success = YES;
+    }
+    
+    if (success) {
+        [self setDefaultsForEditMode];
     }
     
     return false;
@@ -99,9 +89,50 @@
     return success;
 }
 
+- (void)setButtonsForSelection:(id)selection {
+    
+    
+    if (self.mode == EDIT_MODE && [selection conformsToProtocol:@protocol(GalleryItem)]) {
+        if ([selection isKindOfClass:[Drawing class]]) {
+            exportButton.enabled = YES;
+            makeStackButton.enabled = YES;
+        }
+        
+        deleteButton.enabled = YES;
+    } else {
+        [self setDefaultsForEditMode];
+    }
+}
+
+- (void)setDefaultsForEditMode {
+    deleteButton.enabled = NO;
+    exportButton.enabled = NO;
+    makeStackButton.enabled = NO;
+}
+
 - (void)dealloc {
     [self.editModeButtons release];
     [self.normalModeButtons release];
+    
+    [doneButton release];
+    
+    [editTutorialButton release];
+    
+    [spacer release];
+    
+    [deleteButton release];
+    
+    [exportButton release];
+    
+    [makeStackButton release];
+    
+    [editButton release];
+    
+    [normalTutorialButton release];
+    
+    [newStackButton release];
+    
+    [newDrawingButton release];
     
     [super dealloc];
 }

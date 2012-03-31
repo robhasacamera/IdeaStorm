@@ -403,6 +403,8 @@
             button.layer.borderWidth = 3.0;
             
             _selectedGalleryItem = [(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag] retain];
+            
+            [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
         }
     }
 }
@@ -410,6 +412,14 @@
 - (IBAction)upStackLevelButtonAction:(id)sender {
     if ([self.displayedStack.parent isKindOfClass:[Stack class]]) {
         self.displayedStack = (Stack *)self.displayedStack.parent;
+        
+        if (_selectedGalleryItem) {
+            [_selectedGalleryItem release];
+            
+            _selectedGalleryItem = nil;
+        }
+        
+        [self.toolbar setButtonsForSelection:nil];
     } else {
         NSLog(@"Error: Display Stack's parent is not a stack");
     }

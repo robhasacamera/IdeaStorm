@@ -8,13 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "GalleryToolbarDelegate.h"
+#import "GalleryItem.h"
+#import "Stack.h"
+#import "Drawing.h"
 
 typedef enum {
     EDIT_MODE,
     NORMAL_MODE
 } GalleryToolbarMode;
 
-@interface GalleryToolbar : UIToolbar
+@interface GalleryToolbar : UIToolbar {
+    UIBarButtonItem *doneButton;
+    UIBarButtonItem *editTutorialButton;
+    UIBarButtonItem *spacer;
+    UIBarButtonItem *deleteButton;
+    UIBarButtonItem *exportButton;
+    UIBarButtonItem *makeStackButton;
+    UIBarButtonItem *editButton;
+    UIBarButtonItem *normalTutorialButton;
+    UIBarButtonItem *newStackButton;
+    UIBarButtonItem *newDrawingButton;
+}
 
 @property (strong, nonatomic) NSArray *editModeButtons;
 @property (strong, nonatomic) NSArray *normalModeButtons;
@@ -26,5 +40,9 @@ typedef enum {
 - (bool)switchToNormalMode;
 
 - (bool)switchToEditMode;
+
+- (void)setButtonsForSelection:(id)selection;
+
+- (void)setDefaultsForEditMode;
 
 @end

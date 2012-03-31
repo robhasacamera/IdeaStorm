@@ -109,7 +109,7 @@
         }
     }
     
-    NSLog(@"getFullPath Error: %@", error);
+    NSLog(@"getFullP ath Error: %@", error);
     NSLog(@"getFullPath Error userInfo: %@", [error userInfo]);
     
     return nil;
