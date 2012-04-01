@@ -148,7 +148,11 @@
 
 - (UIImage *)thumbnailImage {
     
-    return ((NSObject <GalleryItem> *)[_children objectAtIndex:0]).thumbnailImage;
+    if ([_children count] > 0) {
+        return ((NSObject <GalleryItem> *)[_children objectAtIndex:0]).thumbnailImage;
+    }
+    
+    return nil;
 }
 
 - (UIImage *)fullImage {
