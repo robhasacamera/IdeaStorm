@@ -40,7 +40,8 @@
         
         newDrawingButton = [[UIBarButtonItem alloc]initWithTitle:@"New Drawing" style:UIBarButtonItemStyleBordered target:self.galleryToolbarDelegate action:@selector(createNewDrawing)];
         
-        self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, editTutorialButton, spacer, deleteButton, exportButton, makeStackButton, nil];
+        //commenting out the edit tutorial button as a tuturial is not needed for edit mode currently.
+        self.editModeButtons = [[NSArray alloc]initWithObjects:doneButton, /*editTutorialButton,*/ spacer, deleteButton, exportButton, makeStackButton, nil];
         
         self.normalModeButtons = [[NSArray alloc]initWithObjects:editButton, normalTutorialButton, spacer, newStackButton, newDrawingButton, nil];
         

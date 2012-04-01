@@ -75,6 +75,12 @@
     [timer invalidate];
 }
 
+- (void)setFrame:(CGRect)frame {
+    self.overlay.frame = frame;
+    
+    [super setFrame:frame];
+}
+
 - (void)dealloc {
     [self.overlay release];
     

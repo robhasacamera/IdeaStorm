@@ -41,6 +41,10 @@
 		E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B7145D140A00BD2AC1 /* ToolSet.m */; };
 		E15662BB145D192900BD2AC1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662BA145D192900BD2AC1 /* Database.m */; };
 		E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */; };
+		E18286691527E5030002FFE2 /* galleryNormalTutorialLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = E18286671527E5030002FFE2 /* galleryNormalTutorialLandscape.png */; };
+		E182866A1527E5030002FFE2 /* galleryNormalTutorialPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E18286681527E5030002FFE2 /* galleryNormalTutorialPortrait.png */; };
+		E182866E1527E8050002FFE2 /* galleryEditTutorialLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = E182866C1527E8050002FFE2 /* galleryEditTutorialLandscape.png */; };
+		E182866F1527E8050002FFE2 /* galleryEditTutorialPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E182866D1527E8050002FFE2 /* galleryEditTutorialPortrait.png */; };
 		E189DA7314679FDE00DCF58B /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628A145CDF3700BD2AC1 /* Shader.fsh */; };
 		E189DA7414679FE600DCF58B /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E156628B145CDF3700BD2AC1 /* Shader.vsh */; };
 		E189DA7714684DAA00DCF58B /* PencilDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */; };
@@ -140,6 +144,10 @@
 		E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenDrawingTool.h; sourceTree = "<group>"; };
 		E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenDrawingTool.m; sourceTree = "<group>"; };
 		E17D0FEF15181CBE001976C9 /* GalleryViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryViewDelegate.h; sourceTree = "<group>"; };
+		E18286671527E5030002FFE2 /* galleryNormalTutorialLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryNormalTutorialLandscape.png; sourceTree = "<group>"; };
+		E18286681527E5030002FFE2 /* galleryNormalTutorialPortrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryNormalTutorialPortrait.png; sourceTree = "<group>"; };
+		E182866C1527E8050002FFE2 /* galleryEditTutorialLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryEditTutorialLandscape.png; sourceTree = "<group>"; };
+		E182866D1527E8050002FFE2 /* galleryEditTutorialPortrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryEditTutorialPortrait.png; sourceTree = "<group>"; };
 		E189DA7514684DAA00DCF58B /* PencilDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PencilDrawingTool.h; sourceTree = "<group>"; };
 		E189DA7614684DAA00DCF58B /* PencilDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PencilDrawingTool.m; sourceTree = "<group>"; };
 		E189DA781468ED9600DCF58B /* EraserDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EraserDrawingTool.h; sourceTree = "<group>"; };
@@ -438,6 +446,10 @@
 		E189DAA51470E1BC00DCF58B /* Tutorial Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E182866C1527E8050002FFE2 /* galleryEditTutorialLandscape.png */,
+				E182866D1527E8050002FFE2 /* galleryEditTutorialPortrait.png */,
+				E18286671527E5030002FFE2 /* galleryNormalTutorialLandscape.png */,
+				E18286681527E5030002FFE2 /* galleryNormalTutorialPortrait.png */,
 				E189DAA61470E1BC00DCF58B /* Tutorial_LandscapeLeft.png */,
 				E189DAA71470E1BC00DCF58B /* Tutorial_LandscapeRight.png */,
 				E189DAA81470E1BC00DCF58B /* Tutorial_Portrait.png */,
@@ -562,6 +574,10 @@
 				E13DE843152021CD00BC77FD /* Default-Portrait@2x~ipad.png in Resources */,
 				E13DE84615265E6000BC77FD /* StackBackground.png in Resources */,
 				E13DE8481526631200BC77FD /* UpStackLevelIcon.png in Resources */,
+				E18286691527E5030002FFE2 /* galleryNormalTutorialLandscape.png in Resources */,
+				E182866A1527E5030002FFE2 /* galleryNormalTutorialPortrait.png in Resources */,
+				E182866E1527E8050002FFE2 /* galleryEditTutorialLandscape.png in Resources */,
+				E182866F1527E8050002FFE2 /* galleryEditTutorialPortrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

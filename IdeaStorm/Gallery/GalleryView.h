@@ -14,13 +14,17 @@
 #import "GalleryViewDelegate.h"
 #import "GalleryToolbarDelegate.h"
 #import "PositioningHelper.h"
+#import "TutorialOverlay.h"
 
 #define kGalleryItemWidthSpacing 150.0
 #define kGalleryItemHeightSpacing 200.0
 #define kWaitingIconWidth 200.0
 #define kWaitingIconHeight 200.0
+#define kDeleteGalleryItemAlertTitle @"Delete"
+#define kDeleteGalleryItemAlertButtonTitle @"Delete"
+#define kGalleryTutorialFadeTime 0.50
 
-@interface GalleryView : UIView <GalleryToolbarDelegate>
+@interface GalleryView : UIView <GalleryToolbarDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) Stack *rootStack;
 @property (nonatomic, retain) Stack *displayedStack;
@@ -32,6 +36,8 @@
 @property (nonatomic, retain) NSMutableArray *galleryItemButtons;
 @property (nonatomic, retain) UIImageView *drawingView;
 @property (nonatomic, retain) UIActivityIndicatorView *waitingIcon;
+@property (nonatomic, strong) TutorialOverlay *normalTutorial;
+@property (nonatomic, strong) TutorialOverlay *editTutorial;
 
 - (id)initWithFrame:(CGRect)frame andRootStack:(Stack *)rootStack;
 

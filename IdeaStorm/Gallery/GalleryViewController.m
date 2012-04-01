@@ -80,6 +80,10 @@
     // Return YES for supported orientations
     [self.galleryView fitToSize:self.view.bounds.size];
     
+    [self.galleryView.normalTutorial changeToOrientation:interfaceOrientation];
+    
+    [self.galleryView.editTutorial changeToOrientation:interfaceOrientation];
+    
 	return YES;
 }
 

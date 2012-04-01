@@ -21,6 +21,8 @@
 @synthesize galleryItemButtons = _galleryItemButtons;
 @synthesize drawingView = _drawingView;
 @synthesize waitingIcon = _waitingIcon;
+@synthesize normalTutorial = _normalTutorial;
+@synthesize editTutorial = _editTutorial;
 
 #pragma mark - Initialization
 
@@ -115,10 +117,11 @@
         [self positionGalleryItemButtons];
     }
     
-    CGRect drawingViewFrame = CGRectMake(0.0, 0.0, size.width, size.height);
+    CGRect fullFrame = CGRectMake(0.0, 0.0, size.width, size.height);
     
+    //init the drawingView if needed and set the frame
     if (!self.drawingView) {
-        self.drawingView = [[UIImageView alloc]initWithFrame:drawingViewFrame];
+        self.drawingView = [[UIImageView alloc]initWithFrame:fullFrame];
         
         [self addSubview:self.drawingView];
         
@@ -131,7 +134,45 @@
         self.drawingView.userInteractionEnabled = YES;
     }
     
-    self.drawingView.frame = drawingViewFrame;
+    self.drawingView.frame = fullFrame;
+    
+    //init the normalTutorial if needed and set the frame
+    if (!self.normalTutorial) {
+        self.normalTutorial = [[TutorialOverlay alloc]initWithFrame:fullFrame];
+        
+        [self addSubview:self.normalTutorial];
+        
+        self.normalTutorial.portraitImage = [UIImage imageNamed:@"galleryNormalTutorialPortrait.png"];
+        
+        self.normalTutorial.portraitUpsideDownImage = [UIImage imageNamed:@"galleryNormalTutorialPortrait.png"];
+        
+        self.normalTutorial.landscapeLeftImage = [UIImage imageNamed:@"galleryNormalTutorialLandscape.png"];
+        
+        self.normalTutorial.landscapeRightImage = [UIImage imageNamed:@"galleryNormalTutorialLandscape.png"];
+        
+        self.normalTutorial.hidden = YES;
+    }
+    
+    self.normalTutorial.frame = fullFrame;
+    
+    //init the editTutorial if needed and set the frame
+    if (!self.editTutorial) {
+        self.editTutorial = [[TutorialOverlay alloc]initWithFrame:fullFrame];
+        
+        [self addSubview:self.editTutorial];
+        
+        self.editTutorial.portraitImage = [UIImage imageNamed:@"galleryEditTutorialPortrait.png"];
+        
+        self.editTutorial.portraitUpsideDownImage = [UIImage imageNamed:@"galleryEditTutorialPortrait.png"];
+        
+        self.editTutorial.landscapeLeftImage = [UIImage imageNamed:@"galleryEditTutorialLandscape.png"];
+        
+        self.editTutorial.landscapeRightImage = [UIImage imageNamed:@"galleryEditTutorialLandscape.png"];
+        
+        self.editTutorial.hidden = YES;
+    }
+    
+    self.editTutorial.frame = fullFrame;
     
     CGRect waitingIconFrame = CGRectMake(((size.width - kWaitingIconWidth) / 2), ((size.height - kWaitingIconHeight) / 2), kWaitingIconWidth, kWaitingIconHeight);
     
@@ -178,8 +219,15 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!self.drawingView.hidden) {
-        
         [self hideDisplayedDrawing];
+    }
+    
+    if (!self.normalTutorial.hidden) {
+        [self showNormalTutorial];
+    }
+    
+    if (!self.editTutorial.hidden) {
+        [self showEditTutorial];
     }
 }
 
@@ -196,10 +244,11 @@
 }
 
 - (void)deleteSelected {
-    [self.delegate deleteGalleryItem:self.selectedGalleryItem];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:kDeleteGalleryItemAlertTitle message:@"Are you sure you want to delete this?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:kDeleteGalleryItemAlertButtonTitle, nil];
     
-    //refresh the display
-    self.displayedStack = self.displayedStack;
+    [alert show];
+    
+    [alert release];
 }
 
 - (void)makeStackFromSelected {
@@ -243,11 +292,19 @@
 }
 
 - (void)showNormalTutorial {
-    NSLog(@"Normal Tutorial");
+    if (self.normalTutorial.hidden) {
+        [self.normalTutorial displayOverlayWithDuration:kGalleryTutorialFadeTime];
+    } else {
+        [self.normalTutorial hideOverlayWithDuration:kGalleryTutorialFadeTime];
+    }
 }
 
 - (void)showEditTutorial {
-    NSLog(@"Edit Tutorial");
+    if (self.editTutorial.hidden) {
+        [self.editTutorial displayOverlayWithDuration:kGalleryTutorialFadeTime];
+    } else {
+        [self.editTutorial hideOverlayWithDuration:kGalleryTutorialFadeTime];
+    }
 }
 
 - (void)modeChange {
@@ -466,6 +523,17 @@
     [alert release];
 }
 
+#pragma mark - UIAlertViewDelegateMethods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.title == kDeleteGalleryItemAlertTitle && [alertView buttonTitleAtIndex:buttonIndex] == kDeleteGalleryItemAlertButtonTitle) {
+        [self.delegate deleteGalleryItem:self.selectedGalleryItem];
+        
+        //refresh the display
+        self.displayedStack = self.displayedStack;
+    }
+}
+
 #pragma mark - Memory Management
 
 - (void)dealloc {
@@ -487,6 +555,14 @@
     
     if (self.waitingIcon) {
         [self.waitingIcon release];
+    }
+    
+    if (self.normalTutorial) {
+        [self.normalTutorial release];
+    }
+    
+    if (self.editTutorial) {
+        [self.editTutorial release];
     }
     
     [super dealloc];
