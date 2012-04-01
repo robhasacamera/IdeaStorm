@@ -527,6 +527,10 @@
     if (alertView.title == kDeleteGalleryItemAlertTitle && [alertView buttonTitleAtIndex:buttonIndex] == kDeleteGalleryItemAlertButtonTitle) {
         [self.delegate deleteGalleryItem:self.selectedGalleryItem];
         
+        _selectedGalleryItem = nil;
+        
+        [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
+        
         //refresh the display
         self.displayedStack = self.displayedStack;
     }
