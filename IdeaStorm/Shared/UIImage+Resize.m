@@ -143,6 +143,8 @@
     // Set the quality level to use when rescaling
     CGContextSetInterpolationQuality(bitmap, quality);
     
+    //NSLog(@"imageRef.Height = %@", CGImageGetHeight(imageRef));
+    
     // Draw into the context; this scales the image
     CGContextDrawImage(bitmap, transpose ? transposedRect : newRect, imageRef);
     

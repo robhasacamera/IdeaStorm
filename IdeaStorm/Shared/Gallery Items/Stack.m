@@ -41,26 +41,14 @@
     
     self = [self initWithPathID:pathID];
     
-    NSMutableArray *childrenDataFilePaths = [[aDecoder decodeObjectForKey:kChildrenKey] retain];
-    
-    for (int i=0; i < [childrenDataFilePaths count]; i++) {
-        [self addChild:[Database getGalleryItemForPath:(NSString *)[childrenDataFilePaths objectAtIndex:i]]];
-    }
-    
-    [childrenDataFilePaths release];
-    
-    NSLog(@"Children count = %i", [self.children count]);
-    
-    for (int i=0; i<[self.children count]; i++) {
-        NSLog(@"children[%i].pathID = %@", i, ((NSObject <GalleryItem> *)[self.children objectAtIndex:i]).pathID);
-    }
-    
     if (self) {
-        //initialize with data from coder
+        NSMutableArray *childrenDataFilePaths = [[aDecoder decodeObjectForKey:kChildrenKey] retain];
         
-        //get paths to all children from aDecoder
+        for (int i=0; i < [childrenDataFilePaths count]; i++) {
+            [self addChild:[Database getGalleryItemForPath:(NSString *)[childrenDataFilePaths objectAtIndex:i]]];
+        }
         
-        //init children and add them as a child
+        [childrenDataFilePaths release];
     }
     
     return self;

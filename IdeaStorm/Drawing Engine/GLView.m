@@ -10,6 +10,8 @@
 
 @implementation GLView
 
+@synthesize buffer = _buffer;
+
 #pragma mark - Initialization
 
 - (id)initWithFrame:(CGRect)frame
@@ -241,19 +243,23 @@
     glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
     // gl renders "upside down" so swap top to bottom into new array.
     // there's gotta be a better way, but this works.
-    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    if (!self.buffer) {
+        NSLog(@"buffer malloc");
+        self.buffer = (GLubyte *) malloc(myDataLength);
+    }
+    
     for(int y = 0; y <height; y++)
     {
         for(int x = 0; x <width * 4; x++)
         {
-            buffer2[((height-1) - y) * width * 4 + x] = buffer[y * 4 * width + x];
+            self.buffer[((height-1) - y) * width * 4 + x] = buffer[y * 4 * width + x];
         }
     }
     
     free(buffer);
     
     // make data provider with data.
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, myProviderReleaseFunction);
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, self.buffer, myDataLength, myProviderReleaseFunction);
     
     // prep the ingredients
     int bitsPerComponent = 8;
@@ -271,14 +277,13 @@
     CGDataProviderRelease(provider);
     CGImageRelease(imageRef);
     
-    //free(buffer2);
+    //free(self.buffer);
     
     return myImage;
 }
 
 void myProviderReleaseFunction (void *info, const void *data, size_t size) {
     NSLog(@"free");
-    free(data);
 }
 
 #pragma mark - Memory Management

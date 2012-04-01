@@ -55,6 +55,8 @@ typedef struct {
     int vertexBufferSize;
 }
 
+@property (nonatomic) GLubyte *buffer;
+
 #pragma mark - Setup
 
 #pragma mark -

@@ -382,6 +382,10 @@
         success = [self.database saveGalleryItem:self.drawing.parent];
     }
     
+    free(self.renderView.buffer);
+    
+    self.renderView.buffer = nil;
+    
     return success;
 }
 

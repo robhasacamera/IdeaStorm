@@ -252,18 +252,14 @@
 }
 
 - (void)makeStackFromSelected {
-    NSLog(@"Make Stack");
-    
     if ([self.selectedGalleryItem isKindOfClass:[Drawing class]]) {
         [self.delegate makeStackFromDrawing:(Drawing *)self.selectedGalleryItem];
         
         self.displayedStack = self.displayedStack;
     }
-    
 }
 
 - (void)createNewStack {
-    NSLog(@"New Stack");
     //creat new stack
     Stack *stack = [[Stack alloc]init];
     
@@ -345,6 +341,8 @@
         button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
         
         [button removeFromSuperview];
+        
+        [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
     }
     
     //releasing stored buttons to free memory

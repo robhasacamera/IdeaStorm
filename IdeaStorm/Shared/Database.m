@@ -103,7 +103,6 @@
 #pragma mark - GalleryItem Management
 
 - (bool)saveGalleryItem:(NSObject <GalleryItem> *)galleryItem {
-    NSLog(@"Database saveGalleryItem");
     NSError *error;
     bool success;
     
