@@ -107,6 +107,8 @@
     //if the texture is not defined or not the same as the last texture sent then setup the texture
     if (!fileName || fileName != textureFilename) {
         
+        textureFilename = fileName;
+        
         glDeleteTextures(1, &texture);
         
         CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
@@ -197,8 +199,6 @@
     if (numPoints != 0) {
         glActiveTexture(GL_TEXTURE0);
         
-        //glBindTexture(GL_TEXTURE_2D, texture);
-        
         glEnable(GL_TEXTURE_2D);
         
         glDrawArrays(GL_POINTS, 0, numPoints);
@@ -244,7 +244,6 @@
     // gl renders "upside down" so swap top to bottom into new array.
     // there's gotta be a better way, but this works.
     if (!self.buffer) {
-        NSLog(@"buffer malloc");
         self.buffer = (GLubyte *) malloc(myDataLength);
     }
     
