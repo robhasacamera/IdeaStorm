@@ -32,6 +32,7 @@
 @property (nonatomic, retain) Database *database;
 @property (strong, nonatomic) Drawing *drawing;
 @property (nonatomic, retain) UIViewController *viewController;
+@property (readonly) bool drawingStarted;
 
 #pragma mark - Initialization
 

@@ -18,6 +18,7 @@
 @synthesize database = _database;
 @synthesize drawing = _drawing;
 @synthesize viewController = _viewController;
+@synthesize drawingStarted = _drawingStarted;
 
 #pragma mark - Initialization
 
@@ -71,6 +72,8 @@
         
         self.reserveToolSet = [[ToolSet alloc]initWithDrawingTool:rDrawingTool andBrush:rBrush andDrawingColor:rDrawingColor andPointSize:pointSize];
         
+        _drawingStarted = NO;
+        
         [aDrawingColor release];
         
         [aBrush release];
@@ -95,6 +98,8 @@
 
 //Creates a drawing in the renderView (GLView) using the ouch data provided.
 - (void)drawWithTouch:(NSSet *)touches {
+    _drawingStarted = YES;
+    
     UITouch *touch = [touches anyObject];
     
     //touch began is ignored as it creates extra points for a drawing made of dots
@@ -121,6 +126,8 @@
 //This method calls the clearScreen method of the renderView (GLView).
 - (void)eraseScreen {
     [self.renderView clearScreen];
+    
+    _drawingStarted = NO;
 }
 
 #pragma mark - Point Calculations

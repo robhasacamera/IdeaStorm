@@ -303,7 +303,6 @@
     [self setActiveButtonsWithToolset:self.drawingEngine.activeToolSet];
 }
 
-//TODO: need to save the drawing here.
 - (IBAction)newDrawingButtonAction:(id)sender {
     [self.drawingEngine saveAndAddDrawing];
 }
@@ -370,11 +369,15 @@
         }
     }
 }
-//TODO: Need to save the drawing here as well.
+
 - (IBAction)dismissViewButtonAction:(id)sender {
-    [self.drawingEngine saveCurrentDrawing];
-    
-    [self.drawingEngine eraseScreen];
+    if (self.drawingEngine.drawingStarted) {
+        [self.drawingEngine saveCurrentDrawing];
+        
+        [self.drawingEngine eraseScreen];
+    } else {
+        [self.drawingEngine.drawing.parent deleteChild:self.drawingEngine.drawing];
+    }
     
     [self.drawingEngine.viewController.presentingViewController viewDidLoad];
     
