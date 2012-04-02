@@ -63,9 +63,6 @@
 
 #pragma mark - View Management
 
-//TODO: Need a method to reposition the gallery icons.
-
-//TODO: Need add repositioning the galleryitem icons.
 - (void)fitToSize:(CGSize)size {
     //resizing the GalleryView
     CGRect galleryViewFrame;
@@ -282,7 +279,6 @@
     [self.delegate newDrawingForStack:self.displayedStack];
 }
 
-//TODO: This is incomplete.
 - (void)createNewDrawing {
     [self.delegate newDrawingForStack:self.displayedStack];
 }
@@ -319,7 +315,7 @@
     self.displayedStack = rootStack;
 }
 
-//TODO: Need to add button actions, add thumbnail to the buttons and add up stack level button
+//overrides the setter to display the contents of the stack after setting the property
 - (void)setDisplayedStack:(Stack *)displayedStack {
     bool notRootStack = YES;
     

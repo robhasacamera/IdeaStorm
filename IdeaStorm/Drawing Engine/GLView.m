@@ -276,8 +276,6 @@
     CGDataProviderRelease(provider);
     CGImageRelease(imageRef);
     
-    //free(self.buffer);
-    
     return myImage;
 }
 

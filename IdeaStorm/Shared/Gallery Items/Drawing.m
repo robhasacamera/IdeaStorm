@@ -119,6 +119,11 @@
         NSData *fullImageData = UIImagePNGRepresentation(_fullImage);
         
         [fullImageData writeToFile:fullImagePath atomically:YES];
+        
+        //releasing the image here as it holds onto the image buffer data in GLView preventing it from being released properly.
+        [_fullImage release];
+        
+        _fullImage = nil;
     }
     
     return fullImagePath;
