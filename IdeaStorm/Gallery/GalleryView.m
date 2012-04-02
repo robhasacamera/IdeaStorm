@@ -339,11 +339,7 @@
     if ([self.displayedStack.parent isKindOfClass:[Stack class]]) {
         self.displayedStack = (Stack *)self.displayedStack.parent;
         
-        if (_selectedGalleryItem) {
-            [_selectedGalleryItem release];
-            
-            _selectedGalleryItem = nil;
-        }
+        [self unselectAll];
         
         [self.toolbar setButtonsForSelection:nil];
     } else {
@@ -487,9 +483,11 @@
         button.layer.borderColor = [[UIColor clearColor] CGColor];
         button.layer.borderWidth = 0.0;
         
-        [_selectedGalleryItem release];
-        
-        _selectedGalleryItem = nil;
+        if (self.selectedGalleryItem) {
+            [_selectedGalleryItem release];
+            
+            _selectedGalleryItem = nil;
+        }
         
         [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
     }
