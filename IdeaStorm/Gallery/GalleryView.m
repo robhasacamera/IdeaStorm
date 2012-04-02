@@ -305,6 +305,52 @@
     }
 }
 
+#pragma mark - Gallery Item Button Actions
+
+- (IBAction)galleryItemButtonAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    
+    if (self.toolbar.mode == NORMAL_MODE) {
+        [self openGalleryItem:(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag]];
+    }
+    
+    bool buttonWasSelected = NO;
+    
+    if (self.toolbar.mode == EDIT_MODE) {
+        
+        if (button.layer.borderColor == [[UIColor redColor] CGColor]) {
+            buttonWasSelected = YES;
+        }
+        
+        [self unselectAll];
+        
+        if (!buttonWasSelected) {
+            button.layer.borderColor = [[UIColor redColor] CGColor];
+            button.layer.borderWidth = 3.0;
+            
+            _selectedGalleryItem = [(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag] retain];
+            
+            [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
+        }
+    }
+}
+
+- (IBAction)upStackLevelButtonAction:(id)sender {
+    if ([self.displayedStack.parent isKindOfClass:[Stack class]]) {
+        self.displayedStack = (Stack *)self.displayedStack.parent;
+        
+        if (_selectedGalleryItem) {
+            [_selectedGalleryItem release];
+            
+            _selectedGalleryItem = nil;
+        }
+        
+        [self.toolbar setButtonsForSelection:nil];
+    } else {
+        NSLog(@"Error: Display Stack's parent is not a stack");
+    }
+}
+
 #pragma mark - Data Management
 
 //overrides the setter to display the contents of the root stack after setting the property
@@ -432,52 +478,6 @@
     }
 }
 
-- (IBAction)galleryItemButtonAction:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    
-    if (self.toolbar.mode == NORMAL_MODE) {
-        [self openGalleryItem:(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag]];
-    }
-    
-    bool buttonWasSelected = NO;
-    
-    if (self.toolbar.mode == EDIT_MODE) {
-        
-        if (button.layer.borderColor == [[UIColor redColor] CGColor]) {
-            buttonWasSelected = YES;
-        }
-        
-        [self unselectAll];
-        
-        if (!buttonWasSelected) {
-            button.layer.borderColor = [[UIColor redColor] CGColor];
-            button.layer.borderWidth = 3.0;
-            
-            _selectedGalleryItem = [(NSObject <GalleryItem> *)[self.displayedStack.children objectAtIndex:button.tag] retain];
-            
-            [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
-        }
-    }
-}
-
-- (IBAction)upStackLevelButtonAction:(id)sender {
-    if ([self.displayedStack.parent isKindOfClass:[Stack class]]) {
-        self.displayedStack = (Stack *)self.displayedStack.parent;
-        
-        if (_selectedGalleryItem) {
-            [_selectedGalleryItem release];
-            
-            _selectedGalleryItem = nil;
-        }
-        
-        [self.toolbar setButtonsForSelection:nil];
-    } else {
-        NSLog(@"Error: Display Stack's parent is not a stack");
-    }
-    
-    
-}
-
 - (void)unselectAll {
     UIButton *button;
     
@@ -486,6 +486,12 @@
         
         button.layer.borderColor = [[UIColor clearColor] CGColor];
         button.layer.borderWidth = 0.0;
+        
+        [_selectedGalleryItem release];
+        
+        _selectedGalleryItem = nil;
+        
+        [self.toolbar setButtonsForSelection:self.selectedGalleryItem];
     }
     
     _selectedGalleryItem = nil;
