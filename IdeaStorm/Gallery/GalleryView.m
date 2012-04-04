@@ -252,6 +252,8 @@
     if ([self.selectedGalleryItem isKindOfClass:[Drawing class]]) {
         [self.delegate makeStackFromDrawing:(Drawing *)self.selectedGalleryItem];
         
+        [self unselectAll];
+        
         self.displayedStack = self.displayedStack;
     }
 }
