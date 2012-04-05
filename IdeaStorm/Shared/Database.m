@@ -215,7 +215,6 @@
 - (bool)deleteGalleryItem:(NSObject <GalleryItem> *)galleryItem {
     //get document path
     NSString *galleryItemFolder = [[galleryItem getFullPathWithDataFilename:NO] retain];
-    NSLog(@"Deleting %@", galleryItemFolder);
     
     NSError *error;
     

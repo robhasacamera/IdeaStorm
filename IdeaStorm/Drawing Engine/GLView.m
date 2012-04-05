@@ -280,7 +280,7 @@
 }
 
 void myProviderReleaseFunction (void *info, const void *data, size_t size) {
-    NSLog(@"free");
+    //empty implementation
 }
 
 #pragma mark - Memory Management
