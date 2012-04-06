@@ -388,22 +388,25 @@
     //releasing stored buttons to free memory
     [self.galleryItemButtons removeAllObjects];
     
-    //releasing stored thumbnail images to free memory
-    if (_displayedStack.children) {
-        
-        
-        for (int i=0; i<[_displayedStack.children count]; i++) {
-            galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
-            
-            if (galleryItem.thumbnailImage) {
-                [galleryItem.thumbnailImage release];
-            }
-        }
-    }
-    
     _displayedStack = displayedStack;
     
     UIImage *stackBackground = [UIImage imageNamed:@"StackBackground.png"];
+    
+    //insert the up stack level button if this is not the root stack
+    if (notRootStack) {
+        //insert upstack button at index 0
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        button.backgroundColor = [UIColor grayColor];
+        
+        button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
+        
+        [button addTarget:self action:@selector(upStackLevelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button setImage:[UIImage imageNamed:@"UpStackLevelIcon.png"] forState:UIControlStateNormal];
+        
+        [self.galleryItemButtons insertObject:button atIndex:0];
+    }
     
     //build buttons for galleryItems in stack
     for (int i=0; i<[self.displayedStack.children count]; i++) {
@@ -428,23 +431,13 @@
         
         [button addTarget:self action:@selector(galleryItemButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
+        galleryItem = [((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]) retain];
+        
+        [button setImage:galleryItem.thumbnailImage forState:UIControlStateNormal];
+        
         [self.galleryItemButtons addObject:button];
-    }
-    
-    //insert the up stack level button if this is not the root stack
-    if (notRootStack) {
-        //insert upstack button at index 0
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        button.backgroundColor = [UIColor grayColor];
-        
-        button.frame = CGRectMake(0.0, 0.0, kThumbWidth, kThumbHeight);
-        
-        [button addTarget:self action:@selector(upStackLevelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [button setImage:[UIImage imageNamed:@"UpStackLevelIcon.png"] forState:UIControlStateNormal];
-        
-        [self.galleryItemButtons insertObject:button atIndex:0];
+        [galleryItem release];
     }
     
     //position the gallery buttons
@@ -455,24 +448,6 @@
         button = ((UIButton *)[self.galleryItemButtons objectAtIndex:i]);
         
         [self.scrollView addSubview:button];
-    }
-    
-    int buttonIndex = 0;
-    
-    //will need to start at the second button if the up stack level button is present
-    if (notRootStack) {
-        buttonIndex++;
-    }
-    
-    //load button images here!
-    for (int i=0; i<[self.displayedStack.children count]; i++) {
-        button = [((UIButton *)[self.galleryItemButtons objectAtIndex:buttonIndex]) retain];
-        galleryItem = ((NSObject <GalleryItem> *)[_displayedStack.children objectAtIndex:i]);
-        
-        [button setImage:galleryItem.thumbnailImage forState:UIControlStateNormal];
-        
-                
-        buttonIndex++;
     }
 }
 
@@ -567,6 +542,10 @@
     
     if (self.editTutorial) {
         [self.editTutorial release];
+    }
+    
+    if (self.galleryItemButtons) {
+        [self.galleryItemButtons release];
     }
     
     [super dealloc];

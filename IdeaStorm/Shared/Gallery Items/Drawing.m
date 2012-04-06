@@ -148,7 +148,7 @@
     NSString *thumbnailImagePath = [[self getFullPathWithDataFilename:NO] stringByAppendingPathComponent:kThumbImageFileName];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailImagePath]) {
-        _thumbnailImage = [UIImage imageWithContentsOfFile:thumbnailImagePath];
+        _thumbnailImage = [[UIImage imageWithContentsOfFile:thumbnailImagePath] retain];
         
         return _thumbnailImage;
     }
@@ -192,7 +192,7 @@
 
 - (void)dealloc {
     if (_thumbnailImage) {
-        [_thumbnailImage release];
+        //[_thumbnailImage release];
     }
     
     if (_fullImage) {
