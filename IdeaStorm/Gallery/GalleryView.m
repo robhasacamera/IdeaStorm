@@ -217,6 +217,8 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!self.drawingView.hidden) {
         [self hideDisplayedDrawing];
+        
+        self.drawingView.image = nil;
     }
     
     if (!self.normalTutorial.hidden) {

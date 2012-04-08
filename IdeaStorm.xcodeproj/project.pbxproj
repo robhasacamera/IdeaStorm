@@ -41,6 +41,8 @@
 		E15662B8145D140A00BD2AC1 /* ToolSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662B7145D140A00BD2AC1 /* ToolSet.m */; };
 		E15662BB145D192900BD2AC1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662BA145D192900BD2AC1 /* Database.m */; };
 		E15662C3145D29E800BD2AC1 /* PenDrawingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */; };
+		E180AC1115312204004BF8F4 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E180AC0F15312204004BF8F4 /* Icon-Small-50.png */; };
+		E180AC1215312204004BF8F4 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E180AC1015312204004BF8F4 /* Icon-Small-50@2x.png */; };
 		E18286691527E5030002FFE2 /* galleryNormalTutorialLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = E18286671527E5030002FFE2 /* galleryNormalTutorialLandscape.png */; };
 		E182866A1527E5030002FFE2 /* galleryNormalTutorialPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E18286681527E5030002FFE2 /* galleryNormalTutorialPortrait.png */; };
 		E182866E1527E8050002FFE2 /* galleryEditTutorialLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = E182866C1527E8050002FFE2 /* galleryEditTutorialLandscape.png */; };
@@ -144,6 +146,8 @@
 		E15662C1145D29E800BD2AC1 /* PenDrawingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenDrawingTool.h; sourceTree = "<group>"; };
 		E15662C2145D29E800BD2AC1 /* PenDrawingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenDrawingTool.m; sourceTree = "<group>"; };
 		E17D0FEF15181CBE001976C9 /* GalleryViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryViewDelegate.h; sourceTree = "<group>"; };
+		E180AC0F15312204004BF8F4 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		E180AC1015312204004BF8F4 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		E18286671527E5030002FFE2 /* galleryNormalTutorialLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryNormalTutorialLandscape.png; sourceTree = "<group>"; };
 		E18286681527E5030002FFE2 /* galleryNormalTutorialPortrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryNormalTutorialPortrait.png; sourceTree = "<group>"; };
 		E182866C1527E8050002FFE2 /* galleryEditTutorialLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galleryEditTutorialLandscape.png; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				E13DE83C152021BF00BC77FD /* Default-Portrait~ipad.png */,
 				E13DE83A15201D2B00BC77FD /* Retina iPad Icon.png */,
 				E13DE83815201D2500BC77FD /* iPad Icon.png */,
+				E180AC0F15312204004BF8F4 /* Icon-Small-50.png */,
+				E180AC1015312204004BF8F4 /* Icon-Small-50@2x.png */,
 				E15662AA145CDFD200BD2AC1 /* OpenGLES.framework */,
 				E15662A8145CDFCC00BD2AC1 /* QuartzCore.framework */,
 				E1566262145CDF1A00BD2AC1 /* IdeaStorm */,
@@ -578,6 +584,8 @@
 				E182866A1527E5030002FFE2 /* galleryNormalTutorialPortrait.png in Resources */,
 				E182866E1527E8050002FFE2 /* galleryEditTutorialLandscape.png in Resources */,
 				E182866F1527E8050002FFE2 /* galleryEditTutorialPortrait.png in Resources */,
+				E180AC1115312204004BF8F4 /* Icon-Small-50.png in Resources */,
+				E180AC1215312204004BF8F4 /* Icon-Small-50@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +662,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -672,7 +680,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
