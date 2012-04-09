@@ -11,8 +11,8 @@
 #import "ToolbarItem.h"
 #import "DrawingEngine.h"
 
-#define kPointSizeFactor 30
-#define kPointSizeMin 3
+#define kPointSizeFactor 12
+#define kPointSizeMin 5
 
 @interface PencilDrawingTool : ToolbarItem <DrawingTool> {
     float startPointSize;
