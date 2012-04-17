@@ -48,7 +48,6 @@
 
 #pragma mark - Point Calculations
 
-//TODO: Need to rename these to more appropiate names.
 + (NSMutableArray *)interpolateCurvePointsWithCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints andLastPoint:(bool)lastPoint;
 
 + (NSMutableArray *)interpolateCurvePoints:(NSMutableArray *)points withSpace:(float)spaceBetweenPoints;

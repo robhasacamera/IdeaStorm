@@ -15,7 +15,6 @@
 @synthesize mode = _mode;
 @synthesize galleryToolbarDelegate = _galleryToolbarDelegate;
 
-//TODO: Need to add targets and actions for other buttons.
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

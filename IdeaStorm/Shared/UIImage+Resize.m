@@ -6,16 +6,7 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
-/*
-// Private helper methods
-@interface UIImage ()
-- (UIImage *)resizedImage:(CGSize)newSize
-                transform:(CGAffineTransform)transform
-           drawTransposed:(BOOL)transpose
-     interpolationQuality:(CGInterpolationQuality)quality;
-- (CGAffineTransform)transformForOrientation:(CGSize)newSize;
-@end
-*/
+
 @implementation UIImage (Resize)
 
 // Returns a copy of this image that is cropped to the given bounds.
@@ -117,7 +108,7 @@
     CGImageRef imageRef = self.CGImage;
     
     // Build a context that's the same dimensions as the new size
-    /* this code is causing an error
+    /* this code is causing an error, replaced with code below instead
     CGContextRef bitmap = CGBitmapContextCreate(NULL,
                                                 newRect.size.width,
                                                 newRect.size.height,
@@ -142,8 +133,6 @@
     
     // Set the quality level to use when rescaling
     CGContextSetInterpolationQuality(bitmap, quality);
-    
-    //NSLog(@"imageRef.Height = %@", CGImageGetHeight(imageRef));
     
     // Draw into the context; this scales the image
     CGContextDrawImage(bitmap, transpose ? transposedRect : newRect, imageRef);

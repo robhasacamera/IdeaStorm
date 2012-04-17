@@ -76,7 +76,6 @@
 
 #pragma mark - Modifing Toolbar Items and Buttons
 
-//TODO: Need to set the image for the dimissViewButton.
 - (void)setupDefaultButtons {
     //Quick Switch Button
     UIButton *quickSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];

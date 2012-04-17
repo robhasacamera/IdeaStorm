@@ -81,7 +81,6 @@
 	return documentsDirectory;
 }
 
-//TODO: Remove line that is commented out: [uuidString autorelease];
 + (NSString *)generateUniqueID {
     // create a new UUID which you own
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
@@ -89,10 +88,6 @@
     // create a new CFStringRef (toll-free bridged to NSString)
     // that you own
     NSString *uuidString = (NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
-    
-    // transfer ownership of the string
-    // to the autorelease pool
-    //[uuidString autorelease];//commented this out as it was causing issue with the string being released too soon.
     
     // release the UUID
     CFRelease(uuid);

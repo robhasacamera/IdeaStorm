@@ -73,8 +73,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-
-//TODO: Need to check for and change GalleryView here.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -128,7 +126,6 @@
     return success;
 }
 
-//TODO: This is incomplete.
 - (void)newDrawingForStack:(Stack *)stack {
     [self.drawingViewController.drawingEngine newDrawingForStack:stack];
     

@@ -232,7 +232,7 @@
 }
 
 #pragma mark - Save Rendered Data
-//FIXME: freeing buffer 2 causes a crash on the iPad 1 and iPad 3, however it does not crash in the simulator. This is casuing a sizable memory leak.
+//FIXME: freeing buffer 2 causes a crash on the iPad 1 and iPad 3, however it does not crash in the simulator. This was casuing a sizable memory leak. A work around has been implemented for this, however this will need further investigation later.
 - (UIImage *)getRenderedImage {
     int width = (int)floorf(self.frame.size.width);
     int height = (int)floorf(self.frame.size.height);

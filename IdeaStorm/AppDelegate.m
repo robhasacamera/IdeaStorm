@@ -24,7 +24,6 @@
     [super dealloc];
 }
 
-//TODO: need to setup the database in here and add it to each view controller so they can share this resource.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];

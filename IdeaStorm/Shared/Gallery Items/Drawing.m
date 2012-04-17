@@ -37,7 +37,6 @@
     return self;
 }
 
-//TODO: get fullimage path and store it somewhere.
 - (id)initWithCoder:(NSCoder *)aDecoder {
     NSString *pathID = [[aDecoder decodeObjectForKey:kPathIDKey] retain];
     

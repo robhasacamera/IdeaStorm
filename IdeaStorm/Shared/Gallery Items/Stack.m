@@ -164,7 +164,6 @@
     return @"stack";
 }
 
-//TODO: Make sure to set release statements here for all objects
 - (void)dealloc {
     [_pathID release];
     
