@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E128F5D315901C89000DB164 /* StackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D115901C89000DB164 /* StackBackground@2x.png */; };
+		E128F5D415901C89000DB164 /* UpStackLevelIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D215901C89000DB164 /* UpStackLevelIcon@2x.png */; };
+		E128F5E515902499000DB164 /* Calligraphy_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D615902499000DB164 /* Calligraphy_Icon@2x.png */; };
+		E128F5E615902499000DB164 /* Circle_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D715902499000DB164 /* Circle_Icon@2x.png */; };
+		E128F5E715902499000DB164 /* Color_Black_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D815902499000DB164 /* Color_Black_Icon@2x.png */; };
+		E128F5E815902499000DB164 /* Color_Blue_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5D915902499000DB164 /* Color_Blue_Icon@2x.png */; };
+		E128F5E915902499000DB164 /* Color_Green_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DA15902499000DB164 /* Color_Green_Icon@2x.png */; };
+		E128F5EA15902499000DB164 /* Color_Red_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DB15902499000DB164 /* Color_Red_Icon@2x.png */; };
+		E128F5EB15902499000DB164 /* Color_Yellow_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DC15902499000DB164 /* Color_Yellow_Icon@2x.png */; };
+		E128F5EC15902499000DB164 /* Eraser_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DD15902499000DB164 /* Eraser_Icon@2x.png */; };
+		E128F5ED15902499000DB164 /* Gallery_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DE15902499000DB164 /* Gallery_Icon@2x.png */; };
+		E128F5EE15902499000DB164 /* Help_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5DF15902499000DB164 /* Help_Icon@2x.png */; };
+		E128F5EF15902499000DB164 /* New_Drawing_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5E015902499000DB164 /* New_Drawing_Icon@2x.png */; };
+		E128F5F015902499000DB164 /* Pen_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5E115902499000DB164 /* Pen_Icon@2x.png */; };
+		E128F5F115902499000DB164 /* Pencil_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5E215902499000DB164 /* Pencil_Icon@2x.png */; };
+		E128F5F215902499000DB164 /* Quick_Switch_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5E315902499000DB164 /* Quick_Switch_Icon@2x.png */; };
+		E128F5F315902499000DB164 /* Small_Particle_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E128F5E415902499000DB164 /* Small_Particle_Icon@2x.png */; };
 		E13DE83615201AB900BC77FD /* Gallery_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E13DE83515201AB900BC77FD /* Gallery_Icon.png */; };
 		E13DE83915201D2500BC77FD /* iPad Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E13DE83815201D2500BC77FD /* iPad Icon.png */; };
 		E13DE83B15201D2B00BC77FD /* Retina iPad Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E13DE83A15201D2B00BC77FD /* Retina iPad Icon.png */; };
@@ -87,6 +104,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E128F5D115901C89000DB164 /* StackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StackBackground@2x.png"; sourceTree = "<group>"; };
+		E128F5D215901C89000DB164 /* UpStackLevelIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpStackLevelIcon@2x.png"; sourceTree = "<group>"; };
+		E128F5D615902499000DB164 /* Calligraphy_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calligraphy_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5D715902499000DB164 /* Circle_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circle_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5D815902499000DB164 /* Color_Black_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color_Black_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5D915902499000DB164 /* Color_Blue_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color_Blue_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DA15902499000DB164 /* Color_Green_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color_Green_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DB15902499000DB164 /* Color_Red_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color_Red_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DC15902499000DB164 /* Color_Yellow_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color_Yellow_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DD15902499000DB164 /* Eraser_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eraser_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DE15902499000DB164 /* Gallery_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gallery_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5DF15902499000DB164 /* Help_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Help_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5E015902499000DB164 /* New_Drawing_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "New_Drawing_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5E115902499000DB164 /* Pen_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pen_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5E215902499000DB164 /* Pencil_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pencil_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5E315902499000DB164 /* Quick_Switch_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quick_Switch_Icon@2x.png"; sourceTree = "<group>"; };
+		E128F5E415902499000DB164 /* Small_Particle_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small_Particle_Icon@2x.png"; sourceTree = "<group>"; };
 		E13DE83515201AB900BC77FD /* Gallery_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gallery_Icon.png; sourceTree = "<group>"; };
 		E13DE83815201D2500BC77FD /* iPad Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Icon.png"; sourceTree = "<group>"; };
 		E13DE83A15201D2B00BC77FD /* Retina iPad Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Retina iPad Icon.png"; sourceTree = "<group>"; };
@@ -223,6 +257,8 @@
 		E13DE84415265E6000BC77FD /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E128F5D115901C89000DB164 /* StackBackground@2x.png */,
+				E128F5D215901C89000DB164 /* UpStackLevelIcon@2x.png */,
 				E13DE8471526631200BC77FD /* UpStackLevelIcon.png */,
 				E13DE84515265E6000BC77FD /* StackBackground.png */,
 			);
@@ -430,6 +466,21 @@
 		E189DA7E146F0ECB00DCF58B /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E128F5D615902499000DB164 /* Calligraphy_Icon@2x.png */,
+				E128F5D715902499000DB164 /* Circle_Icon@2x.png */,
+				E128F5D815902499000DB164 /* Color_Black_Icon@2x.png */,
+				E128F5D915902499000DB164 /* Color_Blue_Icon@2x.png */,
+				E128F5DA15902499000DB164 /* Color_Green_Icon@2x.png */,
+				E128F5DB15902499000DB164 /* Color_Red_Icon@2x.png */,
+				E128F5DC15902499000DB164 /* Color_Yellow_Icon@2x.png */,
+				E128F5DD15902499000DB164 /* Eraser_Icon@2x.png */,
+				E128F5DE15902499000DB164 /* Gallery_Icon@2x.png */,
+				E128F5DF15902499000DB164 /* Help_Icon@2x.png */,
+				E128F5E015902499000DB164 /* New_Drawing_Icon@2x.png */,
+				E128F5E115902499000DB164 /* Pen_Icon@2x.png */,
+				E128F5E215902499000DB164 /* Pencil_Icon@2x.png */,
+				E128F5E315902499000DB164 /* Quick_Switch_Icon@2x.png */,
+				E128F5E415902499000DB164 /* Small_Particle_Icon@2x.png */,
 				E13DE83515201AB900BC77FD /* Gallery_Icon.png */,
 				E189DA93146F898F00DCF58B /* Calligraphy_Icon.png */,
 				E189DA94146F898F00DCF58B /* Circle_Icon.png */,
@@ -586,6 +637,23 @@
 				E182866F1527E8050002FFE2 /* galleryEditTutorialPortrait.png in Resources */,
 				E180AC1115312204004BF8F4 /* Icon-Small-50.png in Resources */,
 				E180AC1215312204004BF8F4 /* Icon-Small-50@2x.png in Resources */,
+				E128F5D315901C89000DB164 /* StackBackground@2x.png in Resources */,
+				E128F5D415901C89000DB164 /* UpStackLevelIcon@2x.png in Resources */,
+				E128F5E515902499000DB164 /* Calligraphy_Icon@2x.png in Resources */,
+				E128F5E615902499000DB164 /* Circle_Icon@2x.png in Resources */,
+				E128F5E715902499000DB164 /* Color_Black_Icon@2x.png in Resources */,
+				E128F5E815902499000DB164 /* Color_Blue_Icon@2x.png in Resources */,
+				E128F5E915902499000DB164 /* Color_Green_Icon@2x.png in Resources */,
+				E128F5EA15902499000DB164 /* Color_Red_Icon@2x.png in Resources */,
+				E128F5EB15902499000DB164 /* Color_Yellow_Icon@2x.png in Resources */,
+				E128F5EC15902499000DB164 /* Eraser_Icon@2x.png in Resources */,
+				E128F5ED15902499000DB164 /* Gallery_Icon@2x.png in Resources */,
+				E128F5EE15902499000DB164 /* Help_Icon@2x.png in Resources */,
+				E128F5EF15902499000DB164 /* New_Drawing_Icon@2x.png in Resources */,
+				E128F5F015902499000DB164 /* Pen_Icon@2x.png in Resources */,
+				E128F5F115902499000DB164 /* Pencil_Icon@2x.png in Resources */,
+				E128F5F215902499000DB164 /* Quick_Switch_Icon@2x.png in Resources */,
+				E128F5F315902499000DB164 /* Small_Particle_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
